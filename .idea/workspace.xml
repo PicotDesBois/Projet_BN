@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af0654c0-4d07-431a-8f83-27ecedd3918b" name="Changes" comment="Creation des classes navires">
-      <change afterPath="$PROJECT_DIR$/src/org/Package/Navire.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/Package/SousMarins.java" afterDir="false" />
+    <list default="true" id="af0654c0-4d07-431a-8f83-27ecedd3918b" name="Changes" comment="Définition de la classe sous marins">
+      <change afterPath="$PROJECT_DIR$/src/org/Package/Croiseur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cuirasse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Destroyer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Navire.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SousMarins.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Destroyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Navire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Navire.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +55,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669460745449</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Définition de la classe sous marins">
+      <created>1669468716219</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669468716219</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -74,6 +78,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creation des classes navires" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creation des classes navires" />
+    <MESSAGE value="Définition de la classe sous marins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Définition de la classe sous marins" />
   </component>
 </project>

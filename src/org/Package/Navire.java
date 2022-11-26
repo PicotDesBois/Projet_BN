@@ -13,12 +13,16 @@ abstract public class Navire {
 
     // Méthode
      public void Tirer(){};
-     public void Deplacer(){};
+     public void Deplacer(int new_x,int new_y)
+     {
+         int m_px=new_x;
+         int m_py=new_y;
+     };
 
      public void Afficher()
      {
          System.out.println(m_type);
          System.out.print("Puissance "+m_puissance+" PV restant "+m_pv);
-         System.out.print(" Coordonnées "+m_px+";"+ m_py);
+         System.out.println(" Coordonnées "+m_px+";"+ m_py);
      };
 }
