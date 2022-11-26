@@ -12,5 +12,9 @@ public class Main {
         d1.Afficher();
         cr1.Afficher();
         cu1.Afficher();
+
+        Initialisation init = new Initialisation();
+
+        init.PositionAleaNavire();
     }
 }

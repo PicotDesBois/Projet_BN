@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af0654c0-4d07-431a-8f83-27ecedd3918b" name="Changes" comment="Définition de la classe sous marins">
-      <change afterPath="$PROJECT_DIR$/src/org/Package/Croiseur.java" afterDir="false" />
+    <list default="true" id="af0654c0-4d07-431a-8f83-27ecedd3918b" name="Changes" comment="Initialisation de la position des bateaux">
+      <change afterPath="$PROJECT_DIR$/src/org/Package/Case.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/Package/Initialisation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Destroyer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Navire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Navire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,13 +31,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/bapti/OneDrive - Groupe INSEEC (POCE)/Documents/ING3/Java/TP3"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/bapti/OneDrive - Groupe INSEEC (POCE)/Documents/ING3/Java/TP3&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -79,6 +78,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creation des classes navires" />
     <MESSAGE value="Définition de la classe sous marins" />
-    <option name="LAST_COMMIT_MESSAGE" value="Définition de la classe sous marins" />
+    <MESSAGE value="Initialisation de la position des bateaux" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initialisation de la position des bateaux" />
   </component>
 </project>
