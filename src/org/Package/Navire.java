@@ -3,7 +3,7 @@ package org.Package;
 import org.Package.Navire;
 abstract public class Navire {
 
-    // Attribut
+    /***************** Attribut ******************/
     protected int m_pv;
     protected int m_px;
     protected int m_py;
@@ -11,12 +11,21 @@ abstract public class Navire {
     protected int m_orientation;
     protected String m_type;
 
-    // Méthode
-     public void Tirer(){};
-     public void Deplacer(int new_x,int new_y)
+    /************ Méthode **********************/
+     public int Tirer()
      {
-         int m_px=new_x;
-         int m_py=new_y;
+        return m_puissance;
+     };
+
+     public void RecevoirTir(int degats)
+     {
+         m_pv=m_pv-degats;
+     }
+     public void Deplacer(int dx,int dy)
+     {
+         // Déplacement en diago interdit à blinder
+         int m_px=this.m_px+dx;
+         int m_py=this.m_py+dy;
      };
 
      public void Afficher()
@@ -25,4 +34,5 @@ abstract public class Navire {
          System.out.print("Puissance "+m_puissance+" PV restant "+m_pv);
          System.out.println(" Coordonnées "+m_px+";"+ m_py);
      };
+
 }
