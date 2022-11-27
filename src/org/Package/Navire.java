@@ -11,6 +11,8 @@ abstract public class Navire {
     protected int m_orientation;
     protected String m_type;
 
+    protected Case[] m_cases;
+
     /************ Méthode **********************/
      public int Tirer()
      {
@@ -33,6 +35,52 @@ abstract public class Navire {
          System.out.println(m_type);
          System.out.print("Puissance "+m_puissance+" PV restant "+m_pv);
          System.out.println(" Coordonnées "+m_px+";"+ m_py);
+         for (int i=0;i<m_pv;i++)
+            System.out.println("Case : ( "+m_cases[i].getCoorX()+" ; "+m_cases[i].getCoorY()+" )");
      };
+
+    /************ Setter & Getter **********************/
+
+    public int getPV()
+    {
+        return m_pv;
+    }
+    public void setPV(int temp)
+    {
+        m_pv=temp;
+    }
+
+    public int getPX()
+    {
+        return m_px;
+    }
+    public void setPX(int temp)
+    {
+        m_px=temp;
+    }
+
+    public int getPY()
+    {
+        return m_py;
+    }
+    public void setPY(int temp)
+    {
+        m_py=temp;
+    }
+
+    public int getOrientation()
+    {
+        return m_orientation;
+    }
+    public void setOrientation(int temp)
+    {
+        m_orientation=temp;
+    }
+
+    public Case getCase(int i) { return m_cases[i]; }
+    public void setCase(Case temp, int i)
+    {
+        m_cases[i]=temp;
+    }
 
 }

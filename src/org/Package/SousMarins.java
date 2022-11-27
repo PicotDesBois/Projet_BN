@@ -11,5 +11,9 @@ public class SousMarins extends Navire{
         m_py=py;
         m_orientation=orientation;
         m_puissance=1;
+
+        m_cases=new Case[m_pv];
+        for(int k=0;k<m_pv;k++)
+            m_cases[k]=new Case();
     }
 }

@@ -2,7 +2,7 @@ package org.Package;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
         SousMarins s1 = new SousMarins(0,0,0);
         Destroyer d1 = new Destroyer(0,0,0);
         Croiseur cr1 = new Croiseur(0,0,0);
@@ -15,6 +15,14 @@ public class Main {
 
         Initialisation init = new Initialisation();
 
-        init.PositionAleaNavire();
+
+
+        Joueur j1 = new Joueur();
+        j1.ChoixPseudo();
+        j1.Afficher();
+
+        init.PositionAleaNavire(j1.getFlotte1());
+
+        j1.Afficher();
     }
 }

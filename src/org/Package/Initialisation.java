@@ -3,10 +3,10 @@ package org.Package;
 public class Initialisation {
 
     // mettre en parametre la liste des bateaux du joueur
-    public void PositionAleaNavire()
+    public void PositionAleaNavire(Navire flotte[])
     {
         // nb de case pour le test => a remplacer par les pv du bateau
-        int pv=5;
+        //int pv=5;
 
         int coorX,coorY,direction;
 
@@ -15,8 +15,8 @@ public class Initialisation {
         {
             System.out.println("Navire "+i);
 
-            Case[] tab=new Case[pv];
-            for(int k=0;k<pv;k++)
+            Case[] tab=new Case[flotte[i].getPV()];
+            for(int k=0;k<flotte[i].getPV();k++)
                 tab[k]=new Case();
 
             // choisir la direction du bateau aléatoirement
@@ -33,7 +33,7 @@ public class Initialisation {
 
                         // choisir la coordonnée x de la premiere case du bateau
                         coorY = (int) ((Math.random() * (14 +1)));
-                }while (coorX>=(14-pv));
+                }while (coorX>=(14-flotte[i].getPV()));
             }
             // si le bateau est à la verticale
             else
@@ -44,11 +44,11 @@ public class Initialisation {
 
                     // choisir la coordonnée x de la premiere case du bateau
                     coorY = (int) ((Math.random() * (14 +1)));
-                }while (coorY>=(14-pv));
+                }while (coorY>=(14-flotte[i].getPV()));
             }
 
             // trouver les cases suivantes du bateau
-            for (int j=0;j<pv;j++)
+            for (int j=0;j<flotte[i].getPV();j++)
             {
                 // si le bateau est à l'horizonale
                 if (direction==1)
@@ -74,8 +74,12 @@ public class Initialisation {
                 }
 
                 tab[j].Afficher();
+
             }
             System.out.println();
+
+            for(int k=0;k<flotte[i].getPV();k++)
+                flotte[i].setCase(tab[k],k);
         }
     }
 }
