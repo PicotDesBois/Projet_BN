@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="af0654c0-4d07-431a-8f83-27ecedd3918b" name="Changes" comment="Définition des classes Destroyer, Croiseur et Cuirassé">
-      <change afterPath="$PROJECT_DIR$/src/org/Package/Joueur.java" afterDir="false" />
+    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/Package/GameGUI.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/Package/GameGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/Package/Plateau.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/Package/Position.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Croiseur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Croiseur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Destroyer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Initialisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Initialisation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/Package/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Navire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Navire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/SousMarins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/SousMarins.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,48 +27,53 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2I58skifqQRwtOifX2tnciSIPJ8" />
+  <component name="ProjectId" id="2I9rCXbAFWgjaU1KFtuUFljZ3Ss" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bapti/OneDrive - Groupe INSEEC (POCE)/Documents/ING3/Java/TP3&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/amine/Desktop/NewJava/Projet_BN1"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.Package.Main" />
+      <module name="Projet BN" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.Package.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="af0654c0-4d07-431a-8f83-27ecedd3918b" name="Changes" comment="" />
-      <created>1669460293973</created>
+      <changelist id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="" />
+      <created>1669604516724</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1669460293973</updated>
+      <updated>1669604516724</updated>
     </task>
-    <task id="LOCAL-00001" summary="Creation des classes navires">
-      <created>1669460745449</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1669460745449</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Définition de la classe sous marins">
-      <created>1669468716219</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1669468716219</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -80,11 +86,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Creation des classes navires" />
-    <MESSAGE value="Définition de la classe sous marins" />
-    <MESSAGE value="Initialisation de la position des bateaux" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initialisation de la position des bateaux" />
   </component>
 </project>
