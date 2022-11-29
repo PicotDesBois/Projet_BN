@@ -15,6 +15,7 @@ public class Initialisation {
         {
             System.out.println("Navire "+i);
 
+            // création du tableau de cases temporaire
             Case[] tab=new Case[flotte[i].getPV()];
             for(int k=0;k<flotte[i].getPV();k++)
                 tab[k]=new Case();
@@ -22,6 +23,8 @@ public class Initialisation {
             // choisir la direction du bateau aléatoirement
             // 1 = horizontale
             // 2 = verticale
+
+
             direction = (int) ((Math.random() * ((2 - (-1)) + 1)) + (-1));
 
             // si le bateau est à l'horizontale
@@ -78,8 +81,10 @@ public class Initialisation {
             }
             System.out.println();
 
+            // on met le tableau de cases dans les navires
             for(int k=0;k<flotte[i].getPV();k++)
                 flotte[i].setCase(tab[k],k);
+            flotte[i].setOrientation(direction);
         }
     }
 }
