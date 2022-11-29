@@ -1,4 +1,7 @@
 package org.Package;
+import java.io.*;
+
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +16,28 @@ public class Main {
         cr1.Afficher();
         cu1.Afficher();
 
-        Initialisation init = new Initialisation();
+        SousMarins s2;
+        String fileName="Sauvegarde";
+        try {
+            s1.save("Sauvegarde1");
+            System.out.println("s1");
+            System.out.println(s1);
+
+            /*s2 = null;
+            s2 = SousMarins.load(fileName);
+            System.out.println("Customer B");
+            System.out.println(s2);*/
+            }
+            catch (IOException exc)
+            {
+                System.out.println("exc");
+            }
+            /*catch (ClassNotFoundException exc)
+            {
+                System.out.println("exc");
+            }*/
+
+        /*Initialisation init = new Initialisation();
 
 
 
@@ -22,6 +46,6 @@ public class Main {
         j1.ChoixPseudo();
         init.PositionAleaNavire(j1.getFlotte1());
 
-        j1.Afficher();
+        j1.Afficher();*/
     }
 }

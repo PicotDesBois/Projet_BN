@@ -1,7 +1,7 @@
 package org.Package;
-
+import java.io.*;
 import org.Package.Navire;
-abstract public class Navire {
+abstract public class Navire implements Serializable {
 
     /***************** Attribut ******************/
     protected int m_pv;
@@ -13,7 +13,7 @@ abstract public class Navire {
 
     protected Case[] m_cases;
 
-    /************ Méthode **********************/
+    /*************** Méthode **********************/
      public int Tirer()
      {
         return m_puissance;
@@ -81,6 +81,31 @@ abstract public class Navire {
     public void setCase(Case temp, int i)
     {
         m_cases[i]=temp;
+    }
+
+    /************* Sauvegarde ****************************/
+    public void save(String fileName) throws IOException
+    {
+        FileOutputStream fos;
+        ObjectOutputStream oos;
+        fos = new FileOutputStream(fileName);
+        oos = new ObjectOutputStream(fos);
+        oos.writeObject(this);
+        oos.flush();
+        oos.close();
+    }
+
+    public static Navire load(String fileName) throws
+            IOException, ClassNotFoundException
+    {
+        FileInputStream fis;
+        ObjectInputStream ois;
+        Navire tempCustomer = null;
+        fis = new FileInputStream(fileName);
+        ois = new ObjectInputStream(fis);
+        tempCustomer = (Navire) ois.readObject();
+        ois.close();
+        return tempCustomer;
     }
 
 }

@@ -1,6 +1,12 @@
 package org.Package;
+import java.io.*;
 
 import org.Package.Navire;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class SousMarins extends Navire{
 
     public SousMarins(int px,int py, int orientation)
