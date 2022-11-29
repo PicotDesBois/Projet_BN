@@ -14,14 +14,16 @@ public class Main {
         cu1.Afficher();
 
         Initialisation init = new Initialisation();
-
-
-
         Joueur j1 = new Joueur();
 
-        j1.ChoixPseudo();
-        init.PositionAleaNavire(j1.getFlotte1());
+        //j1.ChoixPseudo();
+        //init.PositionAleaNavire(j1.getFlotte1());
 
-        j1.Afficher();
+        //j1.Afficher();
+
+        Partie game=new Partie();
+
+        game.Jouer();
+
     }
 }
