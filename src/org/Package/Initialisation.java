@@ -2,19 +2,40 @@ package org.Package;
 
 public class Initialisation {
 
-    // mettre en parametre la liste des bateaux du joueur
+    public boolean VerifNavire (Navire flotte[], int numNavire)
+    {
+        boolean Chevauchement=false;
+        // pour tous les bateaux pour lesquels les cases ont deja été choisies
+
+        if (numNavire==0)
+        {
+            return false;
+        }
+        else {
+            for (int i=0; i<numNavire;i++)
+            {
+                // pour chaque case de ce bateau
+                for (int j=0;j<flotte[numNavire].getPV();j++)
+                {
+                    if (flotte[numNavire].getCase(j).getCoorX()==flotte[i].getCase(j).getCoorX() && flotte[numNavire].getCase(j).getCoorY()==flotte[i].getCase(j).getCoorY())
+                        Chevauchement=true;
+                }
+            }
+            return Chevauchement;
+        }
+    }
+
     public void PositionAleaNavire(Navire flotte[])
     {
         // nb de case pour le test => a remplacer par les pv du bateau
         //int pv=5;
 
         int coorX,coorY,direction;
+        boolean Chevauchement=false;
 
         // pour chaque navire du joueur
         for (int i=0;i<10;i++)
         {
-            System.out.println("Navire "+i);
-
             // création du tableau de cases temporaire
             Case[] tab=new Case[flotte[i].getPV()];
             for(int k=0;k<flotte[i].getPV();k++)
@@ -24,7 +45,7 @@ public class Initialisation {
             // 1 = horizontale
             // 2 = verticale
 
-
+            do {
             direction = (int) ((Math.random() * ((2 - (-1)) + 1)) + (-1));
 
             // si le bateau est à l'horizontale
@@ -51,12 +72,10 @@ public class Initialisation {
             }
 
             // trouver les cases suivantes du bateau
-            for (int j=0;j<flotte[i].getPV();j++)
-            {
+            for (int j=0;j<flotte[i].getPV();j++) {
                 // si le bateau est à l'horizonale
-                if (direction==1)
-                {
-                    tab[j].setCoorX(coorX+j);
+                if (direction == 1) {
+                    tab[j].setCoorX(coorX + j);
                     tab[j].setCoorY(coorY);
 
                     // a changer avec le numéro du bateau
@@ -65,10 +84,9 @@ public class Initialisation {
                     // mettre le tableau dans la classe navire
                 }
                 // si le bateau est à la verticale
-                else
-                {
+                else {
                     tab[j].setCoorX(coorX);
-                    tab[j].setCoorY(coorY+j);
+                    tab[j].setCoorY(coorY + j);
 
                     // a changer avec le numéro du bateau
                     tab[j].setNavire(1);
@@ -76,15 +94,18 @@ public class Initialisation {
                     // mettre le tableau dans la classe navire
                 }
 
-                tab[j].Afficher();
+                //tab[j].Afficher();
 
             }
-            System.out.println();
 
             // on met le tableau de cases dans les navires
             for(int k=0;k<flotte[i].getPV();k++)
                 flotte[i].setCase(tab[k],k);
             flotte[i].setOrientation(direction);
+
+            Chevauchement =VerifNavire(flotte, i);
+
+            } while (Chevauchement ==true);
         }
     }
 }

@@ -18,9 +18,8 @@ public class Main {
 
 
         Joueur j1 = new Joueur();
-        j1.ChoixPseudo();
-        j1.Afficher();
 
+        j1.ChoixPseudo();
         init.PositionAleaNavire(j1.getFlotte1());
 
         j1.Afficher();
