@@ -1,4 +1,7 @@
 package org.Package;
+import java.io.*;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,22 +11,34 @@ public class Main {
         Croiseur cr1 = new Croiseur(0,0,0);
         Cuirasse cu1 = new Cuirasse(0,0,0);
 
-        s1.Afficher();
-        d1.Afficher();
-        cr1.Afficher();
-        cu1.Afficher();
-
         Initialisation init = new Initialisation();
-        Joueur j1 = new Joueur();
+        /*Joueur j1 = new Joueur();
 
-        //j1.ChoixPseudo();
-        //init.PositionAleaNavire(j1.getFlotte1());
 
-        //j1.Afficher();
+        try {
+            j1.sauvegarde();
+        }
+        catch (IOException exc)
+        {
+            System.out.println("exc");
+        }*/
 
-        Partie game=new Partie();
+        String fileName= Saisi();
+        try
+        {
+            Joueur j2=new Joueur(fileName);
+        }
+        catch (IOException exc)
+        {
 
-        game.Jouer();
-
+        }
+    }
+    public static String  Saisi()
+    {
+        Scanner in=null;
+        String temp;
+        in = new Scanner(System.in);
+        temp = in.nextLine();
+        return temp;
     }
 }

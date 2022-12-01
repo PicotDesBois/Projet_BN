@@ -93,7 +93,6 @@ public class Initialisation {
 
                     // mettre le tableau dans la classe navire
                 }
-
                 //tab[j].Afficher();
 
             }
