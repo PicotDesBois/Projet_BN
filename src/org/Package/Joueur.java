@@ -1,5 +1,5 @@
 package org.Package;
-
+import java.io.*;
 import java.util.Scanner;
 
 public class Joueur {
@@ -9,7 +9,8 @@ public class Joueur {
 
     public Joueur()
     {
-        m_pseudo="";
+        System.out.println("Saisir le pseudo du joueur : ");
+        m_pseudo=Saisi();
 
         m_flotte=new Navire[10];
         m_flotte[0]=new Cuirasse(0,0,0);
@@ -23,15 +24,56 @@ public class Joueur {
         m_flotte[8]=new SousMarins(0,0,0);
         m_flotte[9]=new SousMarins(0,0,0);
     }
+    public Joueur(String fileName)throws IOException
+    {
+        // Création d’un fileReader pour lire le fichier
+        FileReader fileReader = new FileReader("Sauvegarde/"+fileName+".txt");
 
-    public void ChoixPseudo()
+        // Création d’un bufferedReader qui utilise le fileReader
+        BufferedReader reader = new BufferedReader (fileReader);
+
+        this.m_flotte=new Navire[10];
+        try {
+
+            // une fonction à essayer pouvant générer une erreur
+            String type;
+            int pv,px,py,orientation,puissance;
+
+            m_pseudo= reader.readLine();
+            for(int i=0;i<10;i++)
+            {
+                type=reader.readLine();
+                puissance=Integer.parseInt(reader.readLine());
+                pv=Integer.parseInt(reader.readLine());
+                orientation=Integer.parseInt(reader.readLine());
+                px=Integer.parseInt(reader.readLine());
+                py=Integer.parseInt(reader.readLine());
+
+                if(type.equals("Croiseur")==true)
+                    this.m_flotte[i]=new Croiseur(px,py,orientation);
+                else if(type.equals("SousMarins")==true)
+                    this.m_flotte[i]=new SousMarins(px,py,orientation);
+                else if(type.equals("Destroyer")==true)
+                    this.m_flotte[i]=new Destroyer(px,py,orientation);
+                else if(type.equals("Cuirasse")==true)
+                    this.m_flotte[i]=new Cuirasse(px,py,orientation);
+
+
+            }
+        }
+        catch (IOException e) {
+                e.printStackTrace();
+            }
+        reader.close();
+    }
+
+    public String  Saisi()
     {
         Scanner in=null;
         String temp;
-        System.out.println("Saisir le pseudo du joueur : ");
         in = new Scanner(System.in);
         temp = in.nextLine();
-        m_pseudo=temp;
+        return temp;
     }
 
     public void Afficher()
@@ -61,4 +103,34 @@ public class Joueur {
         m_flotte[i]=temp;
     }
 
+    public void sauvegarde(String fileName) throws IOException {
+        String sauvegarde;
+        // Création d’un fileWriter pour écrire dans un fichier
+        FileWriter fileWriter = new FileWriter("Sauvegarde/"+fileName+".txt", false);
+
+        // Création d’un bufferedWriter qui utilise le fileWriter
+        BufferedWriter writer = new BufferedWriter (fileWriter);
+
+        sauvegarde=m_pseudo+"\n";
+        writer.write(m_pseudo);
+        writer.newLine();
+
+        try {
+            for(int i=0;i<10;i++)
+            {
+                sauvegarde=m_flotte[i].m_type+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_pv+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_puissance+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_orientation+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_px+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_py+"\n";
+                writer.write(sauvegarde);
+            }
+        }
+            catch (IOException e) {
+
+                e.printStackTrace();
+            }
+        writer.close(); // Fermeture du fichier
+    }
 }

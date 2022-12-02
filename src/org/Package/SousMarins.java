@@ -5,6 +5,7 @@ public class SousMarins extends Navire{
 
     public SousMarins(int px,int py, int orientation)
     {
+        System.out.println("Sous Marins constructeur");
         m_pv=1;
         m_type="SousMarins";
         m_px=px;

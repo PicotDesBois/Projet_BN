@@ -4,6 +4,7 @@ import org.Package.Navire;
 public class Destroyer extends Navire {
     public Destroyer(int px, int py, int orientation)
     {
+        System.out.println("Destroyer constructeur");
         m_pv=3;
         m_type="Destroyer";
         m_px=px;

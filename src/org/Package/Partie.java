@@ -69,7 +69,7 @@ public class Partie {
     {
         // initialisation du joueur : pseudo + flotte de navires aléatoire
         Initialisation init = new Initialisation();
-        m_player.ChoixPseudo();
+        m_player.Saisi();
         init.PositionAleaNavire(m_player.getFlotte1());
 
         // initialisation de l'IA : flotte de navires aléatoire

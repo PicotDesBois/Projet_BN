@@ -94,6 +94,7 @@ public class Initialisation {
                     // mettre le tableau dans la classe navire
                 }
 
+
             }
 
             // on met le tableau de cases dans les navires
