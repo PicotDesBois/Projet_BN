@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Continuation du corps de la Partie">
+    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Verif des navires qui se chevauchent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Initialisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Initialisation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Navire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Navire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Partie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Plateau.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,14 +83,7 @@
       <option name="project" value="LOCAL" />
       <updated>1669713879988</updated>
     </task>
-    <task id="LOCAL-00003" summary="Continuation du corps de la Partie">
-      <created>1669828951855</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1669828951855</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,7 +100,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changement dans Initialisation" />
     <MESSAGE value="Verif des navires qui se chevauchent" />
-    <MESSAGE value="Continuation du corps de la Partie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Continuation du corps de la Partie" />
+    <option name="LAST_COMMIT_MESSAGE" value="Verif des navires qui se chevauchent" />
   </component>
 </project>

@@ -8,11 +8,8 @@ public class Plateau{
     private int nbLigne;
     private int nbColonne;
     private int[][] plateau;
+        public void PlateauFill( Plateau plateau1, Navire[] listeBateaux){
 
-        public Plateau(int n, int p, Navire[] listeBateaux) {
-            nbLigne = n;
-            nbColonne = p;
-            plateau = new int[nbLigne][nbColonne];
 
             for (int i = 0; i < nbLigne; i++) {
                 for (int j = 0; j < nbColonne;j++) {
@@ -21,14 +18,27 @@ public class Plateau{
                             if (i == listeBateaux[k].getCase()[r].getCoorX() && j == listeBateaux[k].getCase()[r].getCoorY()){
                                 plateau[i][j] = k;
                             }
-                        else{
+                            else{
                                 plateau[i][j] = -1;
                             }
                         }
                     }
                 }
             }
+
         }
+
+        public Plateau(int n, int p) {
+            nbLigne = n;
+            nbColonne = p;
+            plateau = new int[nbLigne][nbColonne];
+
+            for (int i = 0; i < nbLigne; i++) {
+                for (int j = 0; j < nbColonne;j++) {
+                                plateau[i][j] = -1;
+                            }
+                        }
+                    }
 
 
 
