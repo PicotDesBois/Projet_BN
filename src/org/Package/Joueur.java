@@ -37,26 +37,32 @@ public class Joueur {
 
             // une fonction à essayer pouvant générer une erreur
             String type;
-            int pv,px,py,orientation,puissance;
+            int pv,px,py,navire,orientation,puissance;
+            boolean touche;
 
             m_pseudo= reader.readLine();
             for(int i=0;i<10;i++)
             {
                 type=reader.readLine();
-                puissance=Integer.parseInt(reader.readLine());
                 pv=Integer.parseInt(reader.readLine());
+                puissance=Integer.parseInt(reader.readLine());
                 orientation=Integer.parseInt(reader.readLine());
-                px=Integer.parseInt(reader.readLine());
-                py=Integer.parseInt(reader.readLine());
+                for(int j=0;j<m_flotte[i].m_pv;j++)
+                {
+                    px=Integer.parseInt(reader.readLine());
+                    py=Integer.parseInt(reader.readLine());
+                    navire=Integer.parseInt(reader.readLine());
+                    touche=Boolean.parseBoolean(reader.readLine());
+                }
 
-                if(type.equals("Croiseur")==true)
+                /*if(type.equals("Croiseur")==true)
                     this.m_flotte[i]=new Croiseur(px,py,orientation);
                 else if(type.equals("SousMarins")==true)
                     this.m_flotte[i]=new SousMarins(px,py,orientation);
                 else if(type.equals("Destroyer")==true)
                     this.m_flotte[i]=new Destroyer(px,py,orientation);
                 else if(type.equals("Cuirasse")==true)
-                    this.m_flotte[i]=new Cuirasse(px,py,orientation);
+                    this.m_flotte[i]=new Cuirasse(px,py,orientation);*/
 
 
             }
@@ -112,18 +118,23 @@ public class Joueur {
         BufferedWriter writer = new BufferedWriter (fileWriter);
 
         sauvegarde=m_pseudo+"\n";
-        writer.write(m_pseudo);
-        writer.newLine();
+        //writer.write(m_pseudo);
+        //writer.newLine();
 
         try {
             for(int i=0;i<10;i++)
             {
                 sauvegarde=m_flotte[i].m_type+"\n";
                 sauvegarde=sauvegarde+m_flotte[i].m_pv+"\n";
-                sauvegarde=sauvegarde+m_flotte[i].m_puissance+"\n";
+                sauvegarde=sauvegarde+"puissance "+m_flotte[i].m_puissance+"\n";
                 sauvegarde=sauvegarde+m_flotte[i].m_orientation+"\n";
-                sauvegarde=sauvegarde+m_flotte[i].m_px+"\n";
-                sauvegarde=sauvegarde+m_flotte[i].m_py+"\n";
+                for(int j=0;j<m_flotte[i].m_pv;j++)
+                {
+                    sauvegarde=sauvegarde+m_flotte[i].getCase()[j].getCoorX()+"\n";
+                    sauvegarde=sauvegarde+m_flotte[i].getCase()[j].getCoorY()+"\n";
+                    sauvegarde=sauvegarde+m_flotte[i].getCase()[j].getNavire()+"\n";
+                    sauvegarde=sauvegarde+m_flotte[i].getCase()[j].getTouche()+"\n";
+                }
                 writer.write(sauvegarde);
             }
         }
