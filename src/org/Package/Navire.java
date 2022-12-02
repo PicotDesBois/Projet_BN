@@ -13,6 +13,8 @@ abstract public class Navire {
 
     protected Case[] m_cases;
 
+    protected boolean m_fusee;
+
     /************ Méthode **********************/
      public int Tirer()
      {
@@ -35,6 +37,12 @@ abstract public class Navire {
          System.out.println(m_type);
          System.out.print("Puissance "+m_puissance+" PV restant "+m_pv);
          System.out.println(" Coordonnées "+m_px+";"+ m_py);
+
+         if (m_fusee)
+             System.out.println("Le navire peut tirer une fusee eclairante");
+         else
+             System.out.println("Le navire ne peut pas tirer de fusee eclairante");
+
          for (int i=0;i<m_pv;i++)
             System.out.println("Case : ( "+m_cases[i].getCoorX()+" ; "+m_cases[i].getCoorY()+" )");
      };
@@ -81,6 +89,15 @@ abstract public class Navire {
     public void setCase(Case temp, int i)
     {
         m_cases[i]=temp;
+    }
+
+    public boolean getFusee()
+    {
+        return m_fusee;
+    }
+    public void setFusee(boolean temp)
+    {
+        m_fusee=temp;
     }
 
 }
