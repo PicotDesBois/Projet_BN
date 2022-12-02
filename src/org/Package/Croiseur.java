@@ -4,6 +4,7 @@ import org.Package.Navire;
 public class Croiseur extends Navire{
     public Croiseur(int px,int py, int orientation)
     {
+        System.out.println("Croiseur constructeur");
         m_pv=5;
         m_type="Croiseur";
         m_px=px;
@@ -15,4 +16,5 @@ public class Croiseur extends Navire{
         for(int k=0;k<m_pv;k++)
             m_cases[k]=new Case();
     }
+
 }

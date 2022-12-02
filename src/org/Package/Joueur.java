@@ -32,20 +32,34 @@ public class Joueur {
         // Création d’un bufferedReader qui utilise le fileReader
         BufferedReader reader = new BufferedReader (fileReader);
 
-
+        this.m_flotte=new Navire[10];
         try {
 
             // une fonction à essayer pouvant générer une erreur
-            String line;
-            int test;
+            String type;
+            int pv,px,py,orientation,puissance;
 
-            do{
-                // lecture de la prochaine ligne
-                line = reader.readLine();
-                //test=reader.read();
-                // affichage de la ligne
-                System.out.println(line);
-            }while(line!=null);
+            m_pseudo= reader.readLine();
+            for(int i=0;i<10;i++)
+            {
+                type=reader.readLine();
+                puissance=Integer.parseInt(reader.readLine());
+                pv=Integer.parseInt(reader.readLine());
+                orientation=Integer.parseInt(reader.readLine());
+                px=Integer.parseInt(reader.readLine());
+                py=Integer.parseInt(reader.readLine());
+
+                if(type.equals("Croiseur")==true)
+                    this.m_flotte[i]=new Croiseur(px,py,orientation);
+                else if(type.equals("SousMarins")==true)
+                    this.m_flotte[i]=new SousMarins(px,py,orientation);
+                else if(type.equals("Destroyer")==true)
+                    this.m_flotte[i]=new Destroyer(px,py,orientation);
+                else if(type.equals("Cuirasse")==true)
+                    this.m_flotte[i]=new Cuirasse(px,py,orientation);
+
+
+            }
         }
         catch (IOException e) {
                 e.printStackTrace();
@@ -89,30 +103,28 @@ public class Joueur {
         m_flotte[i]=temp;
     }
 
-    public void sauvegarde() throws IOException {
-
+    public void sauvegarde(String fileName) throws IOException {
+        String sauvegarde;
         // Création d’un fileWriter pour écrire dans un fichier
-        FileWriter fileWriter = new FileWriter("Sauvegarde/Sauvegarde2.txt", false);
+        FileWriter fileWriter = new FileWriter("Sauvegarde/"+fileName+".txt", false);
 
         // Création d’un bufferedWriter qui utilise le fileWriter
         BufferedWriter writer = new BufferedWriter (fileWriter);
 
+        sauvegarde=m_pseudo+"\n";
+        writer.write(m_pseudo);
+        writer.newLine();
 
         try {
-            writer.write(m_pseudo);
-            writer.newLine();
-            for(int i=0;i<9;i++)
+            for(int i=0;i<10;i++)
             {
-                writer.write(m_flotte[i].m_type);
-                writer.newLine();
-                writer.write("PV : "+m_flotte[i].m_pv);
-                writer.newLine();
-                writer.write(m_flotte[i].m_orientation);
-                writer.newLine();
-                writer.write(m_flotte[i].m_px);
-                writer.newLine();
-                writer.write(m_flotte[i].m_py);
-                writer.newLine();
+                sauvegarde=m_flotte[i].m_type+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_pv+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_puissance+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_orientation+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_px+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_py+"\n";
+                writer.write(sauvegarde);
             }
         }
             catch (IOException e) {

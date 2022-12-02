@@ -3,6 +3,7 @@ import org.Package.Navire;
 public class Cuirasse extends Navire{
     public Cuirasse(int px,int py, int orientation)
     {
+        System.out.println("Cuirasse constructeur");
         m_pv=7;
         m_type="Cuirasse";
         m_px=px;
