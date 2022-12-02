@@ -67,13 +67,21 @@ public class Partie {
 
     public void Jouer()
     {
-        // initialisation du joueur : pseudo + flotte de navires aléatoire
+        // initialisation du joueur : pseudo + flotte de navires aléatoire + plateau
         Initialisation init = new Initialisation();
-        m_player.Saisi();
+        System.out.println("Veillez saisir votre pseudo :");
+        m_player.setPseudo(m_player.Saisi());
         init.PositionAleaNavire(m_player.getFlotte1());
+        Plateau plato_joueur = new Plateau(15,15);
+        plato_joueur.PlateauFill(plato_joueur,m_player.getFlotte1());
 
-        // initialisation de l'IA : flotte de navires aléatoire
+        m_player.Afficher();
+        plato_joueur.afficher();
+
+        // initialisation de l'IA : flotte de navires aléatoire + plateau
         init.PositionAleaNavire(m_IA.getFlotte1());
+        Plateau plato_IA = new Plateau(15,15);
+        plato_IA.PlateauFill(plato_IA,m_IA.getFlotte1());
 
         // scanner pour la saisie
         Scanner in=null;

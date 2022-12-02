@@ -12,13 +12,17 @@ public class Initialisation {
             return false;
         }
         else {
+            // pour chaque navire
             for (int i=0; i<numNavire;i++)
             {
                 // pour chaque case de ce bateau
                 for (int j=0;j<flotte[numNavire].getPV();j++)
                 {
-                    if (flotte[numNavire].getCase()[j].getCoorX()==flotte[i].getCase()[j].getCoorX() && flotte[numNavire].getCase()[j].getCoorY()==flotte[i].getCase()[j].getCoorY())
-                        Chevauchement=true;
+                    for (int k=0;k<flotte[i].getPV();k++)
+                    {
+                        if (flotte[numNavire].getCase()[j].getCoorX()==flotte[i].getCase()[k].getCoorX() && flotte[numNavire].getCase()[j].getCoorY()==flotte[i].getCase()[k].getCoorY())
+                            Chevauchement=true;
+                    }
                 }
             }
             return Chevauchement;
