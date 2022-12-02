@@ -17,7 +17,7 @@ public class Initialisation {
                 // pour chaque case de ce bateau
                 for (int j=0;j<flotte[numNavire].getPV();j++)
                 {
-                    if (flotte[numNavire].getCase(j).getCoorX()==flotte[i].getCase(j).getCoorX() && flotte[numNavire].getCase(j).getCoorY()==flotte[i].getCase(j).getCoorY())
+                    if (flotte[numNavire].getCase()[j].getCoorX()==flotte[i].getCase()[j].getCoorX() && flotte[numNavire].getCase()[j].getCoorY()==flotte[i].getCase()[j].getCoorY())
                         Chevauchement=true;
                 }
             }
@@ -89,12 +89,10 @@ public class Initialisation {
                     tab[j].setCoorY(coorY + j);
 
                     // a changer avec le numéro du bateau
-                    tab[j].setNavire(1);
+                    tab[j].setNavire(i);
 
                     // mettre le tableau dans la classe navire
                 }
-
-                //tab[j].Afficher();
 
             }
 

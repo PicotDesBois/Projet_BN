@@ -64,6 +64,7 @@ public class Partie {
         } while (coor.getCoorY() < 0 && coor.getCoorY() > 14);
     }
 
+
     public void Jouer()
     {
         // initialisation du joueur : pseudo + flotte de navires aléatoire
@@ -139,7 +140,7 @@ public class Partie {
                         // choix des coordonnées par le joueur
                         ChoixCoordTir(m_coor);
                         // tirer
-                        m_player.getFlotte2(m_choixNavire).Tirer();
+                        m_player.getFlotte2(m_choixNavire).Tirer(m_coor);
                     }
                 }
                 // le navire ne peut pas tirer de fusée
@@ -148,7 +149,7 @@ public class Partie {
                     // choix des coordonnées par le joueur
                     ChoixCoordTir(m_coor);
                     // tirer
-                    m_player.getFlotte2(m_choixNavire).Tirer();
+                    m_player.getFlotte2(m_choixNavire).Tirer(m_coor);
                 }
             }
 
@@ -159,7 +160,7 @@ public class Partie {
 
                 // vérifier si le navire peut se déplacer
 
-                m_player.getFlotte2(m_choixNavire).Deplacer(0,0);
+                m_player.getFlotte2(m_choixNavire).Deplacer(choix_dep, m_player.getFlotte1(), m_choixNavire);
             }
 
             /************* tour de l'IA ************/
@@ -184,19 +185,27 @@ public class Partie {
                     if (choix_tir==1)
                     {
                         // choix des coordonnées aléatoires
+                        m_coor.setCoorX((int)(Math.random() * 14 + 1));
+                        m_coor.setCoorY((int)(Math.random() * 14 + 1));
                         // tirer la fusée éclairante
                     }
                     // tir normal
                     else {
                         // choix des coordonnées aléatoires
-                        m_IA.getFlotte2(m_choixNavire).Tirer();
+                        m_coor.setCoorX((int)(Math.random() * 14 + 1));
+                        m_coor.setCoorY((int)(Math.random() * 14 + 1));
+
+                        m_IA.getFlotte2(m_choixNavire).Tirer(m_coor);
                     }
                 }
                 // tir normal
                 else
                 {
                     // choix des coordonnées aléatoires
-                    m_IA.getFlotte2(m_choixNavire).Tirer();
+                    m_coor.setCoorX((int)(Math.random() * 14 + 1));
+                    m_coor.setCoorY((int)(Math.random() * 14 + 1));
+
+                    m_IA.getFlotte2(m_choixNavire).Tirer(m_coor);
                 }
             }
             // choix = déplacer
@@ -204,8 +213,9 @@ public class Partie {
             {
                 // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
                 choix_dep=(int)(Math.random() * (4 - 1 + 1) + 1);
+                // faire méthode pour le déplacement
                 // déplacer
-                m_IA.getFlotte2(m_choixNavire).Deplacer(0,0);
+                m_IA.getFlotte2(m_choixNavire).Deplacer(choix_dep,m_IA.getFlotte1(), m_choixNavire);
             }
 
 
