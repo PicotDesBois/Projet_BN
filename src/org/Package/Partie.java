@@ -6,16 +6,18 @@ public class Partie {
 
     // si la partie va etre sauvegarder
     private boolean m_save;
-
     // si l'on veut quitter la partie ou non
     private boolean m_quit;
 
     // joueur et AI de la partie
     private Joueur m_player, m_IA;
 
+    // variable pour les choix du joueur
     private int m_choixAction;
-
     private int m_choixNavire;
+
+    // coordonnée de la case pour tirer (ou se déplacer ?)
+    private Case m_coor;
 
 
     // constructeur
@@ -30,7 +32,38 @@ public class Partie {
 
         m_choixAction=0;
         m_choixNavire=-1;
+
+        m_coor= new Case();
     }
+
+    // choix des coordonnées pour le tir et la fusée
+    public void ChoixCoordTir (Case coor)
+    {
+        // faire le choix des coordonnées
+        Scanner in=null;
+
+        System.out.println("Choisissez les coordonnees du navire");
+        System.out.println("Choisir la coordonnee des ordonnees entre 0 et 14");
+
+        do {
+            in = new Scanner(System.in);
+            int temp = in.nextInt();
+            coor.setCoorX(temp);
+            if (coor.getCoorX() < 0 && coor.getCoorX() > 14)
+                System.out.println("Mauvaise saisie, veuillez ressayer");
+        } while (coor.getCoorX() < 0 && coor.getCoorX() > 14);
+
+        System.out.println("Choisir la coordonnee des abscisses entre 0 et 14");
+
+        do {
+            in = new Scanner(System.in);
+            int temp = in.nextInt();
+            coor.setCoorY(temp);
+            if (coor.getCoorY() < 0 && coor.getCoorY() > 14)
+                System.out.println("Mauvaise saisie, veuillez ressayer");
+        } while (coor.getCoorY() < 0 && coor.getCoorY() > 14);
+    }
+
 
     public void Jouer()
     {
@@ -47,6 +80,7 @@ public class Partie {
 
         // choix du tir pour destroyer
         int choix_tir=0;
+        int choix_dep=0;
 
         // jouer tant que le joueur ne veut pas quitter
         do{
@@ -81,9 +115,10 @@ public class Partie {
             // tir
             if (m_choixAction == 1)
             {
-                // si le bateau est un destroyer : fusée ou tir
-                if (m_choixNavire==3 || m_choixNavire==4 || m_choixNavire==5)
+                // si le bateau peut tirer une fusée éclairante
+                if (m_player.getFlotte2(m_choixNavire).getFusee()==true)
                 {
+                    // choix entre fusée et tir normal
                     System.out.println("Quel type de tir voulez-vous faire");
                     System.out.println("1- Fusée éclairante");
                     System.out.println("2- Tir");
@@ -94,23 +129,38 @@ public class Partie {
                             System.out.println("Mauvaise saisie, veuillez ressayer");
                     } while (choix_tir != 1 && choix_tir != 2);
 
-                    // vérifier aussi qu'il peut encore tirer une fusée
                     if (choix_tir==1)
                     {
-                        // tirer la fusée éclairante -> un carré de 4*4 cases dans la grille adverse à partir du coin haut et gauche
-                        // le destroyer ne peut plus tirer de fusée
+                        // choix des coordonnées par le joueur
+                        ChoixCoordTir(m_coor);
+                        // tirer la fusée éclairante
                     }
                     else
-                        m_player.getFlotte2(m_choixNavire).Tirer();
+                    {
+                        // choix des coordonnées par le joueur
+                        ChoixCoordTir(m_coor);
+                        // tirer
+                        m_player.getFlotte2(m_choixNavire).Tirer(m_coor);
+                    }
                 }
+                // le navire ne peut pas tirer de fusée
                 else
-                    m_player.getFlotte2(m_choixNavire).Tirer();
+                {
+                    // choix des coordonnées par le joueur
+                    ChoixCoordTir(m_coor);
+                    // tirer
+                    m_player.getFlotte2(m_choixNavire).Tirer(m_coor);
+                }
             }
+
             // déplacement
             else
             {
-                // demander au joueur les coordonnées du déplacement
-                m_player.getFlotte2(m_choixNavire).Deplacer(0,0);
+                // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
+
+                // vérifier si le navire peut se déplacer
+
+                m_player.getFlotte2(m_choixNavire).Deplacer(choix_dep, m_player.getFlotte1(), m_choixNavire);
             }
 
             /************* tour de l'IA ************/
@@ -122,32 +172,50 @@ public class Partie {
             m_choixNavire =(int)(Math.random() * 9 + 1);
 
             // Réalisation de l'action
+            // choix = tirer
             if (m_choixAction==1)
             {
-                // tirer
-                if (m_choixNavire==3 || m_choixNavire==4 || m_choixNavire==5)
+                // si le bateau peut tirer une fusée éclairante
+                if (m_IA.getFlotte2(m_choixNavire).getFusee()==true)
                 {
-                    // choix du type de tir pour le destroyer
-                    choix_tir =(int)(Math.random() * (2 - 1 + 1) + 1);
+                    // aléatoire entre fusée et tir normal
+                    choix_tir=(int)(Math.random() * (2 - 1 + 1) + 1);
 
-                    // vérifier aussi qu'il peut encore tirer une fusée
+                    // fusée éclairante
                     if (choix_tir==1)
                     {
-                        // tirer la fusée éclairante -> un carré de 4*4 cases dans la grille adverse à partir du coin haut et gauche
-                        // le destroyer ne peut plus tirer de fusée
+                        // choix des coordonnées aléatoires
+                        m_coor.setCoorX((int)(Math.random() * 14 + 1));
+                        m_coor.setCoorY((int)(Math.random() * 14 + 1));
+                        // tirer la fusée éclairante
                     }
-                    else
-                        m_player.getFlotte2(m_choixNavire).Tirer();
+                    // tir normal
+                    else {
+                        // choix des coordonnées aléatoires
+                        m_coor.setCoorX((int)(Math.random() * 14 + 1));
+                        m_coor.setCoorY((int)(Math.random() * 14 + 1));
+
+                        m_IA.getFlotte2(m_choixNavire).Tirer(m_coor);
+                    }
                 }
+                // tir normal
                 else
                 {
-                    m_player.getFlotte2(m_choixNavire).Tirer();
+                    // choix des coordonnées aléatoires
+                    m_coor.setCoorX((int)(Math.random() * 14 + 1));
+                    m_coor.setCoorY((int)(Math.random() * 14 + 1));
+
+                    m_IA.getFlotte2(m_choixNavire).Tirer(m_coor);
                 }
             }
+            // choix = déplacer
             else
             {
+                // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
+                choix_dep=(int)(Math.random() * (4 - 1 + 1) + 1);
+                // faire méthode pour le déplacement
                 // déplacer
-                m_player.getFlotte2(m_choixNavire).Deplacer(0,0);
+                m_IA.getFlotte2(m_choixNavire).Deplacer(choix_dep,m_IA.getFlotte1(), m_choixNavire);
             }
 
 
