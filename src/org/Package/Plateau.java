@@ -13,13 +13,11 @@ public class Plateau{
 
             for (int i = 0; i < nbLigne; i++) {
                 for (int j = 0; j < nbColonne;j++) {
+                    plateau[i][j] = -1;
                     for (int k = 0; k<10; k++){
                         for (int r = 0; r   < listeBateaux[k].getPV() ;r++) {
                             if (i == listeBateaux[k].getCase()[r].getCoorX() && j == listeBateaux[k].getCase()[r].getCoorY()){
                                 plateau[i][j] = k;
-                            }
-                            else{
-                                plateau[i][j] = -1;
                             }
                         }
                     }
@@ -47,8 +45,12 @@ public class Plateau{
         System.out.println();
         for (int i = 0; i < nbLigne; i++) {
             for (int j = 0; j < nbColonne;j++) {
-                plateau[i][j] = 'x';
-                System.out.print(" | " + plateau[i][j]);
+                if (plateau[i][j]!=-1)
+                {
+                    System.out.print(" |  " + plateau[i][j]);
+                }
+                else
+                    System.out.print(" | " + plateau[i][j]);
             }
             System.out.println(" | ");
         }
