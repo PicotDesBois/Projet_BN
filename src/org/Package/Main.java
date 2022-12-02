@@ -11,31 +11,30 @@ public class Main {
         Croiseur cr1 = new Croiseur(0,0,0);
         Cuirasse cu1 = new Cuirasse(0,0,0);
 
-        s1.Afficher();
+        /*s1.Afficher();
         d1.Afficher();
         cr1.Afficher();
-        cu1.Afficher();
-
-        SousMarins s2;
-        String fileName="Sauvegarde";
+        cu1.Afficher();*/
+        SousMarins s2 = null;
+        s1.Afficher();
+        String fileName="Sauvegarde1";
         try {
-            s1.save("Sauvegarde1");
+            /*s1.save(fileName);
             System.out.println("s1");
-            System.out.println(s1);
+            System.out.println(s1);*/
 
-            /*s2 = null;
-            s2 = SousMarins.load(fileName);
-            System.out.println("Customer B");
-            System.out.println(s2);*/
+            s1 = (SousMarins) SousMarins.load(fileName);
+            }
+            catch (ClassNotFoundException exc)
+            {
+                System.out.println("ClassNotFoundException");
             }
             catch (IOException exc)
             {
-                System.out.println("exc");
+                System.out.println("IOException");
             }
-            /*catch (ClassNotFoundException exc)
-            {
-                System.out.println("exc");
-            }*/
+        s1.Afficher();
+
 
         /*Initialisation init = new Initialisation();
 

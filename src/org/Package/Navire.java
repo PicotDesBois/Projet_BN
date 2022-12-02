@@ -1,7 +1,7 @@
 package org.Package;
 import java.io.*;
 import org.Package.Navire;
-abstract public class Navire implements Serializable {
+abstract public class Navire  {
 
     /***************** Attribut ******************/
     protected int m_pv;
@@ -84,28 +84,5 @@ abstract public class Navire implements Serializable {
     }
 
     /************* Sauvegarde ****************************/
-    public void save(String fileName) throws IOException
-    {
-        FileOutputStream fos;
-        ObjectOutputStream oos;
-        fos = new FileOutputStream(fileName);
-        oos = new ObjectOutputStream(fos);
-        oos.writeObject(this);
-        oos.flush();
-        oos.close();
-    }
-
-    public static Navire load(String fileName) throws
-            IOException, ClassNotFoundException
-    {
-        FileInputStream fis;
-        ObjectInputStream ois;
-        Navire tempCustomer = null;
-        fis = new FileInputStream(fileName);
-        ois = new ObjectInputStream(fis);
-        tempCustomer = (Navire) ois.readObject();
-        ois.close();
-        return tempCustomer;
-    }
 
 }
