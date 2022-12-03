@@ -1,6 +1,6 @@
 package org.Package;
 public class Cuirasse extends Navire{
-    public Cuirasse()
+    public Cuirasse()// constructeur par défaut
     {
         m_pv=7;
         m_type="Cuirasse";
@@ -14,7 +14,7 @@ public class Cuirasse extends Navire{
             m_cases[k]=new Case(0,0,0,false);
     }
 
-    public Cuirasse(int orientation)
+    public Cuirasse(int orientation)// constructeur pour sauvegarde
     {
         m_pv=7;
         m_type="Cuirasse";

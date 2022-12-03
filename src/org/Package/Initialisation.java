@@ -1,7 +1,6 @@
 package org.Package;
 
 public class Initialisation {
-
     public boolean VerifNavire (Navire flotte[], int numNavire)
     {
         boolean Chevauchement=false;

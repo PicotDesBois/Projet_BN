@@ -3,21 +3,15 @@ import java.io.IOException;
 import java.util.Scanner;
 public class Main {
 
-
-
     public static void main(String[] args) {
 
-        /*Partie party = new Partie();
+        Partie party = new Partie();
         party.Jouer();
 
-        SousMarins s1 = new SousMarins();
-        Destroyer d1 = new Destroyer();
-        Croiseur cr1 = new Croiseur();
-        Cuirasse cu1 = new Cuirasse();
-
-        Initialisation init = new Initialisation();*/
-        String fileName="Test";
+        //Initialisation init = new Initialisation();*/
+        /*String fileName="Test";
         Joueur j1 = new Joueur();
+        j1.Afficher();
         Joueur j2=null;
 
         try {
@@ -39,14 +33,14 @@ public class Main {
         {
             System.out.println("exc");
         }
-        j2.Afficher();
+        j2.Afficher();*/
     }
-    public static String  Saisi()
+    /*public static String  Saisi()
     {
         Scanner in=null;
         String temp;
         in = new Scanner(System.in);
         temp = in.nextLine();
         return temp;
-    }
+    }*/
 }

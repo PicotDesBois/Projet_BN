@@ -15,9 +15,9 @@ abstract public class Navire {
     protected boolean m_fusee;
 
     /************ Méthode **********************/
-     public void Tirer(Case coordonnee)
+     public void Tirer()
      {
-        //
+
      }
 
      public void RecevoirTir(int degats)

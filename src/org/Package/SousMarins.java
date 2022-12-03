@@ -2,7 +2,7 @@ package org.Package;
 
 public class SousMarins extends Navire{
 
-    public SousMarins()
+    public SousMarins()//constructeur par défaut
     {
         m_pv=1;
         m_type="SousMarins";

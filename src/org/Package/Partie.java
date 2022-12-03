@@ -107,11 +107,7 @@ public class Partie {
 
             // choix du navire pour réaliser l'action
             // tir
-            if (m_choixAction == 1)
-                System.out.println("De quel navire voulez vous tirer ?");
-            // déplacement
-            else
-                System.out.println("Quel navire voulez vous déplacer");
+            m_player.action(m_choixAction);
             do {
                 in = new Scanner(System.in);
                 m_choixNavire = in.nextInt();

@@ -38,9 +38,6 @@ public class Plateau{
                         }
                     }
 
-
-
-
         public void afficher() {
         System.out.println();
         for (int i = 0; i < nbLigne; i++) {

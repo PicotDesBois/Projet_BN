@@ -1,7 +1,7 @@
 package org.Package;
 
 public class Croiseur extends Navire{
-    public Croiseur()
+    public Croiseur()// constructeur par défaut
     {
         m_pv=5;
         m_type="Croiseur";
@@ -15,7 +15,7 @@ public class Croiseur extends Navire{
             m_cases[k]=new Case(0,0,0,false);
     }
 
-    public Croiseur(int orientation)
+    public Croiseur(int orientation) // Constructeur pour sauvegarde
     {
         m_pv=5;
         m_type="Croiseur";

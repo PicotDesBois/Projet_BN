@@ -7,10 +7,8 @@ public class Joueur {
     private String m_pseudo;
     private Navire[] m_flotte;
 
-    public Joueur()
+    public Joueur() // Constructeur par défaut
     {
-        System.out.println("Saisir le pseudo du joueur : ");
-        m_pseudo=Saisi();
 
         m_flotte=new Navire[10];
         m_flotte[0]=new Cuirasse();
@@ -24,7 +22,7 @@ public class Joueur {
         m_flotte[8]=new SousMarins();
         m_flotte[9]=new SousMarins();
     }
-    public Joueur(String fileName)throws IOException
+    public Joueur(String fileName)throws IOException // constructeur pour sauvegarde
     {
         // Création d’un fileReader pour lire le fichier
         FileReader fileReader = new FileReader("Sauvegarde/"+fileName+".txt");
@@ -92,7 +90,41 @@ public class Joueur {
             m_flotte[i].Afficher();
         }
     }
-
+    public int selectionNavire()
+    {
+        int choix;
+        do {
+            System.out.println("Saisir le numero du navire : ");
+            choix=saisiInt();
+        } while (choix<0||choix> m_flotte.length-1);
+        return choix;
+    }
+    public int saisiInt()
+    {
+        Scanner in=null;
+        in = new Scanner(System.in);
+        return in.nextInt();
+    }
+    public void action(int m_choixAction)
+    {
+        int navireSelectionne;
+        if (m_choixAction == 1)
+        {
+            System.out.println("Vous avez choisi de tirer");
+            System.out.println("De quelle bateau voulez vous tirer ?");
+            for(int i=0;i< m_flotte.length;i++)
+            {
+                System.out.println(i+") "+m_flotte[i].m_type);
+            }
+            navireSelectionne=selectionNavire();
+            System.out.println("Vous avez choisi de tirer du bateau "+navireSelectionne);
+            m_flotte[navireSelectionne].Tirer();
+        }
+        else
+        {
+            System.out.println("Vous avez choisi de vous déplacer");
+        }
+    }
     public String getPseudo()
     {
         return m_pseudo;
@@ -110,6 +142,7 @@ public class Joueur {
         m_flotte[i]=temp;
     }
 
+    // permet de sauvegarder un joueur et son jeu
     public void sauvegarde(String fileName) throws IOException {
         String sauvegarde;
         // Création d’un fileWriter pour écrire dans un fichier

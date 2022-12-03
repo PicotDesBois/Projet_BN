@@ -1,6 +1,6 @@
 package org.Package;
 
-public class Case {
+public class Case { // Constructeur par défaut
 
     // coordonnees de la case
     private int m_coorX;
@@ -13,7 +13,7 @@ public class Case {
     // sinon numero du bateau du joueur
     private int m_navire;
 
-    public Case(int navire,int px, int py, boolean touche)
+    public Case(int navire,int px, int py, boolean touche) // constructeur pour sauvegarde
     {
         m_navire=navire;
         m_coorX=px;

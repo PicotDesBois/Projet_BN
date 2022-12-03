@@ -1,7 +1,7 @@
 package org.Package;
 
 public class Destroyer extends Navire {
-    public Destroyer()
+    public Destroyer()//Consctruteur par défaut
     {
         m_pv=3;
         m_type="Destroyer";
@@ -14,7 +14,7 @@ public class Destroyer extends Navire {
             m_cases[k]=new Case(0,0,0,false);
     }
 
-    public Destroyer(int orientation,boolean fusee)
+    public Destroyer(int orientation,boolean fusee) // Constructeur pour sauvegarde
     {
         m_pv=3;
         m_type="Destroyer";
