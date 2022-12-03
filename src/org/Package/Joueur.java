@@ -9,9 +9,6 @@ public class Joueur {
 
     public Joueur()
     {
-        System.out.println("Saisir le pseudo du joueur : ");
-        m_pseudo=Saisi();
-
         m_flotte=new Navire[10];
         m_flotte[0]=new Cuirasse();
         m_flotte[1]=new Croiseur();

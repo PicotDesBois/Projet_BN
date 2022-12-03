@@ -43,7 +43,7 @@ public class Partie {
         Scanner in=null;
 
         System.out.println("Choisissez les coordonnees du navire");
-        System.out.println("Choisir la coordonnee des ordonnees entre 0 et 14");
+        System.out.println("Choisir abscisse entre 0 et 14");
 
         do {
             in = new Scanner(System.in);
@@ -53,7 +53,7 @@ public class Partie {
                 System.out.println("Mauvaise saisie, veuillez ressayer");
         } while (coor.getCoorX() < 0 && coor.getCoorX() > 14);
 
-        System.out.println("Choisir la coordonnee des abscisses entre 0 et 14");
+        System.out.println("Choisir la coordonnee ordonnées entre 0 et 14");
 
         do {
             in = new Scanner(System.in);
@@ -89,11 +89,13 @@ public class Partie {
         // choix du tir pour destroyer
         int choix_tir=0;
         int choix_dep=0;
+        int tour=0;
 
         // jouer tant que le joueur ne veut pas quitter
         do{
+            tour++;
             /************* tour du joueur ************/
-
+            System.out.println("Tour : "+tour);
             // choix de l'action à réaliser
             System.out.println("Voulez vous tirer ou déplacer un navire ?");
             System.out.println("1- Tirer");
@@ -148,16 +150,17 @@ public class Partie {
                         // choix des coordonnées par le joueur
                         ChoixCoordTir(m_coor);
                         // tirer
-                        m_player.getFlotte2(m_choixNavire).Tirer(m_coor);
+                        m_player.getFlotte1()[m_choixNavire].Tirer(m_coor,m_IA.getFlotte1());
                     }
                 }
                 // le navire ne peut pas tirer de fusée
                 else
                 {
+                    //m_IA.getFlotte1()[0].Afficher();
                     // choix des coordonnées par le joueur
                     ChoixCoordTir(m_coor);
                     // tirer
-                    m_player.getFlotte2(m_choixNavire).Tirer(m_coor);
+                    m_player.getFlotte1()[m_choixNavire].Tirer(m_coor,m_IA.getFlotte1());
                 }
             }
 
@@ -203,7 +206,7 @@ public class Partie {
                         m_coor.setCoorX((int)(Math.random() * 14 + 1));
                         m_coor.setCoorY((int)(Math.random() * 14 + 1));
 
-                        m_IA.getFlotte2(m_choixNavire).Tirer(m_coor);
+                        m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
                     }
                 }
                 // tir normal
@@ -213,7 +216,7 @@ public class Partie {
                     m_coor.setCoorX((int)(Math.random() * 14 + 1));
                     m_coor.setCoorY((int)(Math.random() * 14 + 1));
 
-                    m_IA.getFlotte2(m_choixNavire).Tirer(m_coor);
+                    m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
                 }
             }
             // choix = déplacer

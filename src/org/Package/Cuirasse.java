@@ -24,4 +24,5 @@ public class Cuirasse extends Navire{
         m_fusee=false;
         m_cases=new Case[m_pv];
     }
+
 }

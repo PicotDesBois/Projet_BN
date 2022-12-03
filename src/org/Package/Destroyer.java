@@ -24,4 +24,5 @@ public class Destroyer extends Navire {
 
         m_cases=new Case[m_pv];
     }
+
 }

@@ -7,15 +7,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*Partie party = new Partie();
+        Partie party = new Partie();
         party.Jouer();
 
-        SousMarins s1 = new SousMarins();
+        /*SousMarins s1 = new SousMarins();
         Destroyer d1 = new Destroyer();
         Croiseur cr1 = new Croiseur();
         Cuirasse cu1 = new Cuirasse();
 
-        Initialisation init = new Initialisation();*/
+        Initialisation init = new Initialisation();
         String fileName="Test";
         Joueur j1 = new Joueur();
         Joueur j2=null;
@@ -47,6 +47,6 @@ public class Main {
         String temp;
         in = new Scanner(System.in);
         temp = in.nextLine();
-        return temp;
+        return temp;*/
     }
 }

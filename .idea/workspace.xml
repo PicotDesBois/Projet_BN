@@ -4,22 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Sauvegarde avec case reste à faire le chargement">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_30__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_30_11_2022_13_30__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2022_16_36__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2022_16_36__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2022_13_31__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2022_13_31__Changes_.xml" afterDir="false" />
+    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Tirer en passant par joueur">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sauvegarde/Test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Sauvegarde/Test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Case.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Case.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Croiseur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Croiseur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/Package/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Destroyer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Initialisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Initialisation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/Package/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Joueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/Package/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/Package/Navire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Navire.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/Package/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Partie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/SousMarins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/SousMarins.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +26,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="R&amp;T_Tirer" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -69,6 +66,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -110,7 +108,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669999563904</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Sauvegarde et chargement complet">
+      <created>1670067899094</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670067899094</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Tirer en passant par joueur">
+      <created>1670091396064</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670091396064</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +141,8 @@
     <MESSAGE value="Verif des navires qui se chevauchent" />
     <MESSAGE value="Continuation du corps de la Partie" />
     <MESSAGE value="Sauvegarde avec case reste à faire le chargement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sauvegarde avec case reste à faire le chargement" />
+    <MESSAGE value="Sauvegarde et chargement complet" />
+    <MESSAGE value="Tirer en passant par joueur" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tirer en passant par joueur" />
   </component>
 </project>
