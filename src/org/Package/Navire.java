@@ -1,12 +1,9 @@
 package org.Package;
 
-import org.Package.Navire;
 abstract public class Navire {
 
     /***************** Attribut ******************/
     protected int m_pv;
-    protected int m_px;
-    protected int m_py;
     protected int m_puissance;
     // 1 = horizontale
     // 2 = verticale
@@ -159,7 +156,6 @@ abstract public class Navire {
      {
          System.out.println(m_type);
          System.out.print("Puissance "+m_puissance+" PV restant "+m_pv);
-         System.out.println(" Coordonnées "+m_px+";"+ m_py);
 
          if (m_fusee)
              System.out.println("Le navire peut tirer une fusee eclairante");
@@ -179,24 +175,6 @@ abstract public class Navire {
     public void setPV(int temp)
     {
         m_pv=temp;
-    }
-
-    public int getPX()
-    {
-        return m_px;
-    }
-    public void setPX(int temp)
-    {
-        m_px=temp;
-    }
-
-    public int getPY()
-    {
-        return m_py;
-    }
-    public void setPY(int temp)
-    {
-        m_py=temp;
     }
 
     public int getOrientation()
@@ -222,5 +200,4 @@ abstract public class Navire {
     {
         m_fusee=temp;
     }
-
 }

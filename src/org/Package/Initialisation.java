@@ -43,7 +43,7 @@ public class Initialisation {
             // création du tableau de cases temporaire
             Case[] tab=new Case[flotte[i].getPV()];
             for(int k=0;k<flotte[i].getPV();k++)
-                tab[k]=new Case();
+                tab[k]=new Case(0,0,0,false);
 
             // choisir la direction du bateau aléatoirement
             // 1 = horizontale

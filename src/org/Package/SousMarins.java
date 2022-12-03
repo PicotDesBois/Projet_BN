@@ -1,22 +1,29 @@
 package org.Package;
 
-import org.Package.Navire;
 public class SousMarins extends Navire{
 
-    public SousMarins(int px,int py, int orientation)
+    public SousMarins()
     {
-        System.out.println("Sous Marins constructeur");
         m_pv=1;
         m_type="SousMarins";
-        m_px=px;
-        m_py=py;
-        m_orientation=orientation;
+        m_orientation=0;
         m_puissance=1;
 
         m_fusee=false;
 
         m_cases=new Case[m_pv];
         for(int k=0;k<m_pv;k++)
-            m_cases[k]=new Case();
+            m_cases[k]=new Case(0,0,0,false);
+    }
+    public SousMarins(int orientation)
+    {
+        m_pv=1;
+        m_type="SousMarins";
+        m_orientation=orientation;
+        m_puissance=1;
+
+        m_fusee=false;
+
+        m_cases=new Case[m_pv];
     }
 }

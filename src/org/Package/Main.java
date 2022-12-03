@@ -1,24 +1,22 @@
 package org.Package;
-import java.io.*;
 import java.io.IOException;
 import java.util.Scanner;
-
 public class Main {
 
 
 
     public static void main(String[] args) {
 
-        Partie party = new Partie();
+        /*Partie party = new Partie();
         party.Jouer();
 
-        /*String fileName="Test";
-        SousMarins s1 = new SousMarins(0,0,0);
-        Destroyer d1 = new Destroyer(0,0,0);
-        Croiseur cr1 = new Croiseur(0,0,0);
-        Cuirasse cu1 = new Cuirasse(0,0,0);
+        SousMarins s1 = new SousMarins();
+        Destroyer d1 = new Destroyer();
+        Croiseur cr1 = new Croiseur();
+        Cuirasse cu1 = new Cuirasse();
 
-        Initialisation init = new Initialisation();
+        Initialisation init = new Initialisation();*/
+        String fileName="Test";
         Joueur j1 = new Joueur();
         Joueur j2=null;
 
@@ -41,7 +39,7 @@ public class Main {
         {
             System.out.println("exc");
         }
-        j2.Afficher();*/
+        j2.Afficher();
     }
     public static String  Saisi()
     {

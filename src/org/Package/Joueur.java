@@ -13,16 +13,16 @@ public class Joueur {
         m_pseudo=Saisi();
 
         m_flotte=new Navire[10];
-        m_flotte[0]=new Cuirasse(0,0,0);
-        m_flotte[1]=new Croiseur(0,0,0);
-        m_flotte[2]=new Croiseur(0,0,0);
-        m_flotte[3]=new Destroyer(0,0,0);
-        m_flotte[4]=new Destroyer(0,0,0);
-        m_flotte[5]=new Destroyer(0,0,0);
-        m_flotte[6]=new SousMarins(0,0,0);
-        m_flotte[7]=new SousMarins(0,0,0);
-        m_flotte[8]=new SousMarins(0,0,0);
-        m_flotte[9]=new SousMarins(0,0,0);
+        m_flotte[0]=new Cuirasse();
+        m_flotte[1]=new Croiseur();
+        m_flotte[2]=new Croiseur();
+        m_flotte[3]=new Destroyer();
+        m_flotte[4]=new Destroyer();
+        m_flotte[5]=new Destroyer();
+        m_flotte[6]=new SousMarins();
+        m_flotte[7]=new SousMarins();
+        m_flotte[8]=new SousMarins();
+        m_flotte[9]=new SousMarins();
     }
     public Joueur(String fileName)throws IOException
     {
@@ -38,7 +38,7 @@ public class Joueur {
             // une fonction à essayer pouvant générer une erreur
             String type;
             int pv,px,py,navire,orientation,puissance;
-            boolean touche;
+            boolean touche,fusee;
 
             m_pseudo= reader.readLine();
             for(int i=0;i<10;i++)
@@ -47,24 +47,25 @@ public class Joueur {
                 pv=Integer.parseInt(reader.readLine());
                 puissance=Integer.parseInt(reader.readLine());
                 orientation=Integer.parseInt(reader.readLine());
+                fusee=Boolean.parseBoolean(reader.readLine());
+
+                if(type.equals("Croiseur")==true)
+                    this.m_flotte[i]=new Croiseur(orientation);
+                else if(type.equals("SousMarins")==true)
+                    this.m_flotte[i]=new SousMarins(orientation);
+                else if(type.equals("Destroyer")==true)
+                    this.m_flotte[i]=new Destroyer(orientation,fusee);
+                else if(type.equals("Cuirasse")==true)
+                    this.m_flotte[i]=new Cuirasse(orientation);
                 for(int j=0;j<m_flotte[i].m_pv;j++)
                 {
                     px=Integer.parseInt(reader.readLine());
                     py=Integer.parseInt(reader.readLine());
                     navire=Integer.parseInt(reader.readLine());
                     touche=Boolean.parseBoolean(reader.readLine());
+                    this.m_flotte[i].getCase()[j]=new Case(navire,px,py,touche);
                 }
-
-                /*if(type.equals("Croiseur")==true)
-                    this.m_flotte[i]=new Croiseur(px,py,orientation);
-                else if(type.equals("SousMarins")==true)
-                    this.m_flotte[i]=new SousMarins(px,py,orientation);
-                else if(type.equals("Destroyer")==true)
-                    this.m_flotte[i]=new Destroyer(px,py,orientation);
-                else if(type.equals("Cuirasse")==true)
-                    this.m_flotte[i]=new Cuirasse(px,py,orientation);*/
-
-
+                m_flotte[i].Afficher();
             }
         }
         catch (IOException e) {
@@ -117,17 +118,15 @@ public class Joueur {
         // Création d’un bufferedWriter qui utilise le fileWriter
         BufferedWriter writer = new BufferedWriter (fileWriter);
 
-        sauvegarde=m_pseudo+"\n";
-        //writer.write(m_pseudo);
-        //writer.newLine();
-
+        writer.write(m_pseudo+"\n");
         try {
             for(int i=0;i<10;i++)
             {
                 sauvegarde=m_flotte[i].m_type+"\n";
                 sauvegarde=sauvegarde+m_flotte[i].m_pv+"\n";
-                sauvegarde=sauvegarde+"puissance "+m_flotte[i].m_puissance+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_puissance+"\n";
                 sauvegarde=sauvegarde+m_flotte[i].m_orientation+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_fusee+"\n";
                 for(int j=0;j<m_flotte[i].m_pv;j++)
                 {
                     sauvegarde=sauvegarde+m_flotte[i].getCase()[j].getCoorX()+"\n";

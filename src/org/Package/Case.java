@@ -13,12 +13,12 @@ public class Case {
     // sinon numero du bateau du joueur
     private int m_navire;
 
-    public Case()
+    public Case(int navire,int px, int py, boolean touche)
     {
-        m_navire=0;
-        m_coorX=0;
-        m_coorY=0;
-        m_touche=false;
+        m_navire=navire;
+        m_coorX=px;
+        m_coorY=py;
+        m_touche=touche;
     }
 
     public int getCoorX()

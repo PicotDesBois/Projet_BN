@@ -33,7 +33,7 @@ public class Partie {
         m_choixAction=0;
         m_choixNavire=-1;
 
-        m_coor= new Case();
+        m_coor= new Case(0,0,0,false);
     }
 
     // choix des coordonnées pour le tir et la fusée
