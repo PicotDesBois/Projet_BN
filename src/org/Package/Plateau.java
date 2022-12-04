@@ -1,5 +1,5 @@
 package org.Package;
-import java.util.*;
+import java.util.ArrayList;
 
 public class Plateau{
 
@@ -8,6 +8,7 @@ public class Plateau{
     private int nbLigne;
     private int nbColonne;
     private int[][] plateau;
+
         public void PlateauFill( Plateau plateau1, Navire[] listeBateaux){
 
 
@@ -38,23 +39,25 @@ public class Plateau{
                         }
                     }
 
-
-
-
         public void afficher() {
+            nbLigne = 15;
+            nbColonne = 15;
         System.out.println();
         for (int i = 0; i < nbLigne; i++) {
             for (int j = 0; j < nbColonne;j++) {
-                if (plateau[i][j]!=-1)
-                {
-                    System.out.print(" |  " + plateau[i][j]);
-                }
-                else
                     System.out.print(" | " + plateau[i][j]);
             }
             System.out.println(" | ");
         }
         System.out.println();
+    }
+    public int getCase(int x, int y)
+    {
+        return plateau[x][y];
+    }
+    public void setCase(int x, int y, int value)
+    {
+        plateau[x][y]=value;
     }
 }
 

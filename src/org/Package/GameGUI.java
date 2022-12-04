@@ -1,4 +1,6 @@
 package org.Package;
+import org.Package.Plateau;
+import java.util.*;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,12 +11,13 @@ public class GameGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GameGUI().setVisible(true);
+
             }
         });
     }
 
-    Graphics g;
-    Graphics f;
+    static Graphics g;
+    static Graphics f;
 
     public GameGUI() {
         initComponents();
@@ -58,27 +61,71 @@ public class GameGUI extends javax.swing.JFrame {
 
         }
 
-            /*for (int i = 0; i < 15; i++) {
-                for (int j = 0; j < 15;j++) {
-                    if( i >= 0 && j<= 2){
-                        f.fillRect(i*26 ,j *26,  26, 26);
-                    }
-                }
-            }
 
 
 
-            for (int i = 0; i < 15; i++) {
-                for (int j = 0; j < 15;j++) {
-                    if( i >= 0){
-                        g.fillRect(i*26 ,j *26,  26, 26);
-                    }
-                }
-            }*/
     }
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        Plateau P1 = new Plateau(15,15);
+        Joueur m_player=new Joueur();
+        P1.PlateauFill(P1, m_player.getFlotte1());
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15;j++) {
+                if( P1.getCase(i,j) >= 0){
+                    f.fillRect(i*26 ,j *26,  26, 26);
+                }
+                /*else{
+                    f.clearRect(i*26 ,j *26,  26, 26);
+                }*/
+            }
+        }
+    }
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+        Plateau P2 = new Plateau(15,15);
+        Joueur m_player=new Joueur();
+        P2.PlateauFill(P2, m_player.getFlotte1());
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15;j++) {
+                if( P2.getCase(i,j) >= 0){
+                    g.fillRect(i*26 ,j *26,  26, 26);
+                }
+                /*else{
+                    g.clearRect(i*26 ,j *26,  26, 26);
+                }*/
+            }
+        }
+    }
 
+/*private static void Affichage2(Plateau P1){
 
+    for (int i = 0; i < 15; i++) {
+        for (int j = 0; j < 15;j++) {
+            if( P1.getCase(i,j) >= 0){
+                f.fillRect(i*26 ,j *26,  26, 26);
+            }
+            else{
+                f.clearRect(i*26 ,j *26,  26, 26);
+            }
+        }
+    }
+
+}
+    private static void Affichage1(Plateau P2){
+
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15;j++) {
+                if( P2.getCase(i,j) >= 0){
+                    g.fillRect(i*26 ,j *26,  26, 26);
+                }
+                else{
+                    g.clearRect(i*26 ,j *26,  26, 26);
+                }
+            }
+        }
+
+    }
+*/
 
 
 
@@ -134,8 +181,18 @@ public class GameGUI extends javax.swing.JFrame {
             }
         });
         jButton2.setText("Tirer");
+    jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Fusée");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Déplacer");
 
