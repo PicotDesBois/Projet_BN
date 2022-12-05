@@ -95,7 +95,13 @@ public class Partie {
         do{
             tour++;
             /************* tour du joueur ************/
+            boolean Deplacement=true;
+
             System.out.println("Tour : "+tour);
+
+            plato_joueur.PlateauFill(plato_joueur,m_player.getFlotte1());
+            plato_joueur.afficher();
+
             // choix de l'action à réaliser
             System.out.println("Voulez vous tirer ou déplacer un navire ?");
             System.out.println("1- Tirer");
@@ -169,16 +175,33 @@ public class Partie {
             // déplacement
             else
             {
+                do {
                 // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
+                // choix entre fusée et tir normal
+                System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
+                System.out.println("1- vers le haut");
+                System.out.println("2- vers le bas");
+                System.out.println("3- vers la droite");
+                System.out.println("4- vers la gauche");
+                    do {
+                        in = new Scanner(System.in);
+                        choix_dep = in.nextInt();
+                        if (choix_dep < 1 && choix_dep > 4)
+                            System.out.println("Mauvaise saisie, veuillez ressayer");
+                     } while (choix_dep < 1 && choix_dep > 4);
 
-                // vérifier si le navire peut se déplacer
+                    Deplacement = m_player.getFlotte2(m_choixNavire).Deplacer(choix_dep, m_player.getFlotte1(), m_choixNavire);
 
-                m_player.getFlotte2(m_choixNavire).Deplacer(choix_dep, m_player.getFlotte1(), m_choixNavire);
+                    if (!Deplacement)
+                        System.out.println("vous ne pouvez pas déplacer votre bateau");
+                    else
+                        System.out.println("vous pouvez déplacer votre bateau");
+                } while (!Deplacement);
             }
 
             /************* tour de l'IA ************/
             System.out.println("Tour de l'IA");
-            /*
+
             // choix de l'action à réaliser
             m_choixAction =(int)(Math.random() * (2 - 1 + 1) + 1);
 
@@ -227,11 +250,16 @@ public class Partie {
             {
                 // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
                 choix_dep=(int)(Math.random() * (4 - 1 + 1) + 1);
-                // faire méthode pour le déplacement
-                // déplacer
-                m_IA.getFlotte2(m_choixNavire).Deplacer(choix_dep,m_IA.getFlotte1(), m_choixNavire);
+                do {
+                    Deplacement=m_IA.getFlotte2(m_choixNavire).Deplacer(choix_dep,m_IA.getFlotte1(), m_choixNavire);
+
+                    if (!Deplacement)
+                        System.out.println("vous ne pouvez pas déplacer votre bateau");
+                    else
+                        System.out.println("vous pouvez déplacer votre bateau");
+
+                } while (!Deplacement);
             }
-            */
 
         } while (!m_quit);
 

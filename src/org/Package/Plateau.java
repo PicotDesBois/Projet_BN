@@ -17,7 +17,7 @@ public class Plateau{
                 plateau[i][j] = -1;
                 for (int k = 0; k<10; k++){
                     for (int r = 0; r   < listeBateaux[k].getPV() ;r++) {
-                        if (j == listeBateaux[k].getCase()[r].getCoorX() && i == listeBateaux[k].getCase()[r].getCoorY()){
+                        if (i == listeBateaux[k].getCase()[r].getCoorY() && j == listeBateaux[k].getCase()[r].getCoorX()){
                             plateau[i][j] = k;
                         }
                     }

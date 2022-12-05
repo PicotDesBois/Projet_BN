@@ -72,134 +72,123 @@ abstract public class Navire {
         //flotte[0].Afficher();
     }
 
-     public void Deplacer(int choix, Navire[] flotte,int numNavire)
+     public boolean Deplacer(int choix, Navire[] flotte,int numNavire)
      {
          int temp;
          boolean OnPeutDeplacer=true;
 
-         // déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
-         if (choix == 1)
-         {
-             // haut : -1 en y
-             // vérifier si c'est possible
-             if (m_cases[0].getCoorY()==0)
-             {
-                 OnPeutDeplacer=false;
-             }
-             // si le bateau est à l'horizontale
-             if (m_orientation==1)
-             {
-                 // pour chaque "nouvelle" case du bateau vérifier si il y a un bateau sur le bateau
-             }
-             // si le bateau est à la verticale
-             else if (m_orientation==2)
-             {
-                 // si la nouvelle premiere case du bateau a deja un bateau dessus
-                 // oui, impossible
-             }
+         // Tableau de case temporaire  pour garder l'ancienne position du bateau, si le nouveau déplacement chevauche un bateau
+         Case [] tempCase= new Case[flotte[numNavire].getPV()];
+         for (int i = 0; i < m_pv; i++) {
+             tempCase[i]= new Case(0,m_cases[i].getCoorX(),m_cases[i].getCoorY(),false);
+         }
 
-             if (OnPeutDeplacer==true)
+         // on vérifie si le bateau a deja été touché, si oui, il ne peut pas se déplacer
+         for (int i=0;i<m_pv;i++)
+         {
+             if (m_cases[i].getTouche())
              {
-                 // possible, changer les coordonnées du bateau
-                 for (int i=0;i<m_pv;i++)
-                 {
-                     temp=m_cases[i].getCoorY();
-                     m_cases[i].setCoorY(temp-1);
-                 }
+                 OnPeutDeplacer=false;
+                 break;
              }
+         }
 
-         }
-         else if (choix == 2)
-         {
-             // bas : +1 en y
-             // vérifier si c'est possible
-             if (m_cases[m_pv].getCoorY() == 14)
-             {
-                 OnPeutDeplacer=false;
-             }
-             // si le bateau est à l'horizontale
-             if (m_orientation==1)
-             {
-                 // pour chaque "nouvelle" case du bateau vérifier si il y a un bateau sur le bateau
-             }
-             // si le bateau est à la verticale
-             else if (m_orientation==2)
-             {
-                 // si la nouvelle derniere case du bateau a deja un bateau dessus
-                 // oui, impossible
-             }
+         // si on peut toujours le déplacer, on le déplace selon la direction choisie
+         if (OnPeutDeplacer) {
 
-             if (OnPeutDeplacer==true)
-             {
-                 // possible, changer les coordonnées du bateau
-                 for (int i=0;i<m_pv;i++)
-                 {
-                     temp=m_cases[i].getCoorY();
-                     m_cases[i].setCoorY(temp+1);
+             // déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
+             if (choix == 1) {
+                 // haut : -1 en y
+                 // vérifier si c'est possible
+                 if (m_cases[0].getCoorY() == 0) {
+                     OnPeutDeplacer = false;
+                 } else {
+                     // déplacer le bateau
+                     for (int i = 0; i < m_pv; i++) {
+                         temp = m_cases[i].getCoorY();
+                         m_cases[i].setCoorY(temp - 1);
+                     }
+                 }
+             } else if (choix == 2) {
+                 // bas : +1 en y
+                 // vérifier si c'est possible
+                 if (m_cases[m_pv - 1].getCoorY() == 14) {
+                     OnPeutDeplacer = false;
+                 } else {
+                     // déplacer le bateau
+                     for (int i = 0; i < m_pv; i++) {
+                         temp = m_cases[i].getCoorY();
+                         m_cases[i].setCoorY(temp + 1);
+                     }
+                 }
+             } else if (choix == 3) {
+                 // droite : +1 en x
+                 // vérifier si c'est possible
+                 if (m_cases[m_pv - 1].getCoorX() == 14) {
+                     OnPeutDeplacer = false;
+                 } else {
+                     // changer les coordonnées du bateau
+                     for (int i = 0; i < m_pv; i++) {
+                         temp = m_cases[i].getCoorX();
+                         m_cases[i].setCoorX(temp + 1);
+                     }
+                 }
+             } else {
+                 // gauche : -1 en x
+                 // vérifier si c'est possible
+                 if (m_cases[0].getCoorX() == 0) {
+                     OnPeutDeplacer = false;
+                 } else {
+                     // changer les coordonnées du bateau
+                     for (int i = 0; i < m_pv; i++) {
+                         temp = m_cases[i].getCoorX();
+                         m_cases[i].setCoorX(temp - 1);
+                     }
                  }
              }
-         }
-         else if (choix == 3)
-         {
-             // droite : +1 en x
-             // vérifier si c'est possible
-             if (m_cases[m_pv].getCoorX() == 14)
+             // vérifie si les nouvelles positions du bateau chevauche celles d'un autre bateau du plateau
+             boolean Chevauchement = false;
+             flotte[numNavire].setCase2(m_cases);
+             Chevauchement=VerifChevauchement(flotte,numNavire);
+
+             // s'il y a chevauchement, on ne déplace pas le bateau ( il reprend ces anciennes coordonnées)
+             if (Chevauchement==true)
              {
+                 System.out.println("y'a chevauchement");
+                 flotte[numNavire].setCase2(tempCase);
+                 m_cases=tempCase;
                  OnPeutDeplacer=false;
              }
-             // si le bateau est à l'horizontale
-             if (m_orientation==1)
-             {
-                 // si la nouvelle derniere case du bateau a deja un bateau dessus
-                 // oui, impossible
-             }
-             // si le bateau est à la verticale
-             else if (m_orientation==2)
-             {
-                 // pour chaque "nouvelle" case du bateau vérifier si il y a un bateau sur le bateau
-             }
-             if (OnPeutDeplacer==true)
-             {
-                 // possible, changer les coordonnées du bateau
-                 for (int i=0;i<m_pv;i++)
-                 {
-                     temp=m_cases[i].getCoorX();
-                     m_cases[i].setCoorX(temp+1);
-                 }
-             }
          }
-         else
-         {
-             // droite : -1 en x
-             // vérifier si c'est possible
-             if (m_cases[0].getCoorX() == 0)
-             {
-                 OnPeutDeplacer=false;
-             }
-             // si le bateau est à l'horizontale
-             if (m_orientation==1)
-             {
-                 // si la nouvelle premiere case du bateau a deja un bateau dessus
-                 // oui, impossible
-             }
-             // si le bateau est à la verticale
-             else if (m_orientation==2)
-             {
-                 // pour chaque "nouvelle" case du bateau vérifier si il y a un bateau sur le bateau
-             }
-             else
-             {
-                 // possible, changer les coordonnées du bateau
-                 for (int i=0;i<m_pv;i++)
-                 {
-                     temp=m_cases[i].getCoorX();
-                     m_cases[i].setCoorX(temp-1);
-                 }
-             }
-         }
+         return OnPeutDeplacer;
      };
 
-     public void Afficher()
+    public boolean VerifChevauchement(Navire[] flotte, int numNavire)
+    {
+        boolean Chevauchement=false;
+
+        // pour chaque navire
+        for (int i=0; i<10;i++)
+        {
+            // pour chaque case de ce bateau
+            for (int j=0;j<flotte[numNavire].getPV();j++)
+            {
+                for (int k=0;k<flotte[i].getPV();k++)
+                {
+                    if (numNavire==i)
+                    {
+
+                    }
+                    else if (flotte[numNavire].getCase()[j].getCoorX()==flotte[i].getCase()[k].getCoorX() && flotte[numNavire].getCase()[j].getCoorY()==flotte[i].getCase()[k].getCoorY())
+                        Chevauchement=true;
+                }
+            }
+        }
+        return Chevauchement;
+    };
+
+
+    public void Afficher()
      {
          System.out.println(m_type);
          System.out.print("Puissance "+m_puissance+" PV restant "+m_pv);
@@ -237,6 +226,11 @@ abstract public class Navire {
     public void setCase(Case temp, int i)
     {
         m_cases[i]=temp;
+    }
+
+    public void setCase2(Case [] temp)
+    {
+        m_cases=temp;
     }
 
     public boolean getFusee()
