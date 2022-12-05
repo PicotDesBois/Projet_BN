@@ -72,11 +72,6 @@ abstract public class Navire {
         //flotte[0].Afficher();
     }
 
-     public void RecevoirTir(int degats)
-     {
-         m_pv=m_pv-degats;
-     }
-
      public void Deplacer(int choix, Navire[] flotte,int numNavire)
      {
          int temp;
@@ -252,4 +247,6 @@ abstract public class Navire {
     {
         m_fusee=temp;
     }
+
+    public abstract int[][] tirFusee(Case m_coor, Navire[] flotte1);
 }

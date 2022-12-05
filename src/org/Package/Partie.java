@@ -121,6 +121,9 @@ public class Partie {
                     System.out.println("Mauvaise saisie, veuillez ressayer");
             } while (m_choixNavire < 0 || m_choixNavire > 9);
 
+            /********* Affiche le plateau de l'IA pour mode triche **********/
+            plato_IA.afficher();
+            /****************************************************************/
             // Réalisation de l'action
             // tir
             if (m_choixAction == 1)
@@ -141,9 +144,8 @@ public class Partie {
 
                     if (choix_tir==1)
                     {
-                        // choix des coordonnées par le joueur
                         ChoixCoordTir(m_coor);
-                        // tirer la fusée éclairante
+                        plato_IA.afficherFusee(m_player.getFlotte1()[m_choixNavire].tirFusee(m_coor,m_IA.getFlotte1()));
                     }
                     else
                     {
@@ -175,7 +177,8 @@ public class Partie {
             }
 
             /************* tour de l'IA ************/
-
+            System.out.println("Tour de l'IA");
+            /*
             // choix de l'action à réaliser
             m_choixAction =(int)(Math.random() * (2 - 1 + 1) + 1);
 
@@ -228,7 +231,7 @@ public class Partie {
                 // déplacer
                 m_IA.getFlotte2(m_choixNavire).Deplacer(choix_dep,m_IA.getFlotte1(), m_choixNavire);
             }
-
+            */
 
         } while (!m_quit);
 
