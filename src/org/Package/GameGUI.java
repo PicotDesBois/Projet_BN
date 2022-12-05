@@ -65,34 +65,43 @@ public class GameGUI extends javax.swing.JFrame {
 
 
     }
+    Joueur m_player=new Joueur();
+
+    Joueur m_IA=new Joueur();
+
+    Initialisation init = new Initialisation();
+
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+
         Plateau P1 = new Plateau(15,15);
-        Joueur m_player=new Joueur();
+        init.PositionAleaNavire(m_player.getFlotte1());
+
         P1.PlateauFill(P1, m_player.getFlotte1());
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15;j++) {
                 if( P1.getCase(i,j) >= 0){
                     f.fillRect(i*26 ,j *26,  26, 26);
                 }
-                /*else{
-                    f.clearRect(i*26 ,j *26,  26, 26);
-                }*/
+                else{
+                    f.clearRect(i*26  ,j *26 ,  26, 26);
+                }
             }
         }
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         Plateau P2 = new Plateau(15,15);
-        Joueur m_player=new Joueur();
-        P2.PlateauFill(P2, m_player.getFlotte1());
+        init.PositionAleaNavire(m_IA.getFlotte1());
+        P2.PlateauFill(P2, m_IA.getFlotte1());
+
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15;j++) {
                 if( P2.getCase(i,j) >= 0){
                     g.fillRect(i*26 ,j *26,  26, 26);
                 }
-                /*else{
+                else{
                     g.clearRect(i*26 ,j *26,  26, 26);
-                }*/
+                }
             }
         }
     }
