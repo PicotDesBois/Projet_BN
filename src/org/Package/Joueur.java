@@ -35,7 +35,7 @@ public class Joueur {
             // une fonction à essayer pouvant générer une erreur
             String type;
             int pv,px,py,navire,orientation,puissance;
-            boolean touche,fusee;
+            boolean touche,fusee,coule;
 
             m_pseudo= reader.readLine();
             for(int i=0;i<10;i++)
@@ -45,15 +45,16 @@ public class Joueur {
                 puissance=Integer.parseInt(reader.readLine());
                 orientation=Integer.parseInt(reader.readLine());
                 fusee=Boolean.parseBoolean(reader.readLine());
+                coule=Boolean.parseBoolean(reader.readLine());
 
                 if(type.equals("Croiseur")==true)
-                    this.m_flotte[i]=new Croiseur(orientation);
+                    this.m_flotte[i]=new Croiseur(orientation,coule);
                 else if(type.equals("SousMarins")==true)
-                    this.m_flotte[i]=new SousMarins(orientation);
+                    this.m_flotte[i]=new SousMarins(orientation,coule);
                 else if(type.equals("Destroyer")==true)
-                    this.m_flotte[i]=new Destroyer(orientation,fusee);
+                    this.m_flotte[i]=new Destroyer(orientation,fusee,coule);
                 else if(type.equals("Cuirasse")==true)
-                    this.m_flotte[i]=new Cuirasse(orientation);
+                    this.m_flotte[i]=new Cuirasse(orientation,coule);
                 for(int j=0;j<m_flotte[i].m_pv;j++)
                 {
                     px=Integer.parseInt(reader.readLine());
@@ -124,6 +125,7 @@ public class Joueur {
                 sauvegarde=sauvegarde+m_flotte[i].m_puissance+"\n";
                 sauvegarde=sauvegarde+m_flotte[i].m_orientation+"\n";
                 sauvegarde=sauvegarde+m_flotte[i].m_fusee+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].m_coule+"\n";
                 for(int j=0;j<m_flotte[i].m_pv;j++)
                 {
                     sauvegarde=sauvegarde+m_flotte[i].getCase()[j].getCoorX()+"\n";

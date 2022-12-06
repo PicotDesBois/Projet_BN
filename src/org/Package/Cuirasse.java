@@ -16,13 +16,13 @@ public class Cuirasse extends Navire{
         m_coule=false;
     }
 
-    public Cuirasse(int orientation)
+    public Cuirasse(int orientation,boolean coule)
     {
         m_pv=7;
         m_type="Cuirasse";
         m_orientation=orientation;
         m_puissance=9;
-
+        m_coule=coule;
         m_fusee=false;
         m_cases=new Case[m_pv];
     }

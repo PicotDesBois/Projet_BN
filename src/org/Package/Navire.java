@@ -197,9 +197,13 @@ abstract public class Navire {
          System.out.print("Puissance "+m_puissance+" PV restant "+m_pv);
 
          if (m_fusee)
-             System.out.println("Le navire peut tirer une fusee eclairante");
+             System.out.println(" Le navire peut tirer une fusee eclairante");
          else
-             System.out.println("Le navire ne peut pas tirer de fusee eclairante");
+             System.out.println(" Le navire ne peut pas tirer de fusee eclairante");
+         if (m_coule==false)
+            System.out.println("Le navire est a flot");
+         else
+            System.out.println("Le navire a été envoyé par le fond");
 
          for (int i=0;i<m_pv;i++)
             System.out.println("Case : ( "+m_cases[i].getCoorX()+" ; "+m_cases[i].getCoorY()+" )"+m_cases[i].getTouche());

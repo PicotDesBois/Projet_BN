@@ -17,13 +17,13 @@ public class SousMarins extends Navire{
 
         m_coule=false;
     }
-    public SousMarins(int orientation)
+    public SousMarins(int orientation,boolean coule)
     {
         m_pv=1;
         m_type="SousMarins";
         m_orientation=orientation;
         m_puissance=1;
-
+        m_coule=coule;
         m_fusee=false;
 
         m_cases=new Case[m_pv];

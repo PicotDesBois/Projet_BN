@@ -16,14 +16,14 @@ public class Destroyer extends Navire {
         m_coule=false;
     }
 
-    public Destroyer(int orientation,boolean fusee)
+    public Destroyer(int orientation,boolean fusee,boolean coule)
     {
         m_pv=3;
         m_type="Destroyer";
         m_orientation=orientation;
         m_puissance=1;
         m_fusee=fusee;
-
+        m_coule=coule;
         m_cases=new Case[m_pv];
     }
 
