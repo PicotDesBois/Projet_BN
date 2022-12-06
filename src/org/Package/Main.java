@@ -7,8 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*Partie party = new Partie();
-        party.Jouer();*/
+        Partie party = new Partie();
+        party.Jouer();
 
         /*SousMarins s1 = new SousMarins();
         Destroyer d1 = new Destroyer();
@@ -16,7 +16,7 @@ public class Main {
         Cuirasse cu1 = new Cuirasse();
 
         Initialisation init = new Initialisation();*/
-        String fileName="Test";
+        /*String fileName="Test";
         Joueur j1 = new Joueur();
         Joueur j2=null;
 
@@ -39,7 +39,7 @@ public class Main {
         {
             System.out.println("exc");
         }
-        j2.Afficher();
+        j2.Afficher();*/
     }
     public static String  Saisi()
     {
