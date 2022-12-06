@@ -13,6 +13,8 @@ public class Croiseur extends Navire{
         m_cases=new Case[m_pv];
         for(int k=0;k<m_pv;k++)
             m_cases[k]=new Case(0,0,0,false);
+
+        m_coule=false;
     }
 
     public Croiseur(int orientation)

@@ -14,6 +14,8 @@ abstract public class Navire {
 
     protected boolean m_fusee;
 
+    protected boolean m_coule;
+
     /************ Méthode **********************/
     public void Tirer(Case coordonnee,Navire []flotte)
     {
@@ -71,6 +73,7 @@ abstract public class Navire {
         }
         //flotte[0].Afficher();
     }
+
 
      public boolean Deplacer(int choix, Navire[] flotte,int numNavire)
      {
