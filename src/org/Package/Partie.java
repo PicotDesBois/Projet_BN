@@ -19,12 +19,16 @@ public class Partie {
     // coordonnée de la case pour tirer (ou se déplacer ?)
     private Case m_coor;
 
+    // condition de victoire : 0 pas de victoire, 1 victoire du joueur, 2 victoire de l'IA
+    private int m_victoire;
+
 
     // constructeur
     public Partie()
     {
         m_save=false;
         m_quit=false;
+        m_victoire=0;
 
         m_player=new Joueur();
         m_IA=new Joueur();
@@ -62,6 +66,33 @@ public class Partie {
             if (coor.getCoorY() < 0 && coor.getCoorY() > 14)
                 System.out.println("Mauvaise saisie, veuillez ressayer");
         } while (coor.getCoorY() < 0 && coor.getCoorY() > 14);
+    }
+
+    // condition de victoire : 0 pas de victoire, 1 victoire du joueur, 2 victoire de l'IA
+    public void QuiAGagne()
+    {
+        int nb_IA=0, nb_joueur=0;
+
+        for(int i=0;i<10;i++)
+        {
+            if (m_player.getFlotte2(i).m_coule)
+                nb_joueur++;
+            if (m_IA.getFlotte2(i).m_coule)
+                nb_IA++;
+        }
+
+        if (nb_joueur==10)
+        {
+            m_victoire=1;
+        }
+        else if (nb_IA==10)
+        {
+            m_victoire=2;
+        }
+        else
+        {
+            m_victoire=0;
+        }
     }
 
 
@@ -272,7 +303,10 @@ public class Partie {
                 } while (!Deplacement);
             }
 
-        } while (!m_quit);
+            // on regarde si un des joueurs à gagner
+            QuiAGagne();
+
+        } while (!m_quit || m_victoire==0);
 
         // si le joueur veut sauvegarder sa partie
         if (m_save)

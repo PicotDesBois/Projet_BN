@@ -209,6 +209,24 @@ abstract public class Navire {
             System.out.println("Case : ( "+m_cases[i].getCoorX()+" ; "+m_cases[i].getCoorY()+" )"+m_cases[i].getTouche());
      };
 
+    public void IlaCoule()
+    {
+        int nb_coule=0;
+        // on parcourt toutes les cases du bateau
+        for (int i=0;i<m_pv;i++)
+        {
+            // on compte le nombre de cases touchées
+            if (m_cases[i].getTouche())
+                nb_coule++;
+        }
+
+        // si toutes les cases sont touchées, alors le bateau est coulé
+        if (nb_coule==m_pv)
+            m_coule=true;
+        else
+            m_coule=false;
+    }
+
     /************ Setter & Getter **********************/
 
     public int getPV()
@@ -250,4 +268,6 @@ abstract public class Navire {
     }
 
     public abstract int[][] tirFusee(Case m_coor, Navire[] flotte1);
+
+    public boolean getCoule() { return m_coule; }
 }
