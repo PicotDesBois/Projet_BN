@@ -192,8 +192,16 @@ public class Partie {
 
                     Deplacement = m_player.getFlotte2(m_choixNavire).Deplacer(choix_dep, m_player.getFlotte1(), m_choixNavire);
 
-                    if (!Deplacement)
+                    if (!Deplacement) {
                         System.out.println("vous ne pouvez pas déplacer votre bateau");
+                        System.out.println("Quel navire voulez vous déplacer");
+                        do {
+                            in = new Scanner(System.in);
+                            m_choixNavire = in.nextInt();
+                            if (m_choixNavire < 0 || m_choixNavire > 9)
+                                System.out.println("Mauvaise saisie, veuillez ressayer");
+                        } while (m_choixNavire < 0 || m_choixNavire > 9);
+                    }
                     else
                         System.out.println("vous pouvez déplacer votre bateau");
                 } while (!Deplacement);
@@ -253,8 +261,11 @@ public class Partie {
                 do {
                     Deplacement=m_IA.getFlotte2(m_choixNavire).Deplacer(choix_dep,m_IA.getFlotte1(), m_choixNavire);
 
-                    if (!Deplacement)
+                    if (!Deplacement) {
                         System.out.println("vous ne pouvez pas déplacer votre bateau");
+                        // choix du navire
+                        m_choixNavire =(int)(Math.random() * 9 + 1);
+                    }
                     else
                         System.out.println("vous pouvez déplacer votre bateau");
 
