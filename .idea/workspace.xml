@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Ajout du boolean coule dans la sauvegarde et le chargement">
+    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Ajout de la sauvegarde dans la partie plus de quitter la possibilité de quitter, il reste à mettre le chargement de la partie au debut.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/Package/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Partie.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +27,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

@@ -311,8 +311,9 @@ public class Partie {
                 {
                     System.out.println("exc");
                 }
+                QuiAGagne();
             }
-        } while (m_choixAction != 4);
+        } while (m_choixAction != 4&&m_victoire==0);
         System.out.println("Vous avez mis fin à la partie");
     }
 }
