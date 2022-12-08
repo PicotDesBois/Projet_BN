@@ -209,19 +209,29 @@ public class Partie {
                 // déplacement
                 else {
                     do {
-                        // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
-                        // choix entre fusée et tir normal
-                        System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
-                        System.out.println("1- vers le haut");
-                        System.out.println("2- vers le bas");
-                        System.out.println("3- vers la droite");
-                        System.out.println("4- vers la gauche");
+                        // 1 = horizontale
+                        if (m_player.getFlotte2(m_choixNavire).getOrientation()==1) {
+                            // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
+                            // choix entre fusée et tir normal
+                            System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
+                            System.out.println("1- vers la droite");
+                            System.out.println("2- vers la gauche");
+                        }
+                        // 2 = verticale
+                        else if (m_player.getFlotte2(m_choixNavire).getOrientation()==2) {
+                            // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
+                            // choix entre fusée et tir normal
+                            System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
+                            System.out.println("1- vers le haut");
+                            System.out.println("2- vers le bas");
+                        }
                         do {
                             in = new Scanner(System.in);
                             choir_dep = in.nextInt();
-                            if (choir_dep < 1 && choir_dep > 4)
+                            if (choir_dep < 1 && choir_dep > 2)
                                 System.out.println("Mauvaise saisie, veuillez ressayer");
-                        } while (choir_dep < 1 && choir_dep > 4);
+                        } while (choir_dep < 1 && choir_dep > 2);
+
 
                         Deplacement = m_player.getFlotte2(m_choixNavire).Deplacer(choir_dep, m_player.getFlotte1(), m_choixNavire);
 

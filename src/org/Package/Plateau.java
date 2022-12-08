@@ -70,7 +70,7 @@ public class Plateau{
                         marqueur=1;
                     }
                 }
-                if(plateau[i][j]==-1&&marqueur==1)
+                if(plateau[i][j]==-1 )
                     System.out.print(" | " + "-");
                 else if (marqueur==1)
                     System.out.print(" | " + plateau[i][j]);
@@ -81,13 +81,14 @@ public class Plateau{
         }
         System.out.println();
     }
+
     public int getCase(int x, int y)
     {
-        return plateau[x][y];
+        return plateau[y][x];
     }
     public void setCase(int x, int y, int value)
     {
-        plateau[x][y]=value;
+        plateau[y][x]=value;
     }
 }
 

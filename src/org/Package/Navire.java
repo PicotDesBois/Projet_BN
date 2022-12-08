@@ -99,53 +99,61 @@ abstract public class Navire {
          // si on peut toujours le déplacer, on le déplace selon la direction choisie
          if (OnPeutDeplacer) {
 
-             // déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
-             if (choix == 1) {
-                 // haut : -1 en y
-                 // vérifier si c'est possible
-                 if (m_cases[0].getCoorY() == 0) {
-                     OnPeutDeplacer = false;
-                 } else {
-                     // déplacer le bateau
-                     for (int i = 0; i < m_pv; i++) {
-                         temp = m_cases[i].getCoorY();
-                         m_cases[i].setCoorY(temp - 1);
+             // 2 = verticale
+             if (m_orientation==2) {
+                 // déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
+                 if (choix == 1) {
+                     // haut : -1 en y
+                     // vérifier si c'est possible
+                     if (m_cases[0].getCoorY() == 0) {
+                         OnPeutDeplacer = false;
+                     } else {
+                         // déplacer le bateau
+                         for (int i = 0; i < m_pv; i++) {
+                             temp = m_cases[i].getCoorY();
+                             m_cases[i].setCoorY(temp - 1);
+                         }
                      }
                  }
-             } else if (choix == 2) {
-                 // bas : +1 en y
-                 // vérifier si c'est possible
-                 if (m_cases[m_pv - 1].getCoorY() == 14) {
-                     OnPeutDeplacer = false;
-                 } else {
-                     // déplacer le bateau
-                     for (int i = 0; i < m_pv; i++) {
-                         temp = m_cases[i].getCoorY();
-                         m_cases[i].setCoorY(temp + 1);
+                 else  {
+                     // bas : +1 en y
+                     // vérifier si c'est possible
+                     if (m_cases[m_pv - 1].getCoorY() == 14) {
+                         OnPeutDeplacer = false;
+                     } else {
+                         // déplacer le bateau
+                         for (int i = 0; i < m_pv; i++) {
+                             temp = m_cases[i].getCoorY();
+                             m_cases[i].setCoorY(temp + 1);
+                         }
                      }
                  }
-             } else if (choix == 3) {
-                 // droite : +1 en x
-                 // vérifier si c'est possible
-                 if (m_cases[m_pv - 1].getCoorX() == 14) {
-                     OnPeutDeplacer = false;
-                 } else {
-                     // changer les coordonnées du bateau
-                     for (int i = 0; i < m_pv; i++) {
-                         temp = m_cases[i].getCoorX();
-                         m_cases[i].setCoorX(temp + 1);
+             }
+             // 1 = horizontale
+             else if (m_orientation==1) {
+                 if (choix == 1) {
+                     // droite : +1 en x
+                     // vérifier si c'est possible
+                     if (m_cases[m_pv - 1].getCoorX() == 14) {
+                         OnPeutDeplacer = false;
+                     } else {
+                         // changer les coordonnées du bateau
+                         for (int i = 0; i < m_pv; i++) {
+                             temp = m_cases[i].getCoorX();
+                             m_cases[i].setCoorX(temp + 1);
+                         }
                      }
-                 }
-             } else {
-                 // gauche : -1 en x
-                 // vérifier si c'est possible
-                 if (m_cases[0].getCoorX() == 0) {
-                     OnPeutDeplacer = false;
                  } else {
-                     // changer les coordonnées du bateau
-                     for (int i = 0; i < m_pv; i++) {
-                         temp = m_cases[i].getCoorX();
-                         m_cases[i].setCoorX(temp - 1);
+                     // gauche : -1 en x
+                     // vérifier si c'est possible
+                     if (m_cases[0].getCoorX() == 0) {
+                         OnPeutDeplacer = false;
+                     } else {
+                         // changer les coordonnées du bateau
+                         for (int i = 0; i < m_pv; i++) {
+                             temp = m_cases[i].getCoorX();
+                             m_cases[i].setCoorX(temp - 1);
+                         }
                      }
                  }
              }
@@ -204,6 +212,15 @@ abstract public class Navire {
             System.out.println("Le navire est a flot");
          else
             System.out.println("Le navire a été envoyé par le fond");
+
+         if (m_orientation==1)
+         {
+             System.out.println("le navire est horizontal "+m_orientation);
+         }
+         else
+         {
+             System.out.println("le navire est vertical "+m_orientation);
+         }
 
          for (int i=0;i<m_pv;i++)
             System.out.println("Case : ( "+m_cases[i].getCoorX()+" ; "+m_cases[i].getCoorY()+" )"+m_cases[i].getTouche());

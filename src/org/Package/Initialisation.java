@@ -50,7 +50,7 @@ public class Initialisation {
             // 2 = verticale
 
             do {
-            direction = (int) ((Math.random() * ((2 - (-1)) + 1)) + (-1));
+            direction = (int) ((Math.random() * (2 - 1 + 1)) + 1);
 
             // si le bateau est à l'horizontale
             if (direction==1)
@@ -83,7 +83,7 @@ public class Initialisation {
                     tab[j].setCoorY(coorY);
 
                     // a changer avec le numéro du bateau
-                    tab[j].setNavire(1);
+                    tab[j].setNavire(i);
 
                     // mettre le tableau dans la classe navire
                 }
