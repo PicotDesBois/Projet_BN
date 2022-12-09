@@ -293,7 +293,7 @@ public class Partie {
                 // choix = déplacer
                 else {
                     // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
-                    choir_dep = (int) (Math.random() * (4 - 1 + 1) + 1);
+                    choir_dep = (int) ((Math.random() * (2 - 1 + 1)) + 1);
                     do {
                         Deplacement = m_IA.getFlotte2(m_choixNavire).Deplacer(choir_dep, m_IA.getFlotte1(), m_choixNavire);
 

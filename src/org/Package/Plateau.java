@@ -65,12 +65,12 @@ public class Plateau{
                 marqueur=0;
                 for(int k=0;k<cordTir.length;k++)
                 {
-                    if(i==cordTir[k][0]&&j==cordTir[k][1])
+                    if(j==cordTir[k][0]&&i==cordTir[k][1])
                     {
                         marqueur=1;
                     }
                 }
-                if(plateau[i][j]==-1 )
+                if(plateau[i][j]==-1&&marqueur==1)
                     System.out.print(" | " + "-");
                 else if (marqueur==1)
                     System.out.print(" | " + plateau[i][j]);
