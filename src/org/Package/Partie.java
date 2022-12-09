@@ -99,22 +99,6 @@ public class Partie {
 
     public void Jouer()
     {
-        // initialisation du joueur : pseudo + flotte de navires aléatoire + plateau
-        Initialisation init = new Initialisation();
-        System.out.println("Veillez saisir votre pseudo :");
-        m_player.setPseudo(m_player.Saisi());
-        init.PositionAleaNavire(m_player.getFlotte1());
-        Plateau plato_joueur = new Plateau(15,15);
-        plato_joueur.PlateauFill(plato_joueur,m_player.getFlotte1());
-
-        m_player.Afficher();
-        plato_joueur.afficher();
-
-        // initialisation de l'IA : flotte de navires aléatoire + plateau
-        init.PositionAleaNavire(m_IA.getFlotte1());
-        Plateau plato_IA = new Plateau(15,15);
-        plato_IA.PlateauFill(plato_IA,m_IA.getFlotte1());
-
         // scanner pour la saisie
         Scanner in=null;
         String fileName;
@@ -123,6 +107,52 @@ public class Partie {
         int choix_tir=0;
         int choir_dep=0;
         int tour=0;
+
+        // choix de l'action à réaliser
+        System.out.println("Voulez vous charger un ancienne partie ou commencer une nouvelle partie ?");
+        System.out.println("1- Nouvelle partie");
+        System.out.println("2- Charger une ancienne partie");
+        do {
+            in = new Scanner(System.in);
+            m_choixAction = in.nextInt();
+            if (m_choixAction != 1 && m_choixAction != 2)
+                System.out.println("Mauvaise saisie, veuillez ressayer");
+        } while (m_choixAction != 1 && m_choixAction != 2 );
+
+        if(m_choixAction==1) {
+            // initialisation du joueur : pseudo + flotte de navires aléatoire + plateau
+            Initialisation init = new Initialisation();
+            System.out.println("Veillez saisir votre pseudo :");
+            m_player.setPseudo(m_player.Saisi());
+            init.PositionAleaNavire(m_player.getFlotte1());
+            Plateau plato_joueur = new Plateau(15, 15);
+            plato_joueur.PlateauFill(plato_joueur, m_player.getFlotte1());
+
+            m_player.Afficher();
+            plato_joueur.afficher();
+
+            // initialisation de l'IA : flotte de navires aléatoire + plateau
+            init.PositionAleaNavire(m_IA.getFlotte1());
+        }
+        else
+        {
+            System.out.println("Quelle sauvegarde voulez vous charger ?");
+            in = new Scanner(System.in);
+            fileName = in.nextLine();
+            try {
+                m_player=new Joueur(fileName);
+                m_IA=new Joueur(fileName+"_IA");
+                System.out.println("Vous avez bien sauvegardé la partie : "+fileName);
+            }
+            catch (IOException exc)
+            {
+                System.out.println("exc");
+            }
+        }
+        Plateau plato_IA = new Plateau(15, 15);
+        plato_IA.PlateauFill(plato_IA, m_IA.getFlotte1());
+        Plateau plato_joueur = new Plateau(15, 15);
+        plato_joueur.PlateauFill(plato_joueur, m_player.getFlotte1());
 
         // jouer tant que le joueur ne veut pas quitter
         do{
