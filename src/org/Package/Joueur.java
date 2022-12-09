@@ -1,6 +1,5 @@
 package org.Package;
 import java.io.*;
-import java.util.Scanner;
 
 public class Joueur {
 
@@ -69,15 +68,6 @@ public class Joueur {
                 e.printStackTrace();
             }
         reader.close();
-    }
-
-    public String  Saisi()
-    {
-        Scanner in=null;
-        String temp;
-        in = new Scanner(System.in);
-        temp = in.nextLine();
-        return temp;
     }
 
 

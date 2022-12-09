@@ -1,4 +1,8 @@
-package org.Package;
+package Vue;
+
+import org.Package.Case;
+import org.Package.Joueur;
+import org.Package.Navire;
 
 public class Affichage {
 

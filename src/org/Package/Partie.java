@@ -1,5 +1,8 @@
 package org.Package;
 
+import Vue.Affichage;
+import Vue.Saisie;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -44,33 +47,17 @@ public class Partie {
     // choix des coordonnées pour le tir et la fusée
     public void ChoixCoordTir (Case coor)
     {
-        // faire le choix des coordonnées
-        Scanner in=null;
-
         // affichage
         Affichage aff=new Affichage();
+        // saisie
+        Saisie saisir=new Saisie();
+
         aff.AfficherSaisir("les coordonnées du navire");
         aff.AfficherSaisir("l'abscisse entre 0 et 14");
-
-        do {
-            in = new Scanner(System.in);
-            int temp = in.nextInt();
-            coor.setCoorX(temp);
-            if (coor.getCoorX() < 0 && coor.getCoorX() > 14)
-                System.out.println("Mauvaise saisie, veuillez ressayer");
-        } while (coor.getCoorX() < 0 && coor.getCoorX() > 14);
-
+        coor.setCoorX(saisir.saisirEntier(0, 14));
         aff.AfficherSaisir("l'ordonnée entre 0 et 14");
-
-        do {
-            in = new Scanner(System.in);
-            int temp = in.nextInt();
-            coor.setCoorY(temp);
-            if (coor.getCoorY() < 0 && coor.getCoorY() > 14)
-                System.out.println("Mauvaise saisie, veuillez ressayer");
-        } while (coor.getCoorY() < 0 && coor.getCoorY() > 14);
+        coor.setCoorY(saisir.saisirEntier(0, 14));
     }
-
     // condition de victoire : 0 pas de victoire, 1 victoire du joueur, 2 victoire de l'IA
     public void QuiAGagne()
     {
@@ -102,7 +89,6 @@ public class Partie {
     public void Jouer()
     {
         // scanner pour la saisie
-        Scanner in=null;
         String fileName;
 
         // choix du tir pour destroyer
@@ -111,16 +97,12 @@ public class Partie {
         int tour=0;
 
         Affichage vue=new Affichage();
+        Saisie saisie=new Saisie();
 
 
         // choix de l'action à réaliser
         vue.AfficherTexte("Voulez vous charger un ancienne partie ou commencer une nouvelle partie ?\n1- Nouvelle partie\n2- Charger une ancienne partie");
-        do {
-            in = new Scanner(System.in);
-            m_choixAction = in.nextInt();
-            if (m_choixAction != 1 && m_choixAction != 2)
-                System.out.println("Mauvaise saisie, veuillez ressayer");
-        } while (m_choixAction != 1 && m_choixAction != 2 );
+        m_choixAction=saisie.saisirEntier(1,2);
 
         if(m_choixAction==1) {
             // initialisation du joueur : pseudo + flotte de navires aléatoire + plateau
@@ -140,8 +122,7 @@ public class Partie {
         else
         {
             vue.AfficherSaisir("la sauvegarde à charger");
-            in = new Scanner(System.in);
-            fileName = in.nextLine();
+            fileName= saisie.saisirChaine();
             try {
                 m_player=new Joueur(fileName);
                 m_IA=new Joueur(fileName+"_IA");
@@ -176,13 +157,7 @@ public class Partie {
 
             // choix de l'action à réaliser
             vue.AfficherTexte("Voulez vous tirer ou déplacer un navire ?\n1- Tirer\n2- Déplacer\n3- Sauvegarder\n4- Quitter");
-            do {
-                in = new Scanner(System.in);
-                m_choixAction = in.nextInt();
-                if (m_choixAction != 1 && m_choixAction != 2 && m_choixAction != 3 && m_choixAction != 4)
-                    System.out.println("Mauvaise saisie, veuillez ressayer");
-            } while (m_choixAction != 1 && m_choixAction != 2 && m_choixAction != 3 && m_choixAction != 4);
-
+            m_choixAction=saisie.saisirEntier(1,4);
             // choix du navire pour réaliser l'action
             // tir
             if(m_choixAction == 1||m_choixAction == 2) {
@@ -191,13 +166,7 @@ public class Partie {
                     // déplacement
                 else
                     vue.AfficherTexte("Quel navire voulez vous déplacer");
-                do {
-                    in = new Scanner(System.in);
-                    m_choixNavire = in.nextInt();
-                    if (m_choixNavire < 0 || m_choixNavire > 9)
-                        vue.AfficherTexte("Mauvaise saisie, veuillez ressayer");
-                } while (m_choixNavire < 0 || m_choixNavire > 9);
-
+                m_choixNavire=saisie.saisirEntier(0,9);
 
                 // Réalisation de l'action
                 // tir
@@ -206,12 +175,7 @@ public class Partie {
                     if (m_player.getFlotte2(m_choixNavire).getFusee()) {
                         // choix entre fusée et tir normal
                         vue.AfficherTexte("Quel type de tir voulez-vous faire\n1- Fusée éclairante\n2- Tir");
-                        do {
-                            in = new Scanner(System.in);
-                            choix_tir = in.nextInt();
-                            if (choix_tir != 1 && choix_tir != 2)
-                                System.out.println("Mauvaise saisie, veuillez ressayer");
-                        } while (choix_tir != 1 && choix_tir != 2);
+                        choix_tir= saisie.saisirEntier(1,2);
 
                         if (choix_tir == 1) {
                             ChoixCoordTir(m_coor);
@@ -248,24 +212,14 @@ public class Partie {
                             // choix entre fusée et tir normal
                             vue.AfficherTexte("Dans quelle direction voulez-vous vous déplacer ?\n1- vers le haut\n2- vers le bas");
                         }
-                        do {
-                            in = new Scanner(System.in);
-                            choir_dep = in.nextInt();
-                            if (choir_dep < 1 && choir_dep > 2)
-                                System.out.println("Mauvaise saisie, veuillez ressayer");
-                        } while (choir_dep < 1 && choir_dep > 2);
+                        choir_dep= saisie.saisirEntier(1,2);
 
 
                         Deplacement = m_player.getFlotte2(m_choixNavire).Deplacer(choir_dep, m_player.getFlotte1(), m_choixNavire);
 
                         if (!Deplacement) {
                             vue.AfficherTexte("vous ne pouvez pas déplacer votre bateau\nQuel navire voulez vous déplacer");
-                            do {
-                                in = new Scanner(System.in);
-                                m_choixNavire = in.nextInt();
-                                if (m_choixNavire < 0 || m_choixNavire > 9)
-                                    System.out.println("Mauvaise saisie, veuillez ressayer");
-                            } while (m_choixNavire < 0 || m_choixNavire > 9);
+                            m_choixAction=saisie.saisirEntier(0,9);
                         } else
                             vue.AfficherTexte("vous pouvez déplacer votre bateau");
                     } while (!Deplacement);
@@ -330,8 +284,8 @@ public class Partie {
             else if(m_choixAction == 3)
             {
                 vue.AfficherTexte("Quel nom voulez vous donner à votre sauvegarde ?");
-                in = new Scanner(System.in);
-                fileName = in.nextLine();
+                fileName=saisie.saisirChaine();
+
                 try {
                     m_player.sauvegarde(fileName);
                     m_IA.sauvegarde(fileName + "_IA");
