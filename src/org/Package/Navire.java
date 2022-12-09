@@ -60,15 +60,11 @@ abstract public class Navire {
             tir[4][1]=coordonnee.getCoorY()-1;
         }
         // parcours de toute la flotte adverse
-        for(int i=0;i< flotte.length;i++)
-        {   // parcours de toutes les cases d'un navire
-            for(int j=0;j<flotte[i].m_pv;j++)
-            {   // parcours des cases touché
-                for(int k=0;k<m_puissance;k++)
-                {
-                    if(flotte[i].m_cases[j].getCoorX()==tir[k][0]&&flotte[i].m_cases[j].getCoorY()==tir[k][1])
-                    {
-                        flotte[i].m_cases[j].setTouche(true);
+        for (Navire navire : flotte) {   // parcours de toutes les cases d'un navire
+            for (int j = 0; j < navire.m_pv; j++) {   // parcours des cases touché
+                for (int k = 0; k < m_puissance; k++) {
+                    if (navire.m_cases[j].getCoorX() == tir[k][0] && navire.m_cases[j].getCoorY() == tir[k][1]) {
+                        navire.m_cases[j].setTouche(true);
                         //System.out.println("Touche en ("+flotte[i].m_cases[j].getCoorX()+";"+flotte[i].m_cases[j].getCoorY()+")");
                     }
                 }
@@ -160,12 +156,12 @@ abstract public class Navire {
                  }
              }
              // vérifie si les nouvelles positions du bateau chevauche celles d'un autre bateau du plateau
-             boolean Chevauchement = false;
+             boolean Chevauchement;
              flotte[numNavire].setCase2(m_cases);
              Chevauchement=VerifChevauchement(flotte,numNavire);
 
              // s'il y a chevauchement, on ne déplace pas le bateau ( il reprend ces anciennes coordonnées)
-             if (Chevauchement==true)
+             if (Chevauchement)
              {
                  flotte[numNavire].setCase2(tempCase);
                  m_cases=tempCase;
@@ -173,7 +169,7 @@ abstract public class Navire {
              }
          }
          return OnPeutDeplacer;
-     };
+     }
 
     public boolean VerifChevauchement(Navire[] flotte, int numNavire)
     {
@@ -197,7 +193,7 @@ abstract public class Navire {
             }
         }
         return Chevauchement;
-    };
+    }
 
     public void IlaCoule()
     {
@@ -222,10 +218,6 @@ abstract public class Navire {
     public int getPV()
     {
         return m_pv;
-    }
-    public void setPV(int temp)
-    {
-        m_pv=temp;
     }
 
     public int getOrientation()

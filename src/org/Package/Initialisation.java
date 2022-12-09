@@ -2,7 +2,7 @@ package org.Package;
 
 public class Initialisation {
 
-    public boolean VerifNavire (Navire flotte[], int numNavire)
+    public boolean VerifNavire (Navire[] flotte, int numNavire)
     {
         boolean Chevauchement=false;
         // pour tous les bateaux pour lesquels les cases ont deja été choisies
@@ -29,13 +29,13 @@ public class Initialisation {
         }
     }
 
-    public void PositionAleaNavire(Navire flotte[])
+    public void PositionAleaNavire(Navire[] flotte)
     {
         // nb de case pour le test => a remplacer par les pv du bateau
         //int pv=5;
 
         int coorX,coorY,direction;
-        boolean Chevauchement=false;
+        boolean Chevauchement;
 
         // pour chaque navire du joueur
         for (int i=0;i<10;i++)
@@ -108,7 +108,7 @@ public class Initialisation {
 
             Chevauchement =VerifNavire(flotte, i);
 
-            } while (Chevauchement ==true);
+            } while (Chevauchement);
         }
     }
 }

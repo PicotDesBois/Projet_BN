@@ -1,6 +1,4 @@
 package org.Package;
-
-
 public class Main {
 
     public static void main(String[] args) {
@@ -8,4 +6,5 @@ public class Main {
         Partie party = new Partie();
         party.Jouer();
     }
+
 }
