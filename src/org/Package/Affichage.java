@@ -5,7 +5,7 @@ public class Affichage {
     public Affichage()
     {
 
-    };
+    }
 
     public void Afficher(Navire nav)
     {
@@ -32,7 +32,7 @@ public class Affichage {
 
         for (int i=0;i<nav.getPV();i++)
             System.out.println("Case : ( "+nav.getCase()[i].getCoorX()+" ; "+nav.getCase()[i].getCoorY()+" )"+nav.getCase()[i].getTouche());
-    };
+    }
 
     public void Afficher(Joueur player)
     {
@@ -42,23 +42,23 @@ public class Affichage {
         {
             Afficher(player.getFlotte1()[i]);
         }
-    };
+    }
 
     public void Afficher(Case cas)
     {
         System.out.println("Case : ( "+cas.getCoorX()+" ; "+cas.getCoorY()+" )");
         System.out.println("Touche : "+cas.getTouche());
         System.out.println("Navire : "+cas.getNavire());
-    };
+    }
 
     public void AfficherSaisir(String text)
     {
         System.out.println("Saisir "+text);
-    };
+    }
 
     public void AfficherTexte(String text)
     {
         System.out.println(text);
-    };
+    }
 
 }

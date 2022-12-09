@@ -47,14 +47,12 @@ public class Joueur {
                 fusee=Boolean.parseBoolean(reader.readLine());
                 coule=Boolean.parseBoolean(reader.readLine());
 
-                if(type.equals("Croiseur")==true)
-                    this.m_flotte[i]=new Croiseur(orientation,coule);
-                else if(type.equals("SousMarins")==true)
-                    this.m_flotte[i]=new SousMarins(orientation,coule);
-                else if(type.equals("Destroyer")==true)
-                    this.m_flotte[i]=new Destroyer(orientation,fusee,coule);
-                else if(type.equals("Cuirasse")==true)
-                    this.m_flotte[i]=new Cuirasse(orientation,coule);
+                switch (type) {
+                    case "Croiseur" -> this.m_flotte[i] = new Croiseur(orientation, coule);
+                    case "SousMarins" -> this.m_flotte[i] = new SousMarins(orientation, coule);
+                    case "Destroyer" -> this.m_flotte[i] = new Destroyer(orientation, fusee, coule);
+                    case "Cuirasse" -> this.m_flotte[i] = new Cuirasse(orientation, coule);
+                }
                 for(int j=0;j<m_flotte[i].m_pv;j++)
                 {
                     px=Integer.parseInt(reader.readLine());
@@ -73,7 +71,7 @@ public class Joueur {
 
     public String  Saisi()
     {
-        Scanner in=null;
+        Scanner in;
         String temp;
         in = new Scanner(System.in);
         temp = in.nextLine();
