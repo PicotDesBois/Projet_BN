@@ -63,7 +63,6 @@ public class Joueur {
                     touche=Boolean.parseBoolean(reader.readLine());
                     this.m_flotte[i].getCase()[j]=new Case(navire,px,py,touche);
                 }
-                m_flotte[i].Afficher();
             }
         }
         catch (IOException e) {
@@ -81,15 +80,6 @@ public class Joueur {
         return temp;
     }
 
-    public void Afficher()
-    {
-        System.out.println("Pseudo : "+m_pseudo);
-        System.out.println("Flotte : ");
-        for (int i=0;i<10;i++)
-        {
-            m_flotte[i].Afficher();
-        }
-    }
 
     public String getPseudo()
     {

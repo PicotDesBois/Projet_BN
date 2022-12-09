@@ -30,7 +30,7 @@ public class SousMarins extends Navire{
     }
     @Override
     public int[][] tirFusee(Case m_coor, Navire[] flotte1){
-        System.out.println("Un "+m_type+" ne peut pas tirer de fusée écalirante");
+        //System.out.println("Un "+m_type+" ne peut pas tirer de fusée éclairante");
         return null;
     }
 }

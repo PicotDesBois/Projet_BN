@@ -4,10 +4,13 @@ abstract public class Navire {
 
     /***************** Attribut ******************/
     protected int m_pv;
+
     protected int m_puissance;
+
     // 1 = horizontale
     // 2 = verticale
     protected int m_orientation;
+
     protected String m_type;
 
     protected Case[] m_cases;
@@ -19,7 +22,7 @@ abstract public class Navire {
     /************ Méthode **********************/
     public void Tirer(Case coordonnee,Navire []flotte)
     {
-        System.out.println("Vous tirez sur les cord("+coordonnee.getCoorX()+";"+coordonnee.getCoorY()+")");
+        //System.out.println("Vous tirez sur les cord("+coordonnee.getCoorX()+";"+coordonnee.getCoorY()+")");
         int [][]tir=new int[m_puissance][2];
         if(m_puissance==1||m_puissance==4||m_puissance==9)
         {
@@ -66,12 +69,11 @@ abstract public class Navire {
                     if(flotte[i].m_cases[j].getCoorX()==tir[k][0]&&flotte[i].m_cases[j].getCoorY()==tir[k][1])
                     {
                         flotte[i].m_cases[j].setTouche(true);
-                        System.out.println("Touche en ("+flotte[i].m_cases[j].getCoorX()+";"+flotte[i].m_cases[j].getCoorY()+")");
+                        //System.out.println("Touche en ("+flotte[i].m_cases[j].getCoorX()+";"+flotte[i].m_cases[j].getCoorY()+")");
                     }
                 }
             }
         }
-        //flotte[0].Afficher();
     }
 
 
@@ -165,7 +167,6 @@ abstract public class Navire {
              // s'il y a chevauchement, on ne déplace pas le bateau ( il reprend ces anciennes coordonnées)
              if (Chevauchement==true)
              {
-                 System.out.println("y'a chevauchement");
                  flotte[numNavire].setCase2(tempCase);
                  m_cases=tempCase;
                  OnPeutDeplacer=false;
@@ -197,34 +198,6 @@ abstract public class Navire {
         }
         return Chevauchement;
     };
-
-
-    public void Afficher()
-     {
-         System.out.println(m_type);
-         System.out.print("Puissance "+m_puissance+" PV restant "+m_pv);
-
-         if (m_fusee)
-             System.out.println(" Le navire peut tirer une fusee eclairante");
-         else
-             System.out.println(" Le navire ne peut pas tirer de fusee eclairante");
-         if (m_coule==false)
-            System.out.println("Le navire est a flot");
-         else
-            System.out.println("Le navire a été envoyé par le fond");
-
-         if (m_orientation==1)
-         {
-             System.out.println("le navire est horizontal "+m_orientation);
-         }
-         else
-         {
-             System.out.println("le navire est vertical "+m_orientation);
-         }
-
-         for (int i=0;i<m_pv;i++)
-            System.out.println("Case : ( "+m_cases[i].getCoorX()+" ; "+m_cases[i].getCoorY()+" )"+m_cases[i].getTouche());
-     };
 
     public void IlaCoule()
     {
@@ -287,4 +260,12 @@ abstract public class Navire {
     public abstract int[][] tirFusee(Case m_coor, Navire[] flotte1);
 
     public boolean getCoule() { return m_coule; }
+
+    public String geType() {
+        return m_type;
+    }
+
+    public int getPuissance() {
+        return m_puissance;
+    }
 }
