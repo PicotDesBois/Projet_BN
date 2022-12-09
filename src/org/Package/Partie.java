@@ -108,7 +108,7 @@ public class Partie {
             // initialisation du joueur : pseudo + flotte de navires aléatoire + plateau
             Initialisation init = new Initialisation();
             vue.AfficherSaisir("votre pseudo");
-            m_player.setPseudo(m_player.Saisi());
+            m_player.setPseudo(saisie.saisirChaine());
             init.PositionAleaNavire(m_player.getFlotte1());
             Plateau plato_joueur = new Plateau(15, 15);
             plato_joueur.PlateauFill(plato_joueur, m_player.getFlotte1());
