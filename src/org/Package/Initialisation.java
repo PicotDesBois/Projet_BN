@@ -1,5 +1,8 @@
 package org.Package;
 
+import Model.Case;
+import Model.Navire;
+
 public class Initialisation {
 
     public boolean VerifNavire (Navire[] flotte, int numNavire)

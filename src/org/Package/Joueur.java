@@ -1,4 +1,6 @@
 package org.Package;
+import Model.*;
+
 import java.io.*;
 
 public class Joueur {
@@ -54,7 +56,7 @@ public class Joueur {
                     this.m_flotte[i]=new Destroyer(orientation,fusee,coule);
                 else if(type.equals("Cuirasse")==true)
                     this.m_flotte[i]=new Cuirasse(orientation,coule);
-                for(int j=0;j<m_flotte[i].m_pv;j++)
+                for(int j=0;j<m_flotte[i].getPV();j++)
                 {
                     px=Integer.parseInt(reader.readLine());
                     py=Integer.parseInt(reader.readLine());
@@ -100,13 +102,13 @@ public class Joueur {
         try {
             for(int i=0;i<10;i++)
             {
-                sauvegarde=m_flotte[i].m_type+"\n";
-                sauvegarde=sauvegarde+m_flotte[i].m_pv+"\n";
-                sauvegarde=sauvegarde+m_flotte[i].m_puissance+"\n";
-                sauvegarde=sauvegarde+m_flotte[i].m_orientation+"\n";
-                sauvegarde=sauvegarde+m_flotte[i].m_fusee+"\n";
-                sauvegarde=sauvegarde+m_flotte[i].m_coule+"\n";
-                for(int j=0;j<m_flotte[i].m_pv;j++)
+                sauvegarde=m_flotte[i].geType()+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].getPV()+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].getPuissance()+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].getOrientation()+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].getFusee()+"\n";
+                sauvegarde=sauvegarde+m_flotte[i].getCoule()+"\n";
+                for(int j=0;j<m_flotte[i].getPV();j++)
                 {
                     sauvegarde=sauvegarde+m_flotte[i].getCase()[j].getCoorX()+"\n";
                     sauvegarde=sauvegarde+m_flotte[i].getCase()[j].getCoorY()+"\n";

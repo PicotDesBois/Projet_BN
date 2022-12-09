@@ -1,4 +1,4 @@
-package org.Package;
+package Model;
 
 abstract public class Navire {
 

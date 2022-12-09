@@ -1,4 +1,4 @@
-package org.Package;
+package Model;
 
 public class Destroyer extends Navire {
     public Destroyer()

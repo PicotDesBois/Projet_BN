@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Implémentation du chargement de la partie dans partie">
-      <change afterPath="$PROJECT_DIR$/src/Vue/Saisie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/Affichage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/Affichage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Case.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Case.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Croiseur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Croiseur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Cuirasse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Destroyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Initialisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Initialisation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Navire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Navire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Partie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Plateau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/Package/SousMarins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/SousMarins.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +61,7 @@
       <module name="Projet BN" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.Package.*" />
+          <option name="PATTERN" value="Model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -66,7 +74,7 @@
       <module name="Projet BN" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.Package.*" />
+          <option name="PATTERN" value="Model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

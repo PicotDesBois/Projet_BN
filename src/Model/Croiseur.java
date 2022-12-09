@@ -1,4 +1,4 @@
-package org.Package;
+package Model;
 
 public class Croiseur extends Navire{
     public Croiseur()

@@ -1,10 +1,10 @@
 package org.Package;
 
+import Model.Case;
 import Vue.Affichage;
 import Vue.Saisie;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Partie {
 
@@ -65,9 +65,9 @@ public class Partie {
 
         for(int i=0;i<10;i++)
         {
-            if (m_player.getFlotte2(i).m_coule)
+            if (m_player.getFlotte2(i).getCoule())
                 nb_joueur++;
-            if (m_IA.getFlotte2(i).m_coule)
+            if (m_IA.getFlotte2(i).getCoule())
                 nb_IA++;
         }
 

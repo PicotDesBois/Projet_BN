@@ -1,8 +1,8 @@
 package Vue;
 
-import org.Package.Case;
+import Model.Case;
 import org.Package.Joueur;
-import org.Package.Navire;
+import Model.Navire;
 
 public class Affichage {
 
