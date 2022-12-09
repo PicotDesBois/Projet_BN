@@ -1,4 +1,4 @@
-package org.Package;
+package Vue;
 
 public class Direction extends javax.swing.JFrame{
 

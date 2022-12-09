@@ -1,4 +1,4 @@
-package org.Package;
+package Vue;
 import Model.Navire;
 
 public class Plateau{

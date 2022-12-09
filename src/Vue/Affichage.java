@@ -1,7 +1,7 @@
 package Vue;
 
 import Model.Case;
-import org.Package.Joueur;
+import Controleur.Joueur;
 import Model.Navire;
 
 public class Affichage {

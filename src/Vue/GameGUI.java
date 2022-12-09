@@ -1,14 +1,13 @@
-package org.Package;
-import org.Package.Plateau;
+package Vue;
+import Controleur.Initialisation;
+import Controleur.Joueur;
+
 import java.util.*;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import javax.swing.JFrame;
+
 public class GameGUI extends javax.swing.JFrame {
 
     public static void main(String args[]) {

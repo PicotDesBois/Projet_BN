@@ -1,7 +1,8 @@
-package org.Package;
+package Controleur;
 
 import Model.Case;
 import Vue.Affichage;
+import Vue.Plateau;
 import Vue.Saisie;
 
 import java.io.IOException;
