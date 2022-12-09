@@ -47,8 +47,10 @@ public class Partie {
         // faire le choix des coordonnées
         Scanner in=null;
 
-        System.out.println("Choisissez les coordonnees du navire");
-        System.out.println("Choisir abscisse entre 0 et 14");
+        // affichage
+        Affichage aff=new Affichage();
+        aff.AfficherSaisir("les coordonnées du navire");
+        aff.AfficherSaisir("l'abscisse entre 0 et 14");
 
         do {
             in = new Scanner(System.in);
@@ -58,7 +60,7 @@ public class Partie {
                 System.out.println("Mauvaise saisie, veuillez ressayer");
         } while (coor.getCoorX() < 0 && coor.getCoorX() > 14);
 
-        System.out.println("Choisir la coordonnee ordonnées entre 0 et 14");
+        aff.AfficherSaisir("l'ordonnée entre 0 et 14");
 
         do {
             in = new Scanner(System.in);
@@ -108,10 +110,11 @@ public class Partie {
         int choir_dep=0;
         int tour=0;
 
+        Affichage vue=new Affichage();
+
+
         // choix de l'action à réaliser
-        System.out.println("Voulez vous charger un ancienne partie ou commencer une nouvelle partie ?");
-        System.out.println("1- Nouvelle partie");
-        System.out.println("2- Charger une ancienne partie");
+        vue.AfficherTexte("Voulez vous charger un ancienne partie ou commencer une nouvelle partie ?\n1- Nouvelle partie\n2- Charger une ancienne partie");
         do {
             in = new Scanner(System.in);
             m_choixAction = in.nextInt();
@@ -122,13 +125,13 @@ public class Partie {
         if(m_choixAction==1) {
             // initialisation du joueur : pseudo + flotte de navires aléatoire + plateau
             Initialisation init = new Initialisation();
-            System.out.println("Veillez saisir votre pseudo :");
+            vue.AfficherSaisir("votre pseudo");
             m_player.setPseudo(m_player.Saisi());
             init.PositionAleaNavire(m_player.getFlotte1());
             Plateau plato_joueur = new Plateau(15, 15);
             plato_joueur.PlateauFill(plato_joueur, m_player.getFlotte1());
 
-            m_player.Afficher();
+            vue.Afficher(m_player);
             plato_joueur.afficher();
 
             // initialisation de l'IA : flotte de navires aléatoire + plateau
@@ -136,17 +139,17 @@ public class Partie {
         }
         else
         {
-            System.out.println("Quelle sauvegarde voulez vous charger ?");
+            vue.AfficherSaisir("la sauvegarde à charger");
             in = new Scanner(System.in);
             fileName = in.nextLine();
             try {
                 m_player=new Joueur(fileName);
                 m_IA=new Joueur(fileName+"_IA");
-                System.out.println("Vous avez bien sauvegardé la partie : "+fileName);
+                vue.AfficherTexte("Vous avez bien sauvegardé la partie : "+fileName);
             }
             catch (IOException exc)
             {
-                System.out.println("exc");
+                vue.AfficherTexte("exc");
             }
         }
         Plateau plato_IA = new Plateau(15, 15);
@@ -160,23 +163,19 @@ public class Partie {
             /************* tour du joueur ************/
             boolean Deplacement=true;
 
-            System.out.println("Tour : "+tour);
+            vue.AfficherTexte("Tour : "+tour);
 
             plato_joueur.PlateauFill(plato_joueur,m_player.getFlotte1());
-            System.out.println("Votre plateau");
+            vue.AfficherTexte("Votre plateau");
             plato_joueur.afficher();
 
             /********* Affiche le plateau de l'IA pour mode triche **********/
-            System.out.println("Plateau de l'IA");
+            vue.AfficherTexte("Plateau de l'IA");
             plato_IA.afficher();
             /****************************************************************/
 
             // choix de l'action à réaliser
-            System.out.println("Voulez vous tirer ou déplacer un navire ?");
-            System.out.println("1- Tirer");
-            System.out.println("2- Déplacer");
-            System.out.println("3- Sauvegarder");
-            System.out.println("4- Quitter");
+            vue.AfficherTexte("Voulez vous tirer ou déplacer un navire ?\n1- Tirer\n2- Déplacer\n3- Sauvegarder\n4- Quitter");
             do {
                 in = new Scanner(System.in);
                 m_choixAction = in.nextInt();
@@ -188,15 +187,15 @@ public class Partie {
             // tir
             if(m_choixAction == 1||m_choixAction == 2) {
                 if (m_choixAction == 1)
-                    System.out.println("De quel navire voulez vous tirer ?");
+                    vue.AfficherTexte("De quel navire voulez vous tirer ?");
                     // déplacement
                 else
-                    System.out.println("Quel navire voulez vous déplacer");
+                    vue.AfficherTexte("Quel navire voulez vous déplacer");
                 do {
                     in = new Scanner(System.in);
                     m_choixNavire = in.nextInt();
                     if (m_choixNavire < 0 || m_choixNavire > 9)
-                        System.out.println("Mauvaise saisie, veuillez ressayer");
+                        vue.AfficherTexte("Mauvaise saisie, veuillez ressayer");
                 } while (m_choixNavire < 0 || m_choixNavire > 9);
 
 
@@ -204,11 +203,9 @@ public class Partie {
                 // tir
                 if (m_choixAction == 1) {
                     // si le bateau peut tirer une fusée éclairante
-                    if (m_player.getFlotte2(m_choixNavire).getFusee() == true) {
+                    if (m_player.getFlotte2(m_choixNavire).getFusee()) {
                         // choix entre fusée et tir normal
-                        System.out.println("Quel type de tir voulez-vous faire");
-                        System.out.println("1- Fusée éclairante");
-                        System.out.println("2- Tir");
+                        vue.AfficherTexte("Quel type de tir voulez-vous faire\n1- Fusée éclairante\n2- Tir");
                         do {
                             in = new Scanner(System.in);
                             choix_tir = in.nextInt();
@@ -243,17 +240,13 @@ public class Partie {
                         if (m_player.getFlotte2(m_choixNavire).getOrientation()==1) {
                             // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
                             // choix entre fusée et tir normal
-                            System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
-                            System.out.println("1- vers la droite");
-                            System.out.println("2- vers la gauche");
+                            vue.AfficherTexte("Dans quelle direction voulez-vous vous déplacer ?\n1- vers la droite\n2- vers la gauche");
                         }
                         // 2 = verticale
                         else if (m_player.getFlotte2(m_choixNavire).getOrientation()==2) {
                             // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
                             // choix entre fusée et tir normal
-                            System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
-                            System.out.println("1- vers le haut");
-                            System.out.println("2- vers le bas");
+                            vue.AfficherTexte("Dans quelle direction voulez-vous vous déplacer ?\n1- vers le haut\n2- vers le bas");
                         }
                         do {
                             in = new Scanner(System.in);
@@ -266,8 +259,7 @@ public class Partie {
                         Deplacement = m_player.getFlotte2(m_choixNavire).Deplacer(choir_dep, m_player.getFlotte1(), m_choixNavire);
 
                         if (!Deplacement) {
-                            System.out.println("vous ne pouvez pas déplacer votre bateau");
-                            System.out.println("Quel navire voulez vous déplacer");
+                            vue.AfficherTexte("vous ne pouvez pas déplacer votre bateau\nQuel navire voulez vous déplacer");
                             do {
                                 in = new Scanner(System.in);
                                 m_choixNavire = in.nextInt();
@@ -275,11 +267,11 @@ public class Partie {
                                     System.out.println("Mauvaise saisie, veuillez ressayer");
                             } while (m_choixNavire < 0 || m_choixNavire > 9);
                         } else
-                            System.out.println("vous pouvez déplacer votre bateau");
+                            vue.AfficherTexte("vous pouvez déplacer votre bateau");
                     } while (!Deplacement);
                 }
                 /************* tour de l'IA ************/
-                System.out.println("Tour de l'IA");
+                vue.AfficherTexte("Tour de l'IA");
 
                 // choix de l'action à réaliser
                 m_choixAction = (int) (Math.random() * (2 - 1 + 1) + 1);
@@ -291,7 +283,7 @@ public class Partie {
                 // choix = tirer
                 if (m_choixAction == 1) {
                     // si le bateau peut tirer une fusée éclairante
-                    if (m_IA.getFlotte2(m_choixNavire).getFusee() == true) {
+                    if (m_IA.getFlotte2(m_choixNavire).getFusee()) {
                         // aléatoire entre fusée et tir normal
                         choix_tir = (int) (Math.random() * (2 - 1 + 1) + 1);
 
@@ -328,32 +320,30 @@ public class Partie {
                         Deplacement = m_IA.getFlotte2(m_choixNavire).Deplacer(choir_dep, m_IA.getFlotte1(), m_choixNavire);
 
                         if (!Deplacement) {
-                            System.out.println("vous ne pouvez pas déplacer votre bateau");
                             // choix du navire
                             m_choixNavire = (int) (Math.random() * 9 + 1);
-                        } else
-                            System.out.println("vous pouvez déplacer votre bateau");
+                        }
 
                     } while (!Deplacement);
                 }
             }
             else if(m_choixAction == 3)
             {
-                System.out.println("Quel nom voulez vous donner à votre sauvegarde ?");
+                vue.AfficherTexte("Quel nom voulez vous donner à votre sauvegarde ?");
                 in = new Scanner(System.in);
                 fileName = in.nextLine();
                 try {
                     m_player.sauvegarde(fileName);
                     m_IA.sauvegarde(fileName + "_IA");
-                    System.out.println("Vous avez bien sauvegardé la partie : "+fileName);
+                    vue.AfficherTexte("Vous avez bien sauvegardé la partie : "+fileName);
                 }
                 catch (IOException exc)
                 {
-                    System.out.println("exc");
+                    vue.AfficherTexte("exc");
                 }
                 QuiAGagne();
             }
         } while (m_choixAction != 4&&m_victoire==0);
-        System.out.println("Vous avez mis fin à la partie");
+        vue.AfficherTexte("Vous avez mis fin à la partie");
     }
 }

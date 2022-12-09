@@ -57,10 +57,5 @@ public class Case {
         m_touche=temp;
     }
 
-    public void Afficher()
-    {
-            System.out.println("Case : ( "+m_coorX+" ; "+m_coorY+" )");
-            System.out.println("Touche : "+m_touche);
-            System.out.println("Navire : "+m_navire);
-    }
+
 }
