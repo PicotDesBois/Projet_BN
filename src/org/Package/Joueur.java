@@ -1,6 +1,5 @@
 package org.Package;
 import java.io.*;
-import java.util.Scanner;
 
 public class Joueur {
 
@@ -47,12 +46,14 @@ public class Joueur {
                 fusee=Boolean.parseBoolean(reader.readLine());
                 coule=Boolean.parseBoolean(reader.readLine());
 
-                switch (type) {
-                    case "Croiseur" -> this.m_flotte[i] = new Croiseur(orientation, coule);
-                    case "SousMarins" -> this.m_flotte[i] = new SousMarins(orientation, coule);
-                    case "Destroyer" -> this.m_flotte[i] = new Destroyer(orientation, fusee, coule);
-                    case "Cuirasse" -> this.m_flotte[i] = new Cuirasse(orientation, coule);
-                }
+                if(type.equals("Croiseur")==true)
+                    this.m_flotte[i]=new Croiseur(orientation,coule);
+                else if(type.equals("SousMarins")==true)
+                    this.m_flotte[i]=new SousMarins(orientation,coule);
+                else if(type.equals("Destroyer")==true)
+                    this.m_flotte[i]=new Destroyer(orientation,fusee,coule);
+                else if(type.equals("Cuirasse")==true)
+                    this.m_flotte[i]=new Cuirasse(orientation,coule);
                 for(int j=0;j<m_flotte[i].m_pv;j++)
                 {
                     px=Integer.parseInt(reader.readLine());
@@ -67,15 +68,6 @@ public class Joueur {
                 e.printStackTrace();
             }
         reader.close();
-    }
-
-    public String  Saisi()
-    {
-        Scanner in;
-        String temp;
-        in = new Scanner(System.in);
-        temp = in.nextLine();
-        return temp;
     }
 
 
