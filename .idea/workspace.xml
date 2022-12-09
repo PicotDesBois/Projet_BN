@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Tirer en passant par joueur">
+    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Implémentation du chargement de la partie dans partie">
+      <change afterPath="$PROJECT_DIR$/src/Vue/Saisie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sauvegarde/Test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Sauvegarde/Test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Croiseur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Croiseur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Cuirasse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Destroyer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Joueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/Package/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Navire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Navire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/SousMarins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/SousMarins.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +28,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -52,7 +47,7 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/amine/Desktop/NewJava/Projet_BN1&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.GameGUI">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="GameGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.Package.GameGUI" />
       <module name="Projet BN" />
@@ -81,8 +76,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GameGUI" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GameGUI" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -138,7 +133,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670091396064</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Ajout du boolean coule dans la sauvegarde et le chargement">
+      <created>1670335739764</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670335739764</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Implémentation du chargement de la partie dans partie">
+      <created>1670581911739</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670581911740</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,6 +168,8 @@
     <MESSAGE value="Sauvegarde avec case reste à faire le chargement" />
     <MESSAGE value="Sauvegarde et chargement complet" />
     <MESSAGE value="Tirer en passant par joueur" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tirer en passant par joueur" />
+    <MESSAGE value="Ajout du boolean coule dans la sauvegarde et le chargement" />
+    <MESSAGE value="Implémentation du chargement de la partie dans partie" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implémentation du chargement de la partie dans partie" />
   </component>
 </project>
