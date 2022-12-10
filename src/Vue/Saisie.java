@@ -22,9 +22,11 @@ public class Saisie {
     }
     public int saisirEntier(int Vmin,int Vmax)
     {
+        char ch;
         do {
             m_saisie = new Scanner(System.in);
-            m_int = m_saisie.nextInt();
+            ch=m_saisie.next().charAt(0);
+            m_int=ch-48;
             if (m_int <Vmin || m_int>Vmax)
                 System.out.println("Mauvaise saisie, veuillez ressayer");
         } while (m_int <Vmin || m_int>Vmax);
