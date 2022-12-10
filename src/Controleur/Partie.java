@@ -90,39 +90,41 @@ public class Partie {
         int choix_tir;
         int choir_dep;
         int tour=0;
-
+        boolean chargement=false;
         Affichage vue=new Affichage();
         Saisie saisie=new Saisie();
 
+        do {
+            // choix de l'action à réaliser
+            vue.AfficherTexte("Voulez vous charger un ancienne partie ou commencer une nouvelle partie ?\n1- Nouvelle partie\n2- Charger une ancienne partie");
+            m_choixAction = saisie.saisirEntier(1, 2);
 
-        // choix de l'action à réaliser
-        vue.AfficherTexte("Voulez vous charger un ancienne partie ou commencer une nouvelle partie ?\n1- Nouvelle partie\n2- Charger une ancienne partie");
-        m_choixAction=saisie.saisirEntier(1,2);
+            if (m_choixAction == 1) {
+                // initialisation du joueur : pseudo + flotte de navires aléatoire
+                Initialisation init = new Initialisation();
+                vue.AfficherSaisir("votre pseudo");
+                m_player.setPseudo(saisie.saisirChaine());
+                init.PositionAleaNavire(m_player.getFlotte1());
 
-        if(m_choixAction==1) {
-            // initialisation du joueur : pseudo + flotte de navires aléatoire
-            Initialisation init = new Initialisation();
-            vue.AfficherSaisir("votre pseudo");
-            m_player.setPseudo(saisie.saisirChaine());
-            init.PositionAleaNavire(m_player.getFlotte1());
-
-            // initialisation de l'IA : flotte de navires aléatoire
-            init.PositionAleaNavire(m_IA.getFlotte1());
-        }
-        else
-        {
-            vue.AfficherSaisir("la sauvegarde à charger");
-            fileName= saisie.saisirChaine();
-            try {
-                m_player=new Joueur(fileName);
-                m_IA=new Joueur(fileName+"_IA");
-                vue.AfficherTexte("Vous avez bien sauvegardé la partie : "+fileName);
+                // initialisation de l'IA : flotte de navires aléatoire
+                init.PositionAleaNavire(m_IA.getFlotte1());
+                chargement=true;
             }
-            catch (IOException exc)
-            {
-                vue.AfficherTexte("exc");
+            else {
+                vue.AfficherSaisir("la sauvegarde à charger");
+                fileName = saisie.saisirChaine();
+                try {
+                    m_player = new Joueur(fileName);
+                    m_IA = new Joueur(fileName + "_IA");
+                    vue.AfficherTexte("Vous avez bien chargé la partie : " + fileName);
+                    chargement=true;
+                } catch (IOException exc) {
+                    vue.AfficherTexte("ERREUR chargement de "+fileName);
+                    chargement=false;
+                }
             }
-        }
+        }while(chargement==false);
+
         Plateau plato_IA = new Plateau(15, 15);
         plato_IA.PlateauFill( m_IA.getFlotte1());
         Plateau plato_joueur = new Plateau(15, 15);
