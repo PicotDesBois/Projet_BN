@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="MVC COMPLET">
+    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Petite correction sur l'affichage du plateau + méthode fillplateau IA dans partie">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controleur/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controleur/Partie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Navire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Navire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vue/Affichage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/Affichage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vue/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/Plateau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/SousMarins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/SousMarins.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670607088555</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Petite correction sur l'affichage du plateau + méthode fillplateau IA dans partie">
+      <created>1670671522056</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670671522056</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,6 +193,7 @@
     <MESSAGE value="Implémentation du chargement de la partie dans partie" />
     <MESSAGE value="MVC(Model et Vue) reste à faire le controleur" />
     <MESSAGE value="MVC COMPLET" />
-    <option name="LAST_COMMIT_MESSAGE" value="MVC COMPLET" />
+    <MESSAGE value="Petite correction sur l'affichage du plateau + méthode fillplateau IA dans partie" />
+    <option name="LAST_COMMIT_MESSAGE" value="Petite correction sur l'affichage du plateau + méthode fillplateau IA dans partie" />
   </component>
 </project>
