@@ -63,9 +63,10 @@ abstract public class Navire {
         for (Navire navire : flotte) {   // parcours de toutes les cases d'un navire
             for (int j = 0; j < navire.m_pv; j++) {   // parcours des cases touché
                 for (int k = 0; k < m_puissance; k++) {
-                    if (navire.m_cases[j].getCoorX() == tir[k][0] && navire.m_cases[j].getCoorY() == tir[k][1]) {
-                        navire.m_cases[j].setTouche(true);
-                        //System.out.println("Touche en ");
+                    if(navire.geType().equals("SousMarins")==false) {
+                        if (navire.m_cases[j].getCoorX() == tir[k][0] && navire.m_cases[j].getCoorY() == tir[k][1]) {
+                            navire.m_cases[j].setTouche(true);
+                        }
                     }
                 }
             }
