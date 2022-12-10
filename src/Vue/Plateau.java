@@ -31,14 +31,19 @@ public class Plateau{
 
     public void PlateauFill( Plateau plateau1, Navire[] listeBateaux){
 
-
         for (int i = 0; i < nbLigne; i++) {
             for (int j = 0; j < nbColonne;j++) {
                 plateau[i][j] = -1;
                 for (int k = 0; k<10; k++){
                     for (int r = 0; r   < listeBateaux[k].getPV() ;r++) {
                         if (i == listeBateaux[k].getCase()[r].getCoorY() && j == listeBateaux[k].getCase()[r].getCoorX()){
-                            plateau[i][j] = k;
+                            if(listeBateaux[k].getCase()[r].getTouche()==true)
+                            {
+                                plateau[i][j] = -2;
+                                System.out.println("YES");
+                            }
+                            else
+                                plateau[i][j] = k;
                         }
                     }
                 }
@@ -63,10 +68,24 @@ public class Plateau{
         nbLigne = 15;
         nbColonne = 15;
         System.out.println();
+
+        System.out.print("    ");
+        for(int j=0;j<nbColonne;j++) {
+            System.out.print("| " +j);
+            if (j < 10)
+                System.out.print(" ");
+        }
+        System.out.println("|");
         for (int i = 0; i < nbLigne; i++) {
+            System.out.print(i+" ");
+            if(i<10)
+                System.out.print(" ");
+
             for (int j = 0; j < nbColonne;j++) {
                 if(plateau[i][j]==-1)
                     System.out.print(" | " + " ");
+                else if(plateau[i][j]==-2)
+                    System.out.print(" | " + "*");
                 else if (plateau[i][j]==0)
                     System.out.print(" | " + ANSI_RED + plateau[i][j] + ANSI_RESET);
                 else if  (plateau[i][j]==1)

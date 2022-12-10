@@ -35,7 +35,7 @@ public class Affichage {
         }
 
         for (int i=0;i<nav.getPV();i++)
-            System.out.println("Case : ( "+nav.getCase()[i].getCoorX()+" ; "+nav.getCase()[i].getCoorY()+" )"+nav.getCase()[i].getTouche());
+            System.out.println("Case : touche :"+nav.getCase()[i].getCoorX()+" ; "+nav.getCase()[i].getCoorY()+" )"+nav.getCase()[i].getTouche());
     }
 
     public void Afficher(Joueur player)

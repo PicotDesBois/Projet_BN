@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="MVC(Model et Vue) reste à faire le controleur">
+    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="MVC COMPLET">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controleur/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controleur/Partie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Navire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Navire.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vue/Affichage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/Affichage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/GameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/GameGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Initialisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controleur/Initialisation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controleur/Joueur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/Package/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controleur/Partie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/Package/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/Plateau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/Plateau.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,14 +41,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/amine/Desktop/NewJava/Projet_BN1&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/bapti/OneDrive - Groupe INSEEC (POCE)/Documents/ING3/Java/Projet/Projet_BN"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="GameGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Vue.GameGUI" />
@@ -159,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670606765224</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="MVC COMPLET">
+      <created>1670607088555</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670607088555</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -183,6 +187,7 @@
     <MESSAGE value="Ajout du boolean coule dans la sauvegarde et le chargement" />
     <MESSAGE value="Implémentation du chargement de la partie dans partie" />
     <MESSAGE value="MVC(Model et Vue) reste à faire le controleur" />
-    <option name="LAST_COMMIT_MESSAGE" value="MVC(Model et Vue) reste à faire le controleur" />
+    <MESSAGE value="MVC COMPLET" />
+    <option name="LAST_COMMIT_MESSAGE" value="MVC COMPLET" />
   </component>
 </project>

@@ -148,10 +148,13 @@ public class Partie {
             vue.AfficherTexte("Tour : "+tour);
 
             plato_joueur.PlateauFill(plato_joueur,m_player.getFlotte1());
+            plato_IA.PlateauFill(plato_IA,m_IA.getFlotte1());
             vue.AfficherTexte("Votre plateau");
             plato_joueur.afficher();
 
             /********* Affiche le plateau de l'IA pour mode triche **********/
+            for(int h=0;h<m_IA.getFlotte1().length;h++)
+            vue.Afficher(m_IA.getFlotte1()[h]);
             vue.AfficherTexte("Plateau de l'IA");
             plato_IA.afficher();
             /****************************************************************/

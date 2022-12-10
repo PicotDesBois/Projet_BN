@@ -65,7 +65,7 @@ abstract public class Navire {
                 for (int k = 0; k < m_puissance; k++) {
                     if (navire.m_cases[j].getCoorX() == tir[k][0] && navire.m_cases[j].getCoorY() == tir[k][1]) {
                         navire.m_cases[j].setTouche(true);
-                        //System.out.println("Touche en ("+flotte[i].m_cases[j].getCoorX()+";"+flotte[i].m_cases[j].getCoorY()+")");
+                        System.out.println("Touche en ");
                     }
                 }
             }
