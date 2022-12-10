@@ -6,6 +6,25 @@ import Model.Navire;
 
 public class Affichage {
 
+    //font color
+    public static final String ANSI_RESET = "\u001B[0m";
+
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+
+    //background color
+    public static final String ANSI_RED_BG = "\033[41m";
+    public static final String ANSI_GREEN_BG = "\u001B[42m";
+    public static final String ANSI_YELLOW_BG = "\u001B[43m";
+    public static final String ANSI_BLUE_BG = "\u001B[44m";
+    public static final String ANSI_MAGENTA_BG = "\u001B[45m";
+    public static final String ANSI_CYAN_BG = "\u001B[46m";
+
     public Affichage()
     {
 
@@ -13,13 +32,13 @@ public class Affichage {
 
     public void Afficher(Navire nav)
     {
-        System.out.println(nav.geType());
-        System.out.print("Puissance "+nav.getPuissance()+" PV restant "+nav.getPV());
+        System.out.println(ANSI_CYAN_BG + ANSI_BLACK + nav.geType() + ANSI_RESET);
+        System.out.print("Puissance "+nav.getPuissance()+"\nPV restant "+nav.getPV() +"\n");
 
         if (nav.getFusee())
-            System.out.println(" Le navire peut tirer une fusee eclairante");
+            System.out.println("Le navire peut tirer une fusee eclairante");
         else
-            System.out.println(" Le navire ne peut pas tirer de fusee eclairante");
+            System.out.println("Le navire ne peut pas tirer de fusee eclairante");
         if (!nav.getCoule())
             System.out.println("Le navire est a flot");
         else
@@ -40,8 +59,8 @@ public class Affichage {
 
     public void Afficher(Joueur player)
     {
-        System.out.println("Pseudo : "+player.getPseudo());
-        System.out.println("Flotte : ");
+        System.out.println(ANSI_YELLOW_BG + ANSI_BLACK + "Pseudo"+ ANSI_RESET + " :  " +player.getPseudo());
+        System.out.println(ANSI_YELLOW_BG + ANSI_BLACK +"Flotte"+ ANSI_RESET + " :  ");
         for (int i=0;i<10;i++)
         {
             Afficher(player.getFlotte1()[i]);
@@ -65,4 +84,13 @@ public class Affichage {
         System.out.println(text);
     }
 
+    public void AfficherTour(int tour)
+    {
+        System.out.println(" \n\n"+ANSI_MAGENTA_BG + ANSI_BLACK + "Tour" + ANSI_RESET + " :  " + tour + "\n");
+    }
+
+    public void AfficherPlateau(String text)
+    {
+        System.out.println(" \n\n"+ANSI_RED_BG + ANSI_BLACK + text + ANSI_RESET);
+    }
 }

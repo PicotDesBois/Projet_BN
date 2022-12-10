@@ -115,7 +115,7 @@ public class GameGUI extends javax.swing.JFrame {
 
         init.PositionAleaNavire(m_player.getFlotte1());
 
-        P1.PlateauFill(P1, m_player.getFlotte1());
+        P1.PlateauFill(m_player.getFlotte1());
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15;j++) {
                 if( P1.getCase(i,j) >= 0){
@@ -128,7 +128,7 @@ public class GameGUI extends javax.swing.JFrame {
         }
 
         init.PositionAleaNavire(m_IA.getFlotte1());
-        P2.PlateauFill(P2, m_IA.getFlotte1());
+        P2.PlateauFill(m_IA.getFlotte1());
 
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15;j++) {
@@ -346,7 +346,7 @@ public class GameGUI extends javax.swing.JFrame {
     public void Actualisation(){
         //init.PositionAleaNavire(m_player.getFlotte1());
 
-        P1.PlateauFill(P1, m_player.getFlotte1());
+        P1.PlateauFill(m_player.getFlotte1());
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15;j++) {
                 if( P1.getCase(i,j) >= 0){
@@ -359,7 +359,7 @@ public class GameGUI extends javax.swing.JFrame {
         }
 
         //init.PositionAleaNavire(m_IA.getFlotte1());
-        P2.PlateauFill(P2, m_IA.getFlotte1());
+        P2.PlateauFill( m_IA.getFlotte1());
 
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15;j++) {
