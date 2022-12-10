@@ -4,6 +4,10 @@ import Model.Case;
 import Controleur.Joueur;
 import Model.Navire;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Affichage {
 
     //font color
@@ -92,5 +96,25 @@ public class Affichage {
     public void AfficherPlateau(String text)
     {
         System.out.println(" \n\n"+ANSI_RED_BG + ANSI_BLACK + text + ANSI_RESET);
+    }
+    public void AfficherAide()throws IOException
+    {
+        String texte;
+        // Création d’un fileReader pour lire le fichier
+        FileReader fileReader = new FileReader("Aide.txt");
+        // Création d’un bufferedReader qui utilise le fileReader
+        BufferedReader reader = new BufferedReader (fileReader);
+
+        try
+        {
+            do {
+                texte=reader.readLine();
+                AfficherTexte(texte);
+            }while(texte!=null);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        reader.close();
     }
 }

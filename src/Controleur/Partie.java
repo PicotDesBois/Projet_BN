@@ -153,8 +153,8 @@ public class Partie {
             /****************************************************************/
 
             // choix de l'action à réaliser
-            vue.AfficherTexte("Voulez vous tirer ou déplacer un navire ?\n1- Tirer\n2- Déplacer\n3- Sauvegarder\n4- Quitter");
-            m_choixAction=saisie.saisirEntier(1,4);
+            vue.AfficherTexte("Voulez vous tirer ou déplacer un navire ?\n1- Tirer\n2- Déplacer\n3- Sauvegarder\n4- Aide\n5- Quitter");
+            m_choixAction=saisie.saisirEntier(1,5);
             // choix du navire pour réaliser l'action
             // tir
             if(m_choixAction == 1||m_choixAction == 2) {
@@ -296,9 +296,20 @@ public class Partie {
                 {
                     vue.AfficherTexte("exc");
                 }
-                QuiAGagne();
             }
-        } while (m_choixAction != 4&&m_victoire==0);
+            else if(m_choixAction == 4)
+            {
+                try
+                {
+                    vue.AfficherAide();
+                }
+                catch (IOException exc)
+                {
+                    vue.AfficherTexte("exc");
+                }
+            }
+            QuiAGagne();
+        } while (m_choixAction != 5&&m_victoire==0);
         vue.AfficherTexte("Vous avez mis fin à la partie");
     }
 }

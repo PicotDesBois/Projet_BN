@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Char pour les ordonnées">
+    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Blindage chargement d'un Partie">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controleur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controleur/Joueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controleur/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controleur/Partie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/Affichage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/Affichage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670693672152</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Blindage chargement d'un Partie">
+      <created>1670694886706</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1670694886706</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -217,6 +226,7 @@
     <MESSAGE value="Un sous marins peut être troucé seulement par un sous marins" />
     <MESSAGE value="Blindage des saisies lorsque saisie d'un char." />
     <MESSAGE value="Char pour les ordonnées" />
-    <option name="LAST_COMMIT_MESSAGE" value="Char pour les ordonnées" />
+    <MESSAGE value="Blindage chargement d'un Partie" />
+    <option name="LAST_COMMIT_MESSAGE" value="Blindage chargement d'un Partie" />
   </component>
 </project>

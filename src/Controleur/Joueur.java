@@ -1,6 +1,5 @@
 package Controleur;
 import Model.*;
-
 import java.io.*;
 
 public class Joueur {
