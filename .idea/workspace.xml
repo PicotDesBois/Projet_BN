@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Petite correction sur l'affichage du plateau + méthode fillplateau IA dans partie">
+    <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Blindage des saisies lorsque saisie d'un char.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Navire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Navire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/SousMarins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/SousMarins.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controleur/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controleur/Partie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/Plateau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/Saisie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/Saisie.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,14 +40,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/bapti/OneDrive - Groupe INSEEC (POCE)/Documents/ING3/Java/Projet/Projet_BN"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/bapti/OneDrive - Groupe INSEEC (POCE)/Documents/ING3/Java/Projet/Projet_BN&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="GameGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Vue.GameGUI" />
@@ -168,7 +169,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670671522056</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Un sous marins peut être troucé seulement par un sous marins">
+      <created>1670677752568</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670677752568</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Blindage des saisies lorsque saisie d'un char.">
+      <created>1670679309510</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1670679309510</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -194,6 +209,8 @@
     <MESSAGE value="MVC(Model et Vue) reste à faire le controleur" />
     <MESSAGE value="MVC COMPLET" />
     <MESSAGE value="Petite correction sur l'affichage du plateau + méthode fillplateau IA dans partie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Petite correction sur l'affichage du plateau + méthode fillplateau IA dans partie" />
+    <MESSAGE value="Un sous marins peut être troucé seulement par un sous marins" />
+    <MESSAGE value="Blindage des saisies lorsque saisie d'un char." />
+    <option name="LAST_COMMIT_MESSAGE" value="Blindage des saisies lorsque saisie d'un char." />
   </component>
 </project>

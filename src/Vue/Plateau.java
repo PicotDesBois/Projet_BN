@@ -41,10 +41,12 @@ public class Plateau extends Affichage {
     public void afficher(Navire[] flotte) {
         nbLigne = 15;
         nbColonne = 15;
+        char ascii;
+        int temp=0;
         boolean touche = false;
         System.out.println();
 
-        System.out.print("    ");
+        System.out.print("   ");
         for(int j=0;j<nbColonne;j++) {
             System.out.print("| " +j);
             if (j < 10)
@@ -52,9 +54,9 @@ public class Plateau extends Affichage {
         }
         System.out.println("|");
         for (int i = 0; i < nbLigne; i++) {
-            System.out.print(i+" ");
-            if(i<10)
-                System.out.print(" ");
+            temp=i+65;
+            ascii=(char) temp;
+            System.out.print(ascii+" ");
 
             for (int j = 0; j < nbColonne;j++) {
                 if(plateau[i][j]==-1)

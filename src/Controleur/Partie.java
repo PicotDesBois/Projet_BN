@@ -50,8 +50,8 @@ public class Partie {
         aff.AfficherSaisir("les coordonnées du navire");
         aff.AfficherSaisir("l'abscisse entre 0 et 14");
         coor.setCoorX(saisir.saisirEntier(0, 14));
-        aff.AfficherSaisir("l'ordonnée entre 0 et 14");
-        coor.setCoorY(saisir.saisirEntier(0, 14));
+        aff.AfficherSaisir("l'ordonnée entre A et O");
+        coor.setCoorY(saisir.saisirOrdonne());
     }
     // condition de victoire : 0 pas de victoire, 1 victoire du joueur, 2 victoire de l'IA
     public void QuiAGagne()
