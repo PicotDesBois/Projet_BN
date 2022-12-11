@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class Aide extends JFrame {
     private JTextArea leJeuBatailleNavaleTextArea1;
-    private JTextArea lesActionsPourDéplacerTextArea;
+    private JTextArea lesActionsPourDeplacerTextArea;
     private JButton retourButton;
     private JPanel panelaide;
 

@@ -42,14 +42,14 @@
           <text value="Commandes"/>
         </properties>
       </component>
-      <component id="98e73" class="javax.swing.JTextArea" binding="lesActionsPourDéplacerTextArea" default-binding="true">
+      <component id="98e73" class="javax.swing.JTextArea" binding="lesActionsPourDeplacerTextArea" default-binding="true">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Les actions pour déplacer, tirer ou pour envoyer des fusées seront &#10;faites avec le curseur et les boutons disponibles."/>
+          <text value="Les actions pour deplacer tirer ou pour envoyer des fusées seront &#10;faites avec le curseur et les boutons disponibles."/>
         </properties>
       </component>
       <component id="16b91" class="javax.swing.JButton" binding="retourButton" default-binding="true">
