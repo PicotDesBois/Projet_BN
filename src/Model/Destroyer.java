@@ -59,6 +59,7 @@ public class Destroyer extends Navire {
             // Case 4
             tir[3][0]=coordonnee.getCoorX()+1;
             tir[3][1]=coordonnee.getCoorY()+1;
+            m_fusee=false;
        return tir;
     }
 

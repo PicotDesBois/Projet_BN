@@ -184,7 +184,11 @@ public class Partie {
                     // déplacement
                 else
                     vue.AfficherTexte("Quel navire voulez vous déplacer");
-                m_choixNavire=saisie.saisirEntier(0,9);
+                do {
+                    m_choixNavire=saisie.saisirEntier(0,9);
+                    if(m_player.getFlotte1()[m_choixNavire].getCoule()==true)
+                        vue.AfficherTexte("Reselectionner les navires");
+                }while(m_player.getFlotte1()[m_choixNavire].getCoule()==true);
 
                 // Réalisation de l'action
                 // tir
@@ -249,7 +253,9 @@ public class Partie {
                 m_choixAction = (int) (Math.random() * (2 - 1 + 1) + 1);
 
                 // choix du navire
-                m_choixNavire = (int) (Math.random() * 9 + 1);
+                do {
+                    m_choixNavire = (int) (Math.random() * 9 + 1);
+                }while(m_IA.getFlotte1()[m_choixNavire].getCoule()==true);
 
                 // Réalisation de l'action
                 // choix = tirer
