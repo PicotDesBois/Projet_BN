@@ -1,2 +1,19 @@
-Je suis l'aide ici vous pouvez mettre tous ce qui concerne l'aide aux jeux pour le Joueur
-I) ...
+Chaque joueur (humain et ordinateur) joue à tour de rôle. Bien entendu, un joueur ne doit pas voir les 
+grilles de son adversaire : seules les grilles du joueur en cours sont affichées.
+A chaque tour de jeu, les joueurs peuvent choisir l’une des 2 actions suivantes sur un seul navire de 
+leur choix de la grille n° 1, en choisissant les coordonnées de l’une des cases du navire :
+
+1) Tirer. Le joueur tire en choisissant les coordonnées d’une case valide de l’adversaire (grille n° 2). 
+Chaque destroyer n’est muni que d’une seule fusée éclairante. Le premier tir d’un destroyer dévoile 
+un carré de 4*4 cases dans la grille adverse à partir du coin haut et gauche. Mais attention, les 
+navires adverses de ce carré ne seront visibles que lors du tour du jeu (quelques secondes). Pour 
+couler un navire, il faut avoir touché toutes les cases qu’il occupe : un cuirassé est plus résistant 
+qu’un simple destroyer, lessous-marins ne peuvent être coulés que par d’autres sous-marins. Dans 
+ce cas, le navire adverse coulé disparaît et la case touchée s’affiche sur la grille n° 2.
+
+2) Déplacer le navire d’une seule case sauf s’il est touché. Un navire ne peut pas se déplacer en 
+diagonale. Il ne peut se déplacer que dans sa direction horizontale ou verticale, et d'une seule case 
+à la fois, et le point cardinal de déplacement (est ou ouest s’il est horizontal, nord ou sud s’il est 
+vertical). Evidemment, en cas d'obstacle (case de déplacement occupée par un autre navire ou le 
+bord de la grille), un navire ne pourra pas effectuer son déplacement et devra tenter une nouvelle 
+action.
