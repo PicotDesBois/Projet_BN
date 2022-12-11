@@ -566,10 +566,10 @@ public class GameGUI extends javax.swing.JFrame {
 
         for(int i=0;i<10;i++)
         {
-            if (m_player.getFlotte2(i).m_coule)
-                nb_joueur++;
-            if (m_IA.getFlotte2(i).m_coule)
-                nb_IA++;
+            //if (m_player.getFlotte2(i).m_coule)
+             //   nb_joueur++;
+           // if (m_IA.getFlotte2(i).m_coule)
+            //    nb_IA++;
         }
 
         if (nb_joueur==10)
