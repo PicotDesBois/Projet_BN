@@ -151,7 +151,7 @@ public class Partie {
         plato_joueur.PlateauFill( m_player.getFlotte1());
 
         vue.Afficher(m_player);
-
+        int [][] cordTir=new int[0][0];
         // jouer tant que le joueur ne veut pas quitter
         do{
             tour++;
@@ -165,6 +165,8 @@ public class Partie {
             plato_joueur.PlateauFill(m_player.getFlotte1());
             vue.AfficherPlateau("Votre plateau");
             plato_joueur.afficher(m_player.getFlotte1());
+            vue.AfficherPlateau("Plateau adverse 1");
+            plato_IA.afficherTir(cordTir,m_IA.getFlotte1(),m_choixNavire);
             /* ***************************************************************/
 
             /* Affiche le plateau de l'IA pour mode triche **********/
@@ -206,7 +208,8 @@ public class Partie {
                         } else {
                             // choix des coordonnées par le joueur
                             // tirer
-                            int [][] cordTir =m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
+                             cordTir =m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
+                            vue.AfficherPlateau("Plateau adverse");
                             plato_IA.afficherTir(cordTir,m_IA.getFlotte1(),m_choixNavire);
                         }
                     }
@@ -215,7 +218,8 @@ public class Partie {
                         // choix des coordonnées par le joueur
                         ChoixCoordTir(m_coor);
                         // tirer
-                        int [][] cordTir=m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
+                         cordTir=m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
+                        vue.AfficherPlateau("Plateau adverse");
                         plato_IA.afficherTir(cordTir,m_IA.getFlotte1(),m_choixNavire);
                     }
                 }
@@ -278,7 +282,7 @@ public class Partie {
                         }
                         // tir normal
                         else {
-                            int[][]cordTir = m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
+                            cordTir = m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
                             vue.AfficherTexte("tir normal en ( "+m_coor.getCoorX()+" ; "+m_coor.getCoorY()+" ) avec le "+m_IA.getFlotte2(m_choixNavire).geType());
                             //plato_joueur.afficherTir(cordTir,m_player.getFlotte1(),m_choixNavire);
                         }
@@ -289,7 +293,7 @@ public class Partie {
                         m_coor.setCoorX((int) (Math.random() * 14 + 1));
                         m_coor.setCoorY((int) (Math.random() * 14 + 1));
 
-                        int[][]cordTir = m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
+                        cordTir = m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
                         vue.AfficherTexte("tir normal en ( "+m_coor.getCoorX()+" ; "+m_coor.getCoorY()+" ) avec le "+m_IA.getFlotte2(m_choixNavire).geType());
                         //plato_joueur.afficherTir(cordTir,m_player.getFlotte1(),m_choixNavire);
                     }
