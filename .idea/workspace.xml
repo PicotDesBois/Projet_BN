@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="aded33ad-63d1-4ee9-9d44-0e4596403313" name="Changes" comment="Blindage chargement d'un Partie">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controleur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controleur/Joueur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controleur/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controleur/Partie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vue/Affichage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vue/Affichage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/pages_graph/Aide.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/pages_graph/Aide.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/pages_graph/defaite.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/pages_graph/defaite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/pages_graph/menu2.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/pages_graph/menu2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/pages_graph/victoire.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Vue/pages_graph/victoire.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +53,7 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/bapti/OneDrive - Groupe INSEEC (POCE)/Documents/ING3/Java/Projet/Projet_BN&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.GameGUI">
     <configuration name="GameGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Vue.GameGUI" />
       <module name="Projet BN" />
@@ -77,8 +82,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.GameGUI" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
