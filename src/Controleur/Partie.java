@@ -27,7 +27,7 @@ public class Partie {
     private Case m_coor;
 
     /**
-     * condition de victoire : 0 pas de victoire, 1 victoire du joueur, 2 victoire de l'IA
+     * condition de victoire : 0 pas de victoire, 1 victoire de l'IA, 2 victoire du joueur
      */
     private int m_victoire;
 
@@ -155,22 +155,22 @@ public class Partie {
         // jouer tant que le joueur ne veut pas quitter
         do{
             tour++;
-            /************* tour du joueur ************/
+            /* tour du joueur ************/
             boolean Deplacement;
 
             vue.AfficherTour(tour);
 
-            /********* Affiche le plateau du joueur **********/
+            /* Affiche le plateau du joueur **********/
             plato_joueur.PlateauFill(m_player.getFlotte1());
             vue.AfficherPlateau("Votre plateau");
             plato_joueur.afficher(m_player.getFlotte1());
-            /****************************************************************/
+            /* ***************************************************************/
 
-            /********* Affiche le plateau de l'IA pour mode triche **********/
+            /* Affiche le plateau de l'IA pour mode triche **********/
             plato_IA.PlateauFill(m_IA.getFlotte1());
             vue.AfficherPlateau("Plateau de l'IA");
             plato_IA.afficher(m_IA.getFlotte1());
-            /****************************************************************/
+            /* ***************************************************************/
 
             // choix de l'action à réaliser
             vue.AfficherPlateau("Tour du joueur");
@@ -186,9 +186,9 @@ public class Partie {
                     vue.AfficherTexte("Quel navire voulez vous déplacer");
                 do {
                     m_choixNavire=saisie.saisirEntier(0,9);
-                    if(m_player.getFlotte1()[m_choixNavire].getCoule()==true)
+                    if(m_player.getFlotte1()[m_choixNavire].getCoule())
                         vue.AfficherTexte("Reselectionner les navires");
-                }while(m_player.getFlotte1()[m_choixNavire].getCoule()==true);
+                }while(m_player.getFlotte1()[m_choixNavire].getCoule());
 
                 // Réalisation de l'action
                 // tir
@@ -246,7 +246,7 @@ public class Partie {
                             vue.AfficherTexte("vous pouvez déplacer votre bateau");
                     } while (!Deplacement);
                 }
-                /************* tour de l'IA ************/
+                /* ************ tour de l'IA ************/
                 vue.AfficherPlateau("Tour de l'IA");
 
                 // choix de l'action à réaliser
@@ -255,7 +255,7 @@ public class Partie {
                 // choix du navire
                 do {
                     m_choixNavire = (int) (Math.random() * 9 + 1);
-                }while(m_IA.getFlotte1()[m_choixNavire].getCoule()==true);
+                }while(m_IA.getFlotte1()[m_choixNavire].getCoule());
 
                 // Réalisation de l'action
                 // choix = tirer
@@ -336,7 +336,13 @@ public class Partie {
                 }
             }
             QuiAGagne();
-        } while (m_choixAction != 5&&m_victoire==0);
+        } while (m_choixAction != 5 && m_victoire==0);
+
+        if (m_victoire==1)
+            vue.AfficherTexte("\nl'IA a gagné, vous avez perdu...\n");
+        else if (m_victoire==2)
+            vue.AfficherTexte("\nVous avez gagné !\n");
+
         vue.AfficherTexte("Vous avez mis fin à la partie");
     }
 }
