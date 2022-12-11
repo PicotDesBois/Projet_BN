@@ -59,9 +59,9 @@ public class Affichage {
             System.out.println("le navire est vertical "+nav.getOrientation());
         }
 
-        for (int i=0;i<nav.getPV();i++)
+        /*for (int i=0;i<nav.getPV();i++)
             System.out.println("Case : touche :"+nav.getCase()[i].getCoorX()+" ; "+nav.getCase()[i].getCoorY()+" )"+nav.getCase()[i].getTouche());
-    }
+    */}
 
     /**
      * afficher les infos du joueur

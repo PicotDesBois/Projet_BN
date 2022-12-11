@@ -1,6 +1,7 @@
 package Vue;
 import Controleur.*;
 import Model.*;
+import Model.Case;
 
 
 import java.awt.event.ActionEvent;
@@ -35,8 +36,12 @@ public class GameGUI extends javax.swing.JFrame {
     int TireOn = 0;
 
 
+
+
     int sx;
     int sy;
+    int sx2;
+    int sy2 =-1;;
     public GameGUI() {
         initComponents();
         g = jPanel1.getGraphics();
@@ -49,16 +54,18 @@ public class GameGUI extends javax.swing.JFrame {
             public void mousePressed(MouseEvent e) {
                 int x = e.getX();
                 int y = e.getY();
+                //System.out.println("coordonnée en x " + x);
+                //System.out.println("coordonnée en y " + y);
 
                 for (int i = 0; i < 15; i++) {
-                    if (x >= 145 && x <= 535 && y >= 62 && y <= 452) {
+                    if (x >= 176 && x <= 566 && y >= 78 && y <= 468) {
 
-                        if ((x - 145)/26 >= i && (x - 145)/26 < i + 1) {
-                            //System.out.println("coordonnée en x " + (i+1));
+                        if ((x - 176)/26 >= i && (x - 176)/26 < i + 1) {
+
                             sx = i;
                         }
-                        if ((y - 62)/26 >= i && (y - 62)/26 < i + 1) {
-                            //System.out.println("coordonnée en y " + (i+1));
+                        if ((y - 78)/26 >= i && (y - 78)/26 < i + 1) {
+
 
                             sy = i;
 
@@ -67,26 +74,26 @@ public class GameGUI extends javax.swing.JFrame {
 
 
                 }
-                if (x >= 145 && x <= 535 && y >= 62 && y <= 452) {
+                if (x >= 176 && x <= 556 && y >= 78 && y <= 468) {
                     System.out.println("coordonnée du plateau 1 : x et y " + Selection(sx, sy));
                 }
                 for (int i = 0; i < 15; i++) {
-                    if (x >= 563 && x <= 953 && y >= 62 && y <= 452) {
+                    if (x >= 594 && x <= 984 && y >= 78 && y <= 468) {
 
-                        if ((x - 563)/26 >= i && (x - 563)/26 < i + 1) {
-                            //System.out.println("coordonnée en x " + (i+1));
-                            sx = i;
+                        if ((x - 594)/26 >= i && (x - 594)/26 < i + 1) {
+
+                            sx2 = i;
                         }
-                        if ((y - 62)/26 >= i && (y - 62)/26 < i + 1) {
-                            //System.out.println("coordonnée en y " + (i+1));
-                            sy = i;
+                        if ((y - 78)/26 >= i && (y - 78)/26 < i + 1) {
+
+                            sy2 = i;
 
                         }
                     }
 
                 }
-                if (x >= 563 && x <= 953 && y >= 62 && y <= 452) {
-                    System.out.println("coordonnée du plateau 2: x et y " + Selection(sx, sy));
+                if (x >= 594 && x <= 984 && y >= 78 && y <= 468) {
+                    System.out.println("coordonnée du plateau 2: x et y " + Selection(sx2, sy2));
                 }
                 if(DeplacementOn ==1) {
                     m_choixNavire = P1.getCase(sx, sy);
@@ -141,11 +148,17 @@ public class GameGUI extends javax.swing.JFrame {
                     Actualisation();
                     DeplacementOn = 0;
                 }
-                if (TireOn ==1){
-                    m_choixNavire = P2.getCase(sx, sy);
-                    ChoixCoordTir(m_coor);
-                    // tirer
-                    m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
+                if (TireOn ==1 && sy2 != -1){
+                    m_choixNavire = 5;
+
+                    //ChoixCoordTir(m_coor);
+                    m_coor = new Case(m_choixNavire,sx2,sy2,true);
+                    int [][] cordTir =m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
+                    g.setColor(Color.BLACK);
+                    g.drawLine(sx2*26,sy2*26,(sx2+1)*26,(sy2+1)*26);
+                    g.setColor(Color.BLACK);
+                    g.drawLine(sx2*26,(sy2+1)*26,(sx2+1)*26,(sy2*26));
+
 
                     TourIA();
                     QuiAGagne();
@@ -153,7 +166,9 @@ public class GameGUI extends javax.swing.JFrame {
                         System.out.println("Vous avez perdu");}
                     if (m_victoire == 2){
                         System.out.println("Vous avez gagné");}
-                    Actualisation();
+                    //Actualisation();
+                    sy2 =-1;
+                    TireOn =0;
                 }
 
             }
@@ -326,7 +341,7 @@ public class GameGUI extends javax.swing.JFrame {
     private int m_choixNavire;
 
     // coordonnée de la case pour tirer (ou se déplacer ?)
-    private Case m_coor;
+    private Case m_coor = new Case(0,0,0,false);
 
     // condition de victoire : 0 pas de victoire, 1 victoire du joueur, 2 victoire de l'IA
     private int m_victoire;
@@ -336,6 +351,10 @@ public class GameGUI extends javax.swing.JFrame {
 
     Joueur m_IA=new Joueur();
 
+
+    // variable pour les choix du joueur
+
+
     Initialisation init = new Initialisation();
     protected int m_pv;
     protected int m_puissance;
@@ -343,7 +362,7 @@ public class GameGUI extends javax.swing.JFrame {
     // 2 = verticale
     protected int m_orientation;
     protected String m_type;
-    protected Case[] m_cases;
+    protected Case m_cases;
     protected boolean m_fusee;
     protected boolean m_coule;
     protected int choir_dep;
@@ -353,7 +372,7 @@ public class GameGUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
     TireOn =1;
-        jLabel1.setText("Quel navire voulez vous Tirer");
+        jLabel1.setText("Selectionner votre navire en premier puis une case où tirer");
 
 
 
@@ -401,6 +420,31 @@ public class GameGUI extends javax.swing.JFrame {
 
     }
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+
+
+
+    }
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        jLabel1.setText("Quel nom voulez vous donner à votre sauvegarde ?");
+        fileName= in.nextLine();
+
+
+        try {
+            m_player.sauvegarde(fileName);
+            m_IA.sauvegarde(fileName + "_IA");
+            jLabel1.setText("Vous avez bien sauvegardé la partie : "+fileName);
+        }
+        catch (IOException exc)
+        {
+            System.out.println("exc");
+        }
+
+
+
+    }
 
 
 
@@ -414,6 +458,8 @@ public class GameGUI extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -450,7 +496,7 @@ public class GameGUI extends javax.swing.JFrame {
 
 
         jLabel1.setText("Initialisation de la partie ...");
-        jButton1.setText("Sauvegarder");
+        jButton1.setText("Nouvelle partie");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -476,6 +522,18 @@ public class GameGUI extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+        jButton5.setText("Charger partie");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jButton6.setText("Sauvegarde");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -492,7 +550,9 @@ public class GameGUI extends javax.swing.JFrame {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jButton4)
                                                         .addComponent(jButton3)
-                                                        .addComponent(jButton2))
+                                                        .addComponent(jButton2)
+                                                        .addComponent(jButton5)
+                                                        .addComponent(jButton6))
 
                                                 .addGap(40, 40, 40)
                                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -520,7 +580,11 @@ public class GameGUI extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jButton3)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jButton4))
+                                                .addComponent(jButton4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton6))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -535,29 +599,16 @@ public class GameGUI extends javax.swing.JFrame {
     // choix des coordonnées pour le tir et la fusée
     public void ChoixCoordTir (Case coor)
     {
-        // faire le choix des coordonnées
-        Scanner in=null;
+        // affichage
+        Affichage aff=new Affichage();
+        // saisie
+        Saisie saisir=new Saisie();
 
-        System.out.println("Choisissez les coordonnees du navire");
-        System.out.println("Choisir abscisse entre 0 et 14");
-
-        do {
-            in = new Scanner(System.in);
-            int temp = in.nextInt();
-            coor.setCoorX(temp);
-            if (coor.getCoorX() < 0 && coor.getCoorX() > 14)
-                System.out.println("Mauvaise saisie, veuillez ressayer");
-        } while (coor.getCoorX() < 0 && coor.getCoorX() > 14);
-
-        System.out.println("Choisir la coordonnee ordonnées entre 0 et 14");
-
-        do {
-            in = new Scanner(System.in);
-            int temp = in.nextInt();
-            coor.setCoorY(temp);
-            if (coor.getCoorY() < 0 && coor.getCoorY() > 14)
-                System.out.println("Mauvaise saisie, veuillez ressayer");
-        } while (coor.getCoorY() < 0 && coor.getCoorY() > 14);
+        aff.AfficherSaisir("les coordonnées du navire");
+        aff.AfficherSaisir("l'abscisse entre 0 et 14");
+        coor.setCoorX(saisir.saisirEntier(0, 14));
+        aff.AfficherSaisir("l'ordonnée entre A et O");
+        coor.setCoorY(saisir.saisirOrdonne());
     }
 
     public void QuiAGagne()
@@ -566,10 +617,10 @@ public class GameGUI extends javax.swing.JFrame {
 
         for(int i=0;i<10;i++)
         {
-            if (m_player.getFlotte2(i).getCoule())
-                nb_joueur++;
-            if (m_IA.getFlotte2(i).getCoule())
-                nb_IA++;
+           // if (m_player.getFlotte2(i).m_coule)
+             //   nb_joueur++;
+            //if (m_IA.getFlotte2(i).m_coule)
+              //  nb_IA++;
         }
 
         if (nb_joueur==10)
@@ -779,6 +830,8 @@ public class GameGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
 
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

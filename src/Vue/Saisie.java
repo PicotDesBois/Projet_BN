@@ -1,5 +1,6 @@
 package Vue;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Saisie {
@@ -18,6 +19,7 @@ public class Saisie {
      * scanner pour pouvoir faire la saisie
      */
     private Scanner m_saisie;
+    private Exception IOException;
 
     /**
      * constructeur
@@ -48,15 +50,24 @@ public class Saisie {
      */
     public int saisirEntier(int Vmin,int Vmax)
     {
-        char ch;
+        m_int=-1;
+        m_saisie = new Scanner(System.in);
         do {
-            m_saisie = new Scanner(System.in);
-            ch=m_saisie.next().charAt(0);
-            m_int=ch-48;
-            if (m_int <Vmin || m_int>Vmax)
-                System.out.println("Mauvaise saisie, veuillez ressayer");
-        } while (m_int <Vmin || m_int>Vmax);
+            m_string = m_saisie.nextLine();
+            try {
+                m_int = Integer.parseInt(m_string);
+                if (m_int <Vmin || m_int>Vmax)
+                    System.out.println("Mauvaise saisie, veuillez ressayer");
+            } catch (Exception test) {
+                System.out.println("ERREUR saisie");
+            }
+        }while(m_int<Vmin||m_int>Vmax);
         return m_int;
+    }
+    public void ValiderTour()
+    {
+        m_saisie = new Scanner(System.in);
+        m_string = m_saisie.nextLine();
     }
 
     /**
