@@ -53,7 +53,6 @@ public class Saisie {
         m_int=-1;
         m_saisie = new Scanner(System.in);
         do {
-
             m_string = m_saisie.nextLine();
             try {
                 m_int = Integer.parseInt(m_string);
@@ -64,6 +63,11 @@ public class Saisie {
             }
         }while(m_int<Vmin||m_int>Vmax);
         return m_int;
+    }
+    public void ValiderTour()
+    {
+        m_saisie = new Scanner(System.in);
+        m_string = m_saisie.nextLine();
     }
 
     /**

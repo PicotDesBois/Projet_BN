@@ -214,6 +214,10 @@ public class Plateau extends Affichage {
                             }
                             }
                         }
+                    for(Navire navire : flotte)
+                        for(int l = 0; l < navire.getPV(); l++)
+                            if(navire.getCase()[l].getTouche()==true&&j == navire.getCase()[l].getCoorX() && i == navire.getCase()[l].getCoorY())
+                                marqueur=1;
                     }
                     if (plateau[i][j] == -1 && marqueur == 1)
                         System.out.print(" | " + "-");

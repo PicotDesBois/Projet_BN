@@ -159,6 +159,7 @@ public class Partie {
             boolean Deplacement;
 
             vue.AfficherTour(tour);
+            saisie.ValiderTour();
 
             /* Affiche le plateau du joueur **********/
             plato_joueur.PlateauFill(m_player.getFlotte1());
@@ -273,13 +274,13 @@ public class Partie {
                         if (choix_tir == 1) {
                             // tirer la fusée éclairante
                             vue.AfficherTexte("tir de fusée éclairante en ( "+m_coor.getCoorX()+" ; "+m_coor.getCoorY()+" )");
-                            plato_joueur.afficherFusee(m_IA.getFlotte1()[m_choixNavire].tirFusee(m_coor, m_player.getFlotte1()),m_IA.getFlotte1());
+                            //plato_joueur.afficherFusee(m_IA.getFlotte1()[m_choixNavire].tirFusee(m_coor, m_player.getFlotte1()),m_IA.getFlotte1());
                         }
                         // tir normal
                         else {
                             int[][]cordTir = m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
                             vue.AfficherTexte("tir normal en ( "+m_coor.getCoorX()+" ; "+m_coor.getCoorY()+" ) avec le "+m_IA.getFlotte2(m_choixNavire).geType());
-                            plato_joueur.afficherTir(cordTir,m_player.getFlotte1(),m_choixNavire);
+                            //plato_joueur.afficherTir(cordTir,m_player.getFlotte1(),m_choixNavire);
                         }
                     }
                     // tir normal
@@ -290,7 +291,7 @@ public class Partie {
 
                         int[][]cordTir = m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
                         vue.AfficherTexte("tir normal en ( "+m_coor.getCoorX()+" ; "+m_coor.getCoorY()+" ) avec le "+m_IA.getFlotte2(m_choixNavire).geType());
-                        plato_joueur.afficherTir(cordTir,m_player.getFlotte1(),m_choixNavire);
+                        //plato_joueur.afficherTir(cordTir,m_player.getFlotte1(),m_choixNavire);
                     }
                 }
                 // choix = déplacer
