@@ -117,8 +117,8 @@ public class GameGUI extends javax.swing.JFrame {
                             // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
                             // choix entre fusée et tir normal
                             System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
-                            System.out.println("1- vers la gauche");
-                            System.out.println("2- vers la droite");
+                            System.out.println("1- vers la droite");
+                            System.out.println("2- vers la gauche");
                         }
                         // 2 = verticale
                         else if (m_player.getFlotte2(m_choixNavire).getOrientation() == 2) {
