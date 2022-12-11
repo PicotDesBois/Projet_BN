@@ -1,6 +1,9 @@
 package Vue;
-import org.Package.Plateau;
+import Controleur.*;
+import Model.*;
 
+
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.*;
 
@@ -11,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
+
 public class GameGUI extends javax.swing.JFrame {
 
     public static void main(String args[]) {
@@ -26,6 +30,10 @@ public class GameGUI extends javax.swing.JFrame {
 
     static Graphics g;
     static Graphics f;
+
+    int DeplacementOn = 0;
+    int TireOn = 0;
+
 
     int sx;
     int sy;
@@ -80,6 +88,74 @@ public class GameGUI extends javax.swing.JFrame {
                 if (x >= 563 && x <= 953 && y >= 62 && y <= 452) {
                     System.out.println("coordonnée du plateau 2: x et y " + Selection(sx, sy));
                 }
+                if(DeplacementOn ==1) {
+                    m_choixNavire = P1.getCase(sx, sy);
+                    do {
+                        // 1 = horizontale
+                        if (m_player.getFlotte2(m_choixNavire).getOrientation() == 1) {
+                            // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
+                            // choix entre fusée et tir normal
+                            System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
+                            System.out.println("1- vers la droite");
+                            System.out.println("2- vers la gauche");
+                        }
+                        // 2 = verticale
+                        else if (m_player.getFlotte2(m_choixNavire).getOrientation() == 2) {
+                            // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
+                            // choix entre fusée et tir normal
+                            System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
+                            System.out.println("1- vers le haut");
+                            System.out.println("2- vers le bas");
+                        }
+                        do {
+                            in = new Scanner(System.in);
+                            choir_dep = in.nextInt();
+                            if (choir_dep < 1 && choir_dep > 2)
+                                System.out.println("Mauvaise saisie, veuillez ressayer");
+                        } while (choir_dep < 1 && choir_dep > 2);
+
+
+                        Deplacement = m_player.getFlotte2(m_choixNavire).Deplacer(choir_dep, m_player.getFlotte1(), m_choixNavire);
+
+                        if (!Deplacement) {
+                            System.out.println("vous ne pouvez pas déplacer votre bateau");
+                            System.out.println("Quel navire voulez vous déplacer");
+                            do {
+                                in = new Scanner(System.in);
+                                m_choixNavire = in.nextInt();
+                                if (m_choixNavire < 0 || m_choixNavire > 9)
+                                    System.out.println("Mauvaise saisie, veuillez ressayer");
+                            } while (m_choixNavire < 0 || m_choixNavire > 9);
+                        } else
+                            System.out.println("vous pouvez déplacer votre bateau");
+                    } while (!Deplacement);
+
+                    TourIA();
+                    QuiAGagne();
+                    if (m_victoire == 1) {
+                        System.out.println("Vous avez perdu");
+                    }
+                    if (m_victoire == 2) {
+                        System.out.println("Vous avez perdu");
+                    }
+                    Actualisation();
+                    DeplacementOn = 0;
+                }
+                if (TireOn ==1){
+                    m_choixNavire = P2.getCase(sx, sy);
+                    ChoixCoordTir(m_coor);
+                    // tirer
+                    m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
+
+                    TourIA();
+                    QuiAGagne();
+                    if (m_victoire == 1){
+                        System.out.println("Vous avez perdu");}
+                    if (m_victoire == 2){
+                        System.out.println("Vous avez gagné");}
+                    Actualisation();
+                }
+
             }
         });
     }
@@ -96,8 +172,8 @@ public class GameGUI extends javax.swing.JFrame {
         int OrigineX = 0;
         int OrigineY = 0;
         int taille = 26;
-        System.out.println("Veillez saisir votre pseudo :");
-        m_player.setPseudo(m_player.Saisi());
+        //System.out.println("Veillez saisir votre pseudo :");
+        //m_player.setPseudo(m_player.Saisi());
         g.drawRect(OrigineX,OrigineY, 389, 389);
         f.drawRect(OrigineX,OrigineY, 390, 389);
 
@@ -129,7 +205,7 @@ public class GameGUI extends javax.swing.JFrame {
         init.PositionAleaNavire(m_player.getFlotte1());
         init.PositionAleaNavire(m_IA.getFlotte1());
 
-        P1.PlateauFill(P1, m_player.getFlotte1());
+        P1.PlateauFill(m_player.getFlotte1());
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15;j++) {
                 if( P1.getCase(i,j) >= 0){
@@ -166,11 +242,11 @@ public class GameGUI extends javax.swing.JFrame {
                         f.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                     }
                     if(P1.getCase(i,j)==8) {
-                        f.setColor(Color.LIGHT_GRAY);
+                        f.setColor(Color.BLACK);
                         f.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                     }
                     if(P1.getCase(i,j)==9) {
-                        f.setColor(Color.DARK_GRAY);
+                        f.setColor(Color.LIGHT_GRAY);
                         f.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                     }
 
@@ -183,7 +259,7 @@ public class GameGUI extends javax.swing.JFrame {
         }
 
 
-        P2.PlateauFill(P2, m_IA.getFlotte1());
+        P2.PlateauFill(m_IA.getFlotte1());
 
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15;j++) {
@@ -221,11 +297,11 @@ public class GameGUI extends javax.swing.JFrame {
                         g.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                     }
                     if(P2.getCase(i,j)==8) {
-                        g.setColor(Color.LIGHT_GRAY);
+                        g.setColor(Color.BLACK);
                         g.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                     }
                     if(P2.getCase(i,j)==9) {
-                        g.setColor(Color.DARK_GRAY);
+                        g.setColor(Color.LIGHT_GRAY);
                         g.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                     }
 
@@ -236,7 +312,7 @@ public class GameGUI extends javax.swing.JFrame {
             }
         }
 
-
+        jLabel1.setText("Que voulez-vous faire ?");
     }
     private boolean m_save;
     // si l'on veut quitter la partie ou non
@@ -276,24 +352,13 @@ public class GameGUI extends javax.swing.JFrame {
     String fileName;
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-
-        jLabel1.setText("Veuillez selectionner un bateau de votre plateau");
-        System.out.println("De quel navire voulez vous tirer ?");
-        in = new Scanner(System.in);
-        m_choixNavire = in.nextInt();
-        if (m_choixNavire < 0 || m_choixNavire > 9){
-            System.out.println("Mauvaise saisie, veuillez ressayer");
-        } while (m_choixNavire < 0 || m_choixNavire > 9);
+    TireOn =1;
+        jLabel1.setText("Quel navire voulez vous Tirer");
 
 
 
-        ChoixCoordTir(m_coor);
-        // tirer
-        m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
-        
 
-        TourIA();
-        Actualisation();
+
 
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,8 +367,13 @@ public class GameGUI extends javax.swing.JFrame {
 
         if (m_player.getFlotte2(m_choixNavire).getFusee() == true) {
             ChoixCoordTir(m_coor);
-            P2.afficherFusee(m_player.getFlotte1()[m_choixNavire].tirFusee(m_coor, m_IA.getFlotte1()));
+            //P2.afficherFusee(m_player.getFlotte1()[m_choixNavire].tirFusee(m_coor, m_IA.getFlotte1()));
             TourIA();
+            QuiAGagne();
+            if (m_victoire == 1){
+                System.out.println("Vous avez perdu");}
+            if (m_victoire == 2){
+                System.out.println("Vous avez perdu");}
             Actualisation();
 
         }
@@ -320,75 +390,12 @@ public class GameGUI extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        /*
-        Plateau plato_joueur = new Plateau(15,15);
-        plato_joueur.PlateauFill(plato_joueur,m_player.getFlotte1());
 
 
-        Plateau plato_IA = new Plateau(15,15);
-        plato_IA.PlateauFill(plato_IA,m_IA.getFlotte1());
-        */
-
-            boolean Deplacement=true;
-            P1.PlateauFill(P1,m_player.getFlotte1());
-
-
-                    System.out.println("Quel navire voulez vous déplacer");
-                do {
-                    in = new Scanner(System.in);
-                    m_choixNavire = in.nextInt();
-                    if (m_choixNavire < 0 || m_choixNavire > 9)
-                        System.out.println("Mauvaise saisie, veuillez ressayer");
-                } while (m_choixNavire < 0 || m_choixNavire > 9);
-
-
-
-
-                // déplacement
-                    do {
-                        // 1 = horizontale
-                        if (m_player.getFlotte2(m_choixNavire).getOrientation()==1) {
-                            // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
-                            // choix entre fusée et tir normal
-                            System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
-                            System.out.println("1- vers la droite");
-                            System.out.println("2- vers la gauche");
-                        }
-                        // 2 = verticale
-                        else if (m_player.getFlotte2(m_choixNavire).getOrientation()==2) {
-                            // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
-                            // choix entre fusée et tir normal
-                            System.out.println("Dans quelle direction voulez-vous vous déplacer ?");
-                            System.out.println("1- vers le haut");
-                            System.out.println("2- vers le bas");
-                        }
-                        do {
-                            in = new Scanner(System.in);
-                            choir_dep = in.nextInt();
-                            if (choir_dep < 1 && choir_dep > 2)
-                                System.out.println("Mauvaise saisie, veuillez ressayer");
-                        } while (choir_dep < 1 && choir_dep > 2);
-
-
-                        Deplacement = m_player.getFlotte2(m_choixNavire).Deplacer(choir_dep, m_player.getFlotte1(), m_choixNavire);
-
-                        if (!Deplacement) {
-                            System.out.println("vous ne pouvez pas déplacer votre bateau");
-                            System.out.println("Quel navire voulez vous déplacer");
-                            do {
-                                in = new Scanner(System.in);
-                                m_choixNavire = in.nextInt();
-                                if (m_choixNavire < 0 || m_choixNavire > 9)
-                                    System.out.println("Mauvaise saisie, veuillez ressayer");
-                            } while (m_choixNavire < 0 || m_choixNavire > 9);
-                        } else
-                            System.out.println("vous pouvez déplacer votre bateau");
-                    } while (!Deplacement);
-
-
-
-            TourIA();
-            Actualisation();
+        boolean Deplacement=true;
+        P1.PlateauFill(m_player.getFlotte1());
+        DeplacementOn = 1;
+        jLabel1.setText("Quel navire voulez vous déplacer");
 
 
 
@@ -450,7 +457,7 @@ public class GameGUI extends javax.swing.JFrame {
             }
         });
         jButton2.setText("Tirer");
-    jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
@@ -648,7 +655,7 @@ public class GameGUI extends javax.swing.JFrame {
     }
     public void Actualisation(){
 
-        P1.PlateauFill(P1, m_player.getFlotte1());
+        P1.PlateauFill(m_player.getFlotte1());
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15;j++) {
                 if( P1.getCase(i,j) >= 0){
@@ -685,11 +692,11 @@ public class GameGUI extends javax.swing.JFrame {
                         f.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                     }
                     if(P1.getCase(i,j)==8) {
-                        f.setColor(Color.LIGHT_GRAY);
+                        f.setColor(Color.BLACK);
                         f.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                     }
                     if(P1.getCase(i,j)==9) {
-                        f.setColor(Color.DARK_GRAY);
+                        f.setColor(Color.LIGHT_GRAY);
                         f.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                     }
 
@@ -701,7 +708,7 @@ public class GameGUI extends javax.swing.JFrame {
             }
         }
 
-        P2.PlateauFill(P2, m_IA.getFlotte1());
+        P2.PlateauFill(m_IA.getFlotte1());
 
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15;j++) {
@@ -740,11 +747,11 @@ public class GameGUI extends javax.swing.JFrame {
                             g.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                         }
                         if(P2.getCase(i,j)==8) {
-                            g.setColor(Color.LIGHT_GRAY);
+                            g.setColor(Color.BLACK);
                             g.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                         }
                         if(P2.getCase(i,j)==9) {
-                            g.setColor(Color.DARK_GRAY);
+                            g.setColor(Color.LIGHT_GRAY);
                             g.fillRect((i * 26) + 1, (j * 26) + 1, 24, 24);
                         }
 
@@ -781,4 +788,5 @@ public class GameGUI extends javax.swing.JFrame {
 
 
 }
+
 
