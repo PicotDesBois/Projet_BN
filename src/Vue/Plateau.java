@@ -4,11 +4,23 @@ import Model.Navire;
 
 public class Plateau extends Affichage {
 
-
+    /**
+     * nombre de lignes et de colonnes du plateau
+     */
     private int nbLigne;
     private int nbColonne;
+
+    /**
+     * le plateau de int
+     * -1 pas de bateau
+     * autre, numero du bateau
+     */
     private int[][] plateau;
 
+    /**
+     * actualisation du plateau avec les nouvelles coordonnées des bateaux
+     * @param listeBateaux flotte du joueur
+     */
     public void PlateauFill(Navire[] listeBateaux){
 
         for (int i = 0; i < nbLigne; i++) {
@@ -26,6 +38,11 @@ public class Plateau extends Affichage {
 
     }
 
+    /**
+     * constructeur
+     * @param n lignes
+     * @param p colonnes
+     */
     public Plateau(int n, int p) {
         nbLigne = n;
         nbColonne = p;
@@ -38,6 +55,10 @@ public class Plateau extends Affichage {
                     }
     }
 
+    /**
+     * afficher les bateaux en couleur en fonction de leur type
+     * croix rouge, s'ils sont touchés sur cette case
+     */
     public void afficherCouleur(Navire[] flotte, int ligne, int colonne)
     {
         int i=ligne;
@@ -67,6 +88,11 @@ public class Plateau extends Affichage {
             System.out.print(" | " + ANSI_BLACK + ANSI_MAGENTA_BG + plateau[i][j] + ANSI_RESET);
         touche=false;
     }
+
+    /**
+     * afficher le plateau du joueur
+     * @param flotte du joueur
+     */
     public void afficher(Navire[] flotte) {
         nbLigne = 15;
         nbColonne = 15;
@@ -96,6 +122,12 @@ public class Plateau extends Affichage {
         }
         System.out.println();
     }
+
+    /**
+     * afficher un plateau avec seulement le tir de la fusée éclairante
+     * @param cordTir coordonnée du tir
+     * @param flotte du joueur (adversaire)
+     */
     public void afficherFusee(int[][]cordTir,Navire[] flotte)
     {
         nbLigne = 15;
@@ -141,6 +173,12 @@ public class Plateau extends Affichage {
         System.out.println();
     }
 
+    /**
+     * afficher un plateau avec seulement le tir normal
+     * @param cordTir coordonnée du tir
+     * @param flotte du joueur (adversaire)
+     * @param num_navire numéro du navire pour savoir son type
+     */
     public void afficherTir(int[][]cordTir,Navire[] flotte,int num_navire) {
         nbLigne = 15;
         nbColonne = 15;
@@ -191,13 +229,12 @@ public class Plateau extends Affichage {
             System.out.println();
     }
 
+    /**
+     * acsesseurs
+     */
     public int getCase(int x, int y)
     {
         return plateau[y][x];
-    }
-    public void setCase(int x, int y, int value)
-    {
-        plateau[y][x]=value;
     }
 }
 

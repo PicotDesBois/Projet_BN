@@ -1,6 +1,10 @@
 package Model;
 
 public class Destroyer extends Navire {
+
+    /**
+     * constructeur
+     */
     public Destroyer()
     {
         m_pv=3;
@@ -16,6 +20,12 @@ public class Destroyer extends Navire {
         m_coule=false;
     }
 
+    /**
+     * consctructeur pour la reprise de partie
+     * @param orientation orientation du navire
+     * @param fusee état de la fusée : false plus de fusée, true fusée
+     * @param coule navire coulé ou non
+     */
     public Destroyer(int orientation,boolean fusee,boolean coule)
     {
         m_pv=3;
@@ -27,6 +37,12 @@ public class Destroyer extends Navire {
         m_cases=new Case[m_pv];
     }
 
+    /**
+     * méthode pour tirer la fusée éclairante : redefinition de la méthode depuis la classe mère
+     * @param coordonnee coordonnée du tir
+     * @param flotte flotte de l'adversaire
+     * @return le tableau de cases touchées par la fusée
+     */
     public int[][] tirFusee(Case coordonnee, Navire []flotte)
     {
         int [][]tir=new int[4][2];

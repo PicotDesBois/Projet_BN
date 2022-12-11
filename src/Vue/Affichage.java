@@ -10,30 +10,32 @@ import java.io.IOException;
 
 public class Affichage {
 
-    //font color
+    /**
+     * couleurs pour la console
+     * <a href="https://www.javatpoint.com/java-color-codes">...</a>
+     */
     public static final String ANSI_RESET = "\u001B[0m";
-
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_CYAN = "\u001B[36m";
-
-    //background color
     public static final String ANSI_RED_BG = "\033[41m";
     public static final String ANSI_GREEN_BG = "\u001B[42m";
     public static final String ANSI_YELLOW_BG = "\u001B[43m";
-    public static final String ANSI_BLUE_BG = "\u001B[44m";
     public static final String ANSI_MAGENTA_BG = "\u001B[45m";
     public static final String ANSI_CYAN_BG = "\u001B[46m";
 
+
+    /**
+     * constructeur
+     */
     public Affichage()
     {
 
     }
 
+    /**
+     * afficher les infos d'un navire
+     * @param nav le navire
+     */
     public void Afficher(Navire nav)
     {
         System.out.println(ANSI_CYAN_BG + ANSI_BLACK + nav.geType() + ANSI_RESET);
@@ -61,6 +63,10 @@ public class Affichage {
             System.out.println("Case : touche :"+nav.getCase()[i].getCoorX()+" ; "+nav.getCase()[i].getCoorY()+" )"+nav.getCase()[i].getTouche());
     }
 
+    /**
+     * afficher les infos du joueur
+     * @param player le joueur
+     */
     public void Afficher(Joueur player)
     {
         System.out.println(ANSI_YELLOW_BG + ANSI_BLACK + "Pseudo"+ ANSI_RESET + " :  " +player.getPseudo());
@@ -71,6 +77,10 @@ public class Affichage {
         }
     }
 
+    /**
+     * afficher une case du plateau
+     * @param cas la case
+     */
     public void Afficher(Case cas)
     {
         System.out.println("Case : ( "+cas.getCoorX()+" ; "+cas.getCoorY()+" )");
@@ -78,25 +88,46 @@ public class Affichage {
         System.out.println("Navire : "+cas.getNavire());
     }
 
+    /**
+     * afficher un texte dans la console
+     * @param text le text + "saisir"
+     */
     public void AfficherSaisir(String text)
     {
         System.out.println("Saisir "+text);
     }
 
+    /**
+     * afficher un texte dans la console
+     * @param text le texte
+     */
     public void AfficherTexte(String text)
     {
         System.out.println(text);
     }
 
+    /**
+     * afficher le tour de jeu
+     * @param tour le tour de jeu
+     */
     public void AfficherTour(int tour)
     {
         System.out.println(" \n\n"+ANSI_MAGENTA_BG + ANSI_BLACK + "Tour" + ANSI_RESET + " :  " + tour + "\n");
     }
 
+    /**
+     * afficher le nom du plateau en couleur
+     * @param text le nom du plateau
+     */
     public void AfficherPlateau(String text)
     {
         System.out.println(" \n\n"+ANSI_RED_BG + ANSI_BLACK + text + ANSI_RESET);
     }
+
+    /**
+     * afficher l'aide à partir d'un fichier texte
+     * @throws IOException exception
+     */
     public void AfficherAide()throws IOException
     {
         String texte;
