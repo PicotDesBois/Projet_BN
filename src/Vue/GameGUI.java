@@ -154,9 +154,13 @@ public class GameGUI extends javax.swing.JFrame {
                     TourIA();
                     QuiAGagne();
                     if (m_victoire == 1) {
-                        System.out.println("Vous avez perdu");
+                        new victoire().setVisible(true);
+                        setVisible( false);
+                        System.out.println("Vous avez gagné");
                     }
                     if (m_victoire == 2) {
+                        new defaite().setVisible(true);
+                        setVisible( false);
                         System.out.println("Vous avez perdu");
                     }
                     Actualisation();
@@ -180,8 +184,12 @@ public class GameGUI extends javax.swing.JFrame {
                     TourIA();
                     QuiAGagne();
                     if (m_victoire == 1){
+                        new victoire().setVisible(true);
+                        setVisible( false);
                         System.out.println("Vous avez perdu");}
                     if (m_victoire == 2){
+                        new defaite().setVisible(true);
+                        setVisible( false);
                         System.out.println("Vous avez gagné");}
                     Actualisation();
                     jLabel1.setText("Que voulez-vous faire ?");
