@@ -20,7 +20,7 @@ abstract public class Navire {
     protected boolean m_coule;
 
     /************ Méthode **********************/
-    public void Tirer(Case coordonnee,Navire []flotte)
+    public int [][] Tirer(Case coordonnee,Navire []flotte)
     {
         //System.out.println("Vous tirez sur les cord("+coordonnee.getCoorX()+";"+coordonnee.getCoorY()+")");
         int [][]tir=new int[m_puissance][2];
@@ -56,8 +56,8 @@ abstract public class Navire {
             tir[7][0]=coordonnee.getCoorX();
             tir[7][1]=coordonnee.getCoorY()-1;
             // Case 9
-            tir[4][0]=coordonnee.getCoorX()+1;
-            tir[4][1]=coordonnee.getCoorY()-1;
+            tir[8][0]=coordonnee.getCoorX()+1;
+            tir[8][1]=coordonnee.getCoorY()-1;
         }
         // parcours de toute la flotte adverse
         for (Navire navire : flotte) {   // parcours de toutes les cases d'un navire
@@ -71,6 +71,7 @@ abstract public class Navire {
                 }
             }
         }
+        return tir;
     }
 
 

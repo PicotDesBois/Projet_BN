@@ -33,7 +33,7 @@ public class SousMarins extends Navire{
         //System.out.println("Un "+m_type+" ne peut pas tirer de fusée éclairante");
         return null;
     }
-    public void Tirer(Case coordonnee,Navire []flotte)
+    public int [][] Tirer(Case coordonnee,Navire []flotte)
     {
         //System.out.println("Vous tirez sur les cord("+coordonnee.getCoorX()+";"+coordonnee.getCoorY()+")");
         int [][]tir=new int[m_puissance][2];
@@ -82,5 +82,6 @@ public class SousMarins extends Navire{
                 }
             }
         }
+        return tir;
     }
 }

@@ -153,6 +153,7 @@ public class Partie {
             /****************************************************************/
 
             // choix de l'action à réaliser
+            vue.AfficherPlateau("Tour du joueur");
             vue.AfficherTexte("Voulez vous tirer ou déplacer un navire ?\n1- Tirer\n2- Déplacer\n3- Sauvegarder\n4- Aide\n5- Quitter");
             m_choixAction=saisie.saisirEntier(1,5);
             // choix du navire pour réaliser l'action
@@ -176,20 +177,21 @@ public class Partie {
 
                         ChoixCoordTir(m_coor);
                         if (choix_tir == 1) {
-                            plato_IA.afficherFusee(m_player.getFlotte1()[m_choixNavire].tirFusee(m_coor, m_IA.getFlotte1()));
+                            plato_IA.afficherFusee(m_player.getFlotte1()[m_choixNavire].tirFusee(m_coor, m_IA.getFlotte1()),m_player.getFlotte1());
                         } else {
                             // choix des coordonnées par le joueur
                             // tirer
-                            m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
+                            int [][] cordTir =m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
+                            plato_IA.afficherTir(cordTir,m_IA.getFlotte1(),m_choixNavire);
                         }
                     }
                     // le navire ne peut pas tirer de fusée
                     else {
-                        //m_IA.getFlotte1()[0].Afficher();
                         // choix des coordonnées par le joueur
                         ChoixCoordTir(m_coor);
                         // tirer
-                        m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
+                        int [][] cordTir=m_player.getFlotte1()[m_choixNavire].Tirer(m_coor, m_IA.getFlotte1());
+                        plato_IA.afficherTir(cordTir,m_IA.getFlotte1(),m_choixNavire);
                     }
                 }
 
@@ -203,7 +205,7 @@ public class Partie {
                             vue.AfficherTexte("Dans quelle direction voulez-vous vous déplacer ?\n1- vers la droite\n2- vers la gauche");
                         }
                         // 2 = verticale
-                        else if (m_player.getFlotte2(m_choixNavire).getOrientation()==2) {
+                        else {
                             // demander au joueur ou déplacer le navire : haut 1 , bas 2, droite 3, gauche 4
                             // choix entre fusée et tir normal
                             vue.AfficherTexte("Dans quelle direction voulez-vous vous déplacer ?\n1- vers le haut\n2- vers le bas");
@@ -221,7 +223,7 @@ public class Partie {
                     } while (!Deplacement);
                 }
                 /************* tour de l'IA ************/
-                vue.AfficherTexte("Tour de l'IA");
+                vue.AfficherPlateau("Tour de l'IA");
 
                 // choix de l'action à réaliser
                 m_choixAction = (int) (Math.random() * (2 - 1 + 1) + 1);
@@ -243,8 +245,9 @@ public class Partie {
                             m_coor.setCoorX((int) (Math.random() * 14 + 1));
                             m_coor.setCoorY((int) (Math.random() * 14 + 1));
                             // tirer la fusée éclairante
-                            plato_joueur.afficherFusee(m_IA.getFlotte1()[m_choixNavire].tirFusee(m_coor, m_player.getFlotte1()));
-                            vue.AfficherTexte("tir de fusée éclairante");
+                            vue.AfficherTexte("tir de fusée éclairante en ( "+m_coor.getCoorX()+" ; "+m_coor.getCoorY()+" )");
+                            plato_joueur.afficherFusee(m_IA.getFlotte1()[m_choixNavire].tirFusee(m_coor, m_player.getFlotte1()),m_IA.getFlotte1());
+
                         }
                         // tir normal
                         else {
@@ -252,8 +255,10 @@ public class Partie {
                             m_coor.setCoorX((int) (Math.random() * 14 + 1));
                             m_coor.setCoorY((int) (Math.random() * 14 + 1));
 
-                            m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
-                            vue.AfficherTexte("tir normal");
+                            int[][]cordTir = m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
+                            vue.AfficherTexte("tir normal en ( "+m_coor.getCoorX()+" ; "+m_coor.getCoorY()+" ) avec le "+m_IA.getFlotte2(m_choixNavire).geType());
+                            plato_joueur.afficherTir(cordTir,m_player.getFlotte1(),m_choixNavire);
+
                         }
                     }
                     // tir normal
@@ -262,8 +267,9 @@ public class Partie {
                         m_coor.setCoorX((int) (Math.random() * 14 + 1));
                         m_coor.setCoorY((int) (Math.random() * 14 + 1));
 
-                        m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
-                        vue.AfficherTexte("tir normal");
+                        int[][]cordTir = m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
+                        vue.AfficherTexte("tir normal en ( "+m_coor.getCoorX()+" ; "+m_coor.getCoorY()+" ) avec le "+m_IA.getFlotte2(m_choixNavire).geType());
+                        plato_joueur.afficherTir(cordTir,m_player.getFlotte1(),m_choixNavire);
                     }
                 }
                 // choix = déplacer
@@ -279,7 +285,7 @@ public class Partie {
                         }
 
                     } while (!Deplacement);
-                    vue.AfficherTexte("déplacement du navire "+m_choixNavire);
+                    vue.AfficherTexte("déplacement du navire "+m_choixNavire+" en ( "+m_coor.getCoorX()+" ; "+m_coor.getCoorY()+" )");
                 }
             }
             else if(m_choixAction == 3)

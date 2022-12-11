@@ -29,7 +29,6 @@ public class Destroyer extends Navire {
 
     public int[][] tirFusee(Case coordonnee, Navire []flotte)
     {
-        System.out.println("Vous tirez sur les cord("+coordonnee.getCoorX()+";"+coordonnee.getCoorY()+")");
         int [][]tir=new int[4][2];
 
             // Case 1
