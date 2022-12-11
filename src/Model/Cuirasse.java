@@ -1,5 +1,9 @@
 package Model;
 public class Cuirasse extends Navire{
+
+    /**
+     * constructeur
+     */
     public Cuirasse()
     {
         m_pv=7;
@@ -16,6 +20,11 @@ public class Cuirasse extends Navire{
         m_coule=false;
     }
 
+    /**
+     * consctructeur pour la reprise de partie
+     * @param orientation orientation du navire
+     * @param coule navire coulé ou non
+     */
     public Cuirasse(int orientation,boolean coule)
     {
         m_pv=7;
@@ -27,6 +36,12 @@ public class Cuirasse extends Navire{
         m_cases=new Case[m_pv];
     }
 
+    /**
+     * méthode pour tirer la fusée éclairante : redefinition de la méthode depuis la classe mère
+     * @param m_coor coordonnées du tir
+     * @param flotte1 flotte de l'adversaire
+     * @return un tableau vide car seul un destroyer peut tirer une fusée
+     */
     @Override
     public int[][] tirFusee(Case m_coor, Navire[] flotte1) {
         //System.out.println("Un "+m_type+" ne peut pas tirer de fusée éclairante");

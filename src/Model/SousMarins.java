@@ -2,6 +2,9 @@ package Model;
 
 public class SousMarins extends Navire{
 
+    /**
+     * constructeur
+     */
     public SousMarins()
     {
         m_pv=1;
@@ -17,6 +20,12 @@ public class SousMarins extends Navire{
 
         m_coule=false;
     }
+
+    /**
+     * consctructeur pour la reprise de partie
+     * @param orientation orientation du navire
+     * @param coule navire coulé ou non
+     */
     public SousMarins(int orientation,boolean coule)
     {
         m_pv=1;
@@ -28,11 +37,25 @@ public class SousMarins extends Navire{
 
         m_cases=new Case[m_pv];
     }
+
+    /**
+     * méthode pour tirer la fusée éclairante : redefinition de la méthode depuis la classe mère
+     * @param m_coor coordonnées du tir
+     * @param flotte1 flotte de l'adversaire
+     * @return un tableau vide car seul un destroyer peut tirer une fusée
+     */
     @Override
     public int[][] tirFusee(Case m_coor, Navire[] flotte1){
         //System.out.println("Un "+m_type+" ne peut pas tirer de fusée éclairante");
         return null;
     }
+
+    /**
+     * méthode de tir : redéfinition car sous-marins peut tirer sur les sous-marins contrairement aux autres
+     * @param coordonnee coordonnées du tir de base
+     * @param flotte flotte du joueur adverse
+     * @return le tableau de cases touchées par le tir
+     */
     public int [][] Tirer(Case coordonnee,Navire []flotte)
     {
         //System.out.println("Vous tirez sur les cord("+coordonnee.getCoorX()+";"+coordonnee.getCoorY()+")");

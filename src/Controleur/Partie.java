@@ -10,21 +10,31 @@ import java.io.IOException;
 
 public class Partie {
 
-    // joueur et AI de la partie
+    /**
+     * joueur et AI de la partie
+     */
     private Joueur m_player, m_IA;
 
-    // variable pour les choix du joueur
+    /**
+     * variables pour les choix du joueur
+     */
     private int m_choixAction;
     private int m_choixNavire;
 
-    // coordonnée de la case pour tirer (ou se déplacer ?)
+    /**
+     * coordonnée de la case pour tirer
+     */
     private Case m_coor;
 
-    // condition de victoire : 0 pas de victoire, 1 victoire du joueur, 2 victoire de l'IA
+    /**
+     * condition de victoire : 0 pas de victoire, 1 victoire du joueur, 2 victoire de l'IA
+     */
     private int m_victoire;
 
 
-    // constructeur
+    /**
+     * constructeur
+     */
     public Partie()
     {
         m_victoire=0;
@@ -39,7 +49,11 @@ public class Partie {
         m_coor= new Case(0,0,0,false);
     }
 
-    // choix des coordonnées pour le tir et la fusée
+
+    /**
+     * méthode de choix des coordonnées pour le tir et la fusée
+     * @param coor coordonnées du tir
+     */
     public void ChoixCoordTir (Case coor)
     {
         // affichage
@@ -53,7 +67,11 @@ public class Partie {
         aff.AfficherSaisir("l'ordonnée entre A et O");
         coor.setCoorY(saisir.saisirOrdonne());
     }
-    // condition de victoire : 0 pas de victoire, 1 victoire du joueur, 2 victoire de l'IA
+
+    /**
+     * condition de victoire : 0 pas de victoire, 1 victoire du joueur, 2 victoire de l'IA
+     * avec l'attribut m_victoire
+     */
     public void QuiAGagne()
     {
         int nb_IA=0, nb_joueur=0;
@@ -80,7 +98,9 @@ public class Partie {
         }
     }
 
-
+    /**
+     * méthode de la partie de jeu en console
+     */
     public void Jouer()
     {
         // scanner pour la saisie
@@ -90,7 +110,7 @@ public class Partie {
         int choix_tir;
         int choir_dep;
         int tour=0;
-        boolean chargement=false;
+        boolean chargement;
         Affichage vue=new Affichage();
         Saisie saisie=new Saisie();
 
@@ -123,7 +143,7 @@ public class Partie {
                     chargement=false;
                 }
             }
-        }while(chargement==false);
+        }while(!chargement);
 
         Plateau plato_IA = new Plateau(15, 15);
         plato_IA.PlateauFill( m_IA.getFlotte1());
@@ -136,7 +156,7 @@ public class Partie {
         do{
             tour++;
             /************* tour du joueur ************/
-            boolean Deplacement=true;
+            boolean Deplacement;
 
             vue.AfficherTour(tour);
 
@@ -239,26 +259,21 @@ public class Partie {
                         // aléatoire entre fusée et tir normal
                         choix_tir = (int) (Math.random() * (2 - 1 + 1) + 1);
 
+                        // choix des coordonnées aléatoires
+                        m_coor.setCoorX((int) (Math.random() * 14 + 1));
+                        m_coor.setCoorY((int) (Math.random() * 14 + 1));
+
                         // fusée éclairante
                         if (choix_tir == 1) {
-                            // choix des coordonnées aléatoires
-                            m_coor.setCoorX((int) (Math.random() * 14 + 1));
-                            m_coor.setCoorY((int) (Math.random() * 14 + 1));
                             // tirer la fusée éclairante
                             vue.AfficherTexte("tir de fusée éclairante en ( "+m_coor.getCoorX()+" ; "+m_coor.getCoorY()+" )");
                             plato_joueur.afficherFusee(m_IA.getFlotte1()[m_choixNavire].tirFusee(m_coor, m_player.getFlotte1()),m_IA.getFlotte1());
-
                         }
                         // tir normal
                         else {
-                            // choix des coordonnées aléatoires
-                            m_coor.setCoorX((int) (Math.random() * 14 + 1));
-                            m_coor.setCoorY((int) (Math.random() * 14 + 1));
-
                             int[][]cordTir = m_IA.getFlotte1()[m_choixNavire].Tirer(m_coor, m_player.getFlotte1());
                             vue.AfficherTexte("tir normal en ( "+m_coor.getCoorX()+" ; "+m_coor.getCoorY()+" ) avec le "+m_IA.getFlotte2(m_choixNavire).geType());
                             plato_joueur.afficherTir(cordTir,m_player.getFlotte1(),m_choixNavire);
-
                         }
                     }
                     // tir normal

@@ -2,24 +2,53 @@ package Model;
 
 abstract public class Navire {
 
-    /***************** Attribut ******************/
+    /**
+     * nombre de case du bateau sur le plateau
+     */
     protected int m_pv;
 
+    /**
+     * puissance de tir du bateau
+     */
     protected int m_puissance;
 
-    // 1 = horizontale
-    // 2 = verticale
+    /**
+     * orientation du bateau
+     *  1 = horizontale
+     *  2 = verticale
+     */
     protected int m_orientation;
 
+    /**
+     * nom du type de bateau
+     */
     protected String m_type;
 
+    /**
+     * les cases sur lesquelles sur trouve le bateau sur le plateau
+     */
     protected Case[] m_cases;
 
+    /**
+     * est ce que le bateau peut tirer une fusée éclairante ?
+     * false, non
+     * true, oui
+     */
     protected boolean m_fusee;
 
+    /**
+     * est ce que le bateau est coulé ?
+     * false, non
+     * true, oui
+     */
     protected boolean m_coule;
 
-    /************ Méthode **********************/
+    /**
+     * méthode pour tirer en fonction de la puissance des bateaux
+     * @param coordonnee coordonnées du tir de base
+     * @param flotte flotte du joueur adverse
+     * @return le tableau de cases touchées par le tir
+     */
     public int [][] Tirer(Case coordonnee,Navire []flotte)
     {
         //System.out.println("Vous tirez sur les cord("+coordonnee.getCoorX()+";"+coordonnee.getCoorY()+")");
@@ -63,7 +92,7 @@ abstract public class Navire {
         for (Navire navire : flotte) {   // parcours de toutes les cases d'un navire
             for (int j = 0; j < navire.m_pv; j++) {   // parcours des cases touché
                 for (int k = 0; k < m_puissance; k++) {
-                    if(navire.geType().equals("SousMarins")==false) {
+                    if(!navire.geType().equals("SousMarins")) {
                         if (navire.m_cases[j].getCoorX() == tir[k][0] && navire.m_cases[j].getCoorY() == tir[k][1]) {
                             navire.m_cases[j].setTouche(true);
                         }
@@ -75,6 +104,13 @@ abstract public class Navire {
     }
 
 
+    /**
+     * méthode pour déplacer un bateau selon la direction choisi
+     * @param choix direction choisi par le joueur
+     * @param flotte    flotte du joueur pour le chevauchement
+     * @param numNavire numero du navire à déplacer
+     * @return on retourne un boolean pour savoir si le déplacement est possible : oui, true et non, false
+     */
      public boolean Deplacer(int choix, Navire[] flotte,int numNavire)
      {
          int temp;
@@ -173,6 +209,12 @@ abstract public class Navire {
          return OnPeutDeplacer;
      }
 
+    /**
+     * vérification des chevauchements pour le déplacement
+     * @param flotte flotte du joueur
+     * @param numNavire numéro du navire déplacer
+     * @return true, chevauchement, false, pas de chevauchement
+     */
     public boolean VerifChevauchement(Navire[] flotte, int numNavire)
     {
         boolean Chevauchement=false;
@@ -197,6 +239,9 @@ abstract public class Navire {
         return Chevauchement;
     }
 
+    /**
+     * méthode pour savoir si le navire entier à couler
+     */
     public void IlaCoule()
     {
         int nb_coule=0;
@@ -215,7 +260,9 @@ abstract public class Navire {
             m_coule=false;
     }
 
-    /************ Setter & Getter **********************/
+    /**
+     * Setter & Getter
+     */
 
     public int getPV()
     {

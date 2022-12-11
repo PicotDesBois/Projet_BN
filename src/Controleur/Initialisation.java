@@ -5,6 +5,12 @@ import Model.Navire;
 
 public class Initialisation {
 
+    /**
+     * methode pour verifier si le navire ne chevauche pas les autres
+     * @param flotte flotte du joueur
+     * @param numNavire numéro du navire qu'on vérifie
+     * @return false pas de chevauchement, true chevauchement
+     */
     public boolean VerifNavire (Navire[] flotte, int numNavire)
     {
         boolean Chevauchement=false;
@@ -32,6 +38,10 @@ public class Initialisation {
         }
     }
 
+    /**
+     * methode pour créer les positions des navires alétoirement
+     * @param flotte flotte du joueur
+     */
     public void PositionAleaNavire(Navire[] flotte)
     {
         // nb de case pour le test => a remplacer par les pv du bateau

@@ -2,17 +2,27 @@ package Model;
 
 public class Case {
 
-    // coordonnees de la case
+    /**
+     * coordonnées de la case
+     */
     private int m_coorX;
     private int m_coorY;
 
-    // le bateau sur la case est touché ou pas
+    /**
+     * le bateau sur la case est touché ou pas
+     */
     private boolean m_touche;
 
-    // 0 pas de bateau
-    // sinon numero du bateau du joueur
+    /**
+     * variable pour savoir quel bateau se trouve sur cette case
+     * 0 pas de bateau
+     * sinon numero du bateau du joueur
+     */
     private int m_navire;
 
+    /**
+     * constructeur
+     */
     public Case(int navire,int px, int py, boolean touche)
     {
         m_navire=navire;
@@ -21,6 +31,9 @@ public class Case {
         m_touche=touche;
     }
 
+    /**
+     * accesseurs des attributs
+     */
     public int getCoorX()
     {
         return m_coorX;

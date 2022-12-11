@@ -4,9 +4,16 @@ import java.io.*;
 
 public class Joueur {
 
+    /**
+     * Pseudo du joueur
+     * flotte des navires du joueur
+     */
     private String m_pseudo;
     private Navire[] m_flotte;
 
+    /**
+     * Constructeur
+     */
     public Joueur()
     {
         m_flotte=new Navire[10];
@@ -21,6 +28,12 @@ public class Joueur {
         m_flotte[8]=new SousMarins();
         m_flotte[9]=new SousMarins();
     }
+
+    /**
+     * methode pour charger la classe joueur a partir d'un fichier texte en paramètre
+     * @param fileName nom du fichier
+     * @throws IOException exception
+     */
     public Joueur(String fileName)throws IOException
     {
         // Création d’un fileReader pour lire le fichier
@@ -47,14 +60,12 @@ public class Joueur {
                 fusee=Boolean.parseBoolean(reader.readLine());
                 coule=Boolean.parseBoolean(reader.readLine());
 
-                if(type.equals("Croiseur")==true)
-                    this.m_flotte[i]=new Croiseur(orientation,coule);
-                else if(type.equals("SousMarins")==true)
-                    this.m_flotte[i]=new SousMarins(orientation,coule);
-                else if(type.equals("Destroyer")==true)
-                    this.m_flotte[i]=new Destroyer(orientation,fusee,coule);
-                else if(type.equals("Cuirasse")==true)
-                    this.m_flotte[i]=new Cuirasse(orientation,coule);
+                switch (type) {
+                    case "Croiseur" -> this.m_flotte[i] = new Croiseur(orientation, coule);
+                    case "SousMarins" -> this.m_flotte[i] = new SousMarins(orientation, coule);
+                    case "Destroyer" -> this.m_flotte[i] = new Destroyer(orientation, fusee, coule);
+                    case "Cuirasse" -> this.m_flotte[i] = new Cuirasse(orientation, coule);
+                }
                 for(int j=0;j<m_flotte[i].getPV();j++)
                 {
                     px=Integer.parseInt(reader.readLine());
@@ -71,24 +82,11 @@ public class Joueur {
         reader.close();
     }
 
-
-    public String getPseudo()
-    {
-        return m_pseudo;
-    }
-    public void setPseudo(String temp)
-    {
-        m_pseudo=temp;
-    }
-
-    public Navire[] getFlotte1() { return m_flotte; }
-
-    public Navire getFlotte2(int i) { return m_flotte[i]; }
-    public void setFlotte(Navire temp, int i)
-    {
-        m_flotte[i]=temp;
-    }
-
+    /**
+     * methode pour sauvegarder la classe joueur a partir d'un fichier texte en paramètre
+     * @param fileName nom du fichier
+     * @throws IOException exception
+     */
     public void sauvegarde(String fileName) throws IOException {
         String sauvegarde;
         // Création d’un fileWriter pour écrire dans un fichier
@@ -117,10 +115,28 @@ public class Joueur {
                 writer.write(sauvegarde);
             }
         }
-            catch (IOException e) {
+        catch (IOException e) {
 
-                e.printStackTrace();
-            }
+            e.printStackTrace();
+        }
         writer.close(); // Fermeture du fichier
     }
+
+
+    /**
+     * accesseurs des attributs
+     */
+    public String getPseudo()
+    {
+        return m_pseudo;
+    }
+    public void setPseudo(String temp)
+    {
+        m_pseudo=temp;
+    }
+    public Navire[] getFlotte1() { return m_flotte; }
+
+    public Navire getFlotte2(int i) { return m_flotte[i]; }
+
+
 }
